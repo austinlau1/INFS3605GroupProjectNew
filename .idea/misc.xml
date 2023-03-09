@@ -3,10 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/super/Documents/GitHub/INFS3605GroupProjectNew/app/src/main/res/layout/activity_main.xml" value="0.5744791666666667" />
         <entry key="app/src/main/res/layout/forgotpassword_page.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/login_page.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/register_page.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/welcome_page.xml" value="0.335" />
       </map>
     </option>
   </component>
