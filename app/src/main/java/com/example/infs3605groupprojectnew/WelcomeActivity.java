@@ -8,15 +8,14 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 public class WelcomeActivity extends AppCompatActivity{
-    private static final String TAG = "Opening Page";
+    private static final String TAG = "Welcome Page";
     Button signupBtn, loginBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Log.d(TAG, "onCreate: Starting Opening Page");
+        Log.d(TAG, "onCreate: Starting Welcome Page");
         setTitle("First Page Display");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_page);

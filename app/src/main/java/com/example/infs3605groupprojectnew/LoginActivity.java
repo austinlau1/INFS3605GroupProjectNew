@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity{
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()) {
                         mLoadingProgressBar.dismiss();
-                        Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.putExtra("email",inputEmail);
                         startActivity(intent);
@@ -101,7 +101,6 @@ public class LoginActivity extends AppCompatActivity{
         }
 
     }
-
 
     private boolean validate() {
         if (user_email.getText().toString().isEmpty()) {
@@ -122,8 +121,4 @@ public class LoginActivity extends AppCompatActivity{
     }
 }
 
-/**
- https://www.youtube.com/watch?v=741QCymuky4
- This is the resources used behind creating user login and user registration through firebase database
- */
 
