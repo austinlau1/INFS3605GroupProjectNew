@@ -30,7 +30,7 @@ public class ForgotPassword extends AppCompatActivity{
 
         emailEditText = (EditText) findViewById(R.id.email_reset_ps);
         resetPW = (Button) findViewById(R.id.reset_button);
-        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+        //mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
 
