@@ -16,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
 
         Button investingButton = (Button) findViewById(R.id.menuButton);
 
-        // Button to IncomeActivity
         investingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
