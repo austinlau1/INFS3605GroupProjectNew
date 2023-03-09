@@ -17,6 +17,9 @@
         android:theme="@style/Theme.INFS3605GroupProjectNew"
         tools:targetApi="31">
         <activity
+            android:name=".Quizzes"
+            android:exported="false" />
+        <activity
             android:name=".PlantList"
             android:exported="false" />
         <activity

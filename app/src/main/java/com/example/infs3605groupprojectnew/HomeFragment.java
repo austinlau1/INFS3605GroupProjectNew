@@ -21,12 +21,22 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView =  inflater.inflate(R.layout.fragment_home, container, false);
 
-        Button investingButton = (Button) findViewById(R.id.menuButton);
+        Button toPlantsBtn = (Button) rootView.findViewById(R.id.toPlantsBtn);
 
-        investingButton.setOnClickListener(new View.OnClickListener() {
+        toPlantsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MenuPage.class);
+                Intent intent = new Intent(getActivity(), PlantList.class);
+                startActivity(intent);
+            }
+        });
+
+        Button toQuizzesBtn = (Button) rootView.findViewById(R.id.toQuizzesBtn);
+
+        toQuizzesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Quizzes.class);
                 startActivity(intent);
             }
         });
