@@ -48,7 +48,7 @@
         app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/welcome_text"
-        app:layout_constraintVertical_bias="0.325"
+        app:layout_constraintVertical_bias="0.336"
         app:rippleColor="@color/green6" />
 
     <TextView
