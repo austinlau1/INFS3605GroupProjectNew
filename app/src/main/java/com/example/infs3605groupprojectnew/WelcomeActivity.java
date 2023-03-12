@@ -38,15 +38,15 @@ public class WelcomeActivity extends AppCompatActivity{
             }
         });
 
-        Button investingButton = (Button) findViewById(R.id.menuButton);
+//        Button investingButton = (Button) findViewById(R.id.menuButton);
 
-        investingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(WelcomeActivity.this, MenuPage.class);
-                startActivity(intent);
-            }
-        });
+//        investingButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(WelcomeActivity.this, MenuPage.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     public void goToSignUp() {
