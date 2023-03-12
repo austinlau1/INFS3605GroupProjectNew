@@ -37,6 +37,16 @@ public class WelcomeActivity extends AppCompatActivity{
                 goToLogin();
             }
         });
+
+        Button investingButton = (Button) findViewById(R.id.menuButton);
+
+        investingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WelcomeActivity.this, MenuPage.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void goToSignUp() {
