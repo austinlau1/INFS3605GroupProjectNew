@@ -1,8 +1,10 @@
 package com.example.infs3605groupprojectnew;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -13,11 +15,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 
+import java.util.ArrayList;
+
 
 public class PlantFragment extends Fragment {
+    public static String PLANT_SYMBOL_KEY= "coinSymbol";
 
     RecyclerView mRecyclerView;
     private PlantAdapter adapter;
+
+    /*PlantAdapter.ClickListener listener = new PlantAdapter.ClickListener() {
+        @Override
+        public void onCoinClick(View view, String plantSymbol) {
+            Intent intent = new Intent(PlantFragment.this, IndividualPlant.class);
+            intent.putExtra(PLANT_SYMBOL_KEY, plantSymbol);
+            // FirebaseDatabase database = FirebaseDatabase.getInstance();
+            // DatabaseReference reference = database.getReference(FirebaseAuth.getInstance().getUid());
+            // reference.setValue(coins.getCoin());
+            startActivity(intent);
+        }
+    };*/
 
 
     @Override
@@ -26,6 +43,12 @@ public class PlantFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_plant, container, false);
 
+        /*mRecyclerView = findViewById(R.id.rvList);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        mRecyclerView.setLayoutManager(layoutManager);*/
+
+        /*adapter = new PlantAdapter(new ArrayList<Plant>(), listener);*/
+        /*mRecyclerView.setAdapter(adapter);*/
 
 
     }
