@@ -1,10 +1,12 @@
 package com.example.infs3605groupprojectnew;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,9 +20,9 @@ public class ForgotPassword extends AppCompatActivity{
 
     private EditText emailEditText;
     private Button resetPW;
-    private ProgressBar mProgressBar;
-
-    FirebaseAuth mAuth;
+    // private ProgressBar mProgressBar;
+    private static final String TAG = "Forgot Password Page";
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,23 +30,48 @@ public class ForgotPassword extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forgotpassword_page);
 
-        emailEditText = (EditText) findViewById(R.id.email_reset_ps);
-        resetPW = (Button) findViewById(R.id.reset_button);
+        emailEditText = findViewById(R.id.email_reset_ps);
+        resetPW = findViewById(R.id.reset_button);
+        mAuth = FirebaseAuth.getInstance();
         //mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
 
-        mAuth = FirebaseAuth.getInstance();
-
+        // mAuth = FirebaseAuth.getInstance();
 
         resetPW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resetPassword();
+                //From ChatGPT
+                String email = emailEditText.getText().toString().trim();
+                mAuth.sendPasswordResetEmail(email)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Log.d(TAG, "Password reset email sent.");
+                                }
+                            }
+                        });
             }
         });
 
     }
 
-    private void resetPassword() {
+    /*// From ChatGPT
+    private void sendPasswordResetEmail() {
+        String email = emailEditText.getText().toString().trim();
+        mAuth.sendPasswordResetEmail(email)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "Password reset email sent.");
+                        }
+                    }
+                });*/
+
+    }
+
+    /*private void resetPassword() {
 
         String email = emailEditText.getText().toString().trim();
 
@@ -70,11 +97,11 @@ public class ForgotPassword extends AppCompatActivity{
                 }
             }
         });
-    }
+    }*/
 
     
 
 
-}
+
 
 

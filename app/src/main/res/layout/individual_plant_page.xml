@@ -27,12 +27,12 @@
 
             <ImageView
                 android:id="@+id/imageView25"
-                android:layout_width="182dp"
-                android:layout_height="173dp"
+                android:layout_width="151dp"
+                android:layout_height="147dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="101dp"
-                android:layout_marginTop="36dp"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="44dp"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
@@ -41,19 +41,19 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="105dp"
-                android:layout_marginTop="228dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="211dp"
                 android:text="Plant Name" />
 
             <TextView
                 android:id="@+id/textView20"
-                android:layout_width="245dp"
-                android:layout_height="191dp"
+                android:layout_width="332dp"
+                android:layout_height="188dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="76dp"
-                android:layout_marginTop="267dp"
-                android:text="Plant Description" />
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="280dp"
+                android:text="Description" />
 
             <Button
                 android:id="@+id/button3"
@@ -61,8 +61,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="132dp"
-                android:layout_marginTop="471dp"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="478dp"
                 android:text="Learn More" />
 
             <TextView
@@ -76,14 +76,34 @@
                 android:text="Location" />
 
             <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="253dp"
+                android:text="Traditional uses" />
+
+            <TextView
                 android:id="@+id/textView22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="225dp"
-                android:layout_marginTop="230dp"
-                android:text="Plant Category" />
+                android:layout_marginStart="216dp"
+                android:layout_marginTop="210dp"
+                android:text="Geographic distribution" />
+
+            <ImageView
+                android:id="@+id/imageView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="231dp"
+                android:layout_marginTop="60dp"
+                tools:srcCompat="@tools:sample/avatars" />
         </RelativeLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
