@@ -3,8 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< Updated upstream
         <entry key="app/src/main/res/drawable/newbuttondesign.xml" value="0.2705" />
         <entry key="app/src/main/res/font/inter_bold.xml" value="0.28489583333333335" />
+=======
+        <entry key="..\:/Users/super/Documents/GitHub/INFS3605GroupProjectNew/app/src/main/res/layout/activity_easy_start.xml" value="0.3365036231884058" />
+        <entry key="..\:/Users/super/Documents/GitHub/INFS3605GroupProjectNew/app/src/main/res/layout/activity_main.xml" value="0.5744791666666667" />
+        <entry key="..\:/Users/super/Documents/GitHub/INFS3605GroupProjectNew/app/src/main/res/layout/fragment_blank.xml" value="0.5744791666666667" />
+        <entry key="..\:/Users/super/Documents/GitHub/INFS3605GroupProjectNew/app/src/main/res/layout/fragment_home.xml" value="0.5744791666666667" />
+        <entry key="..\:/Users/super/Documents/GitHub/INFS3605GroupProjectNew/app/src/main/res/layout/fragment_info.xml" value="0.3365036231884058" />
+        <entry key="..\:/Users/super/Documents/GitHub/INFS3605GroupProjectNew/app/src/main/res/layout/fragment_map.xml" value="0.2793819655521783" />
+        <entry key="..\:/Users/super/Documents/GitHub/INFS3605GroupProjectNew/app/src/main/res/layout/popup_acknowledgement.xml" value="0.5734375" />
+        <entry key="..\:/Users/super/Documents/GitHub/INFS3605GroupProjectNew/app/src/main/res/layout/welcome_page.xml" value="0.5744791666666667" />
+>>>>>>> Stashed changes
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2079533941236069" />
         <entry key="app/src/main/res/layout/activity_menu_page.xml" value="0.22554347826086957" />
         <entry key="app/src/main/res/layout/activity_plant_list.xml" value="0.22554347826086957" />

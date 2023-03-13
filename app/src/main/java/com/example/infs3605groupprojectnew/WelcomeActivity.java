@@ -3,14 +3,20 @@ package com.example.infs3605groupprojectnew;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class WelcomeActivity extends AppCompatActivity{
     private static final String TAG = "Welcome Page";
     Button signupBtn, loginBtn;
+    public boolean popup = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +44,7 @@ public class WelcomeActivity extends AppCompatActivity{
             }
         });
 
+
 //        Button investingButton = (Button) findViewById(R.id.menuButton);
 
 //        investingButton.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +54,9 @@ public class WelcomeActivity extends AppCompatActivity{
 //                startActivity(intent);
 //            }
 //        });
+
     }
+
 
     public void goToSignUp() {
         Intent intent = new Intent(this, RegisterActivity.class);
