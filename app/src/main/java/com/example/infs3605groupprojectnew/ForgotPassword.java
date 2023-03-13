@@ -40,7 +40,7 @@ public class ForgotPassword extends AppCompatActivity{
         resetPW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //From ChatGPT
+                // Referenced from ChatGPT
                 String email = emailEditText.getText().toString().trim();
                 mAuth.sendPasswordResetEmail(email)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -50,7 +50,21 @@ public class ForgotPassword extends AppCompatActivity{
                                     Log.d(TAG, "Password reset email sent.");
                                 }
                             }
+
                         });
+
+                mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        if(task.isSuccessful()){
+                            Toast.makeText(ForgotPassword.this, "Check your email to reset your password", Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(ForgotPassword.this, "Try again! Something wrong happened!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
             }
         });
 
