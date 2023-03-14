@@ -20,11 +20,11 @@ import com.example.infs3605groupprojectnew.Quizzes.Quizzes;
 
 public class HomeFragment extends Fragment {
 
-    @Override
+    /*@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-    }
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
