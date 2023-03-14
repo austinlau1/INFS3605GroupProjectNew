@@ -45,15 +45,15 @@ public class WelcomeActivity extends AppCompatActivity{
         });
 
 
-//        Button investingButton = (Button) findViewById(R.id.menuButton);
+        Button toMenuButton = (Button) findViewById(R.id.toMenuButton);
 
-//        investingButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(WelcomeActivity.this, MenuPage.class);
-//                startActivity(intent);
-//            }
-//        });
+        toMenuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WelcomeActivity.this, MenuPage.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
