@@ -3,6 +3,7 @@ package com.example.infs3605groupprojectnew;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,11 +16,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 
 public class PlantFragment extends Fragment {
-    public static String PLANT_SYMBOL_KEY= "coinSymbol";
+    public static String PLANT_SYMBOL_KEY= "plantSymbol";
 
     RecyclerView mRecyclerView;
     private PlantAdapter adapter;
@@ -41,7 +49,13 @@ public class PlantFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_plant, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_plant, container, false);
+        // Initialize Firebase
+        FirebaseApp.initializeApp(getContext());
+        // Get reference to the database
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+
+
 
         /*mRecyclerView = findViewById(R.id.rvList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -49,6 +63,22 @@ public class PlantFragment extends Fragment {
 
         /*adapter = new PlantAdapter(new ArrayList<Plant>(), listener);*/
         /*mRecyclerView.setAdapter(adapter);*/
+
+        // Add a ValueEventListener to the reference
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // Handle data changes
+                // Use getValue() to get the data
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle errors
+            }
+        });
+
+        return rootView;
 
 
     }
@@ -87,8 +117,6 @@ public class PlantFragment extends Fragment {
         return true;
 
     }*/
-
-
 
 
 }
