@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.SearchView;
 
 import com.google.firebase.FirebaseApp;
@@ -26,34 +28,46 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 
-public class PlantFragment extends Fragment {
-    public static String PLANT_SYMBOL_KEY= "plantSymbol";
+public class PlantFragment extends Fragment implements View.OnClickListener {
+    //public static String PLANT_SYMBOL_KEY = "plantSymbol";
 
     RecyclerView mRecyclerView;
     private PlantAdapter adapter;
+    Button navigateToList;
 
-    /*PlantAdapter.ClickListener listener = new PlantAdapter.ClickListener() {
-        @Override
-        public void onCoinClick(View view, String plantSymbol) {
-            Intent intent = new Intent(PlantFragment.this, IndividualPlant.class);
-            intent.putExtra(PLANT_SYMBOL_KEY, plantSymbol);
-            // FirebaseDatabase database = FirebaseDatabase.getInstance();
-            // DatabaseReference reference = database.getReference(FirebaseAuth.getInstance().getUid());
-            // reference.setValue(coins.getCoin());
-            startActivity(intent);
-        }
-    };*/
-
-
+    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_plant, container, false);
         // Initialize Firebase
-        FirebaseApp.initializeApp(getContext());
+        // FirebaseApp.initializeApp(getContext());
         // Get reference to the database
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+        // DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        //adapter = new PlantAdapter(new ArrayList<Plant>(), listener);
+
+        navigateToList = (Button) rootView.findViewById(R.id.view_plants_but);
+        navigateToList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(getActivity(), PlantList.class);
+                startActivity(intent);
+            }
+        });
+        return rootView;
+    }
+
+    /*PlantAdapter.ClickListener listener = new PlantAdapter.ClickListener() {
+        @Override
+        public void onPlantClick(View view, String plantSymbol) {
+            Intent intent = new Intent(getActivity(), IndividualPlant.class);
+            intent.putExtra(PLANT_SYMBOL_KEY, plantSymbol);
+            startActivity(intent);
+        }
+    };*/
 
 
 
@@ -65,7 +79,7 @@ public class PlantFragment extends Fragment {
         /*mRecyclerView.setAdapter(adapter);*/
 
         // Add a ValueEventListener to the reference
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        /*databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 // Handle data changes
@@ -78,9 +92,13 @@ public class PlantFragment extends Fragment {
             }
         });
 
-        return rootView;
+        return rootView;*/
 
-
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        intent = new Intent(getActivity(), PlantList.class);
+        startActivity(intent);
     }
 
     /*@Override
