@@ -17,16 +17,19 @@
         android:theme="@style/Theme.INFS3605GroupProjectNew"
         tools:targetApi="31">
         <activity
-            android:name=".EasyCompleted"
+            android:name=".Quizzes.TestQuiz"
             android:exported="false" />
         <activity
-            android:name=".EasyProgress"
+            android:name=".Quizzes.EasyCompleted"
             android:exported="false" />
         <activity
-            android:name=".EasyQuiz"
+            android:name=".Quizzes.EasyProgress"
             android:exported="false" />
         <activity
-            android:name=".Quizzes.Quizzes"
+            android:name=".Quizzes.EasyStart"
+            android:exported="false" />
+        <activity
+            android:name=".Quizzes.QuizOptions"
             android:exported="false" />
         <activity
             android:name=".PlantList"

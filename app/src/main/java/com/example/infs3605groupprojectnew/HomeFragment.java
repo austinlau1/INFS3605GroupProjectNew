@@ -1,24 +1,19 @@
 package com.example.infs3605groupprojectnew;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.example.infs3605groupprojectnew.Quizzes.Quizzes;
+import com.example.infs3605groupprojectnew.Quizzes.QuizOptions;
 
 
 public class HomeFragment extends Fragment {
@@ -90,7 +85,7 @@ public class HomeFragment extends Fragment {
         toQuizzesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Quizzes.class);
+                Intent intent = new Intent(getActivity(), QuizOptions.class);
                 startActivity(intent);
             }
         });

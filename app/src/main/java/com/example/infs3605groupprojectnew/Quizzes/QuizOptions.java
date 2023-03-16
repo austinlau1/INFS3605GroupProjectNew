@@ -11,7 +11,7 @@ import android.widget.ImageButton;
 import com.example.infs3605groupprojectnew.MenuPage;
 import com.example.infs3605groupprojectnew.R;
 
-public class Quizzes extends AppCompatActivity {
+public class QuizOptions extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class Quizzes extends AppCompatActivity {
         easyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Quizzes.this, MenuPage.class);
+                Intent intent = new Intent(QuizOptions.this, TestQuiz.class);
                 startActivity(intent);
             }
         });
@@ -33,7 +33,7 @@ public class Quizzes extends AppCompatActivity {
         mediumBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Quizzes.this, MenuPage.class);
+                Intent intent = new Intent(QuizOptions.this, MenuPage.class);
                 startActivity(intent);
             }
         });
@@ -43,7 +43,7 @@ public class Quizzes extends AppCompatActivity {
         hardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Quizzes.this, MenuPage.class);
+                Intent intent = new Intent(QuizOptions.this, MenuPage.class);
                 startActivity(intent);
             }
         });
@@ -52,7 +52,7 @@ public class Quizzes extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Quizzes.this, MenuPage.class);
+                Intent intent = new Intent(QuizOptions.this, MenuPage.class);
                 intent.putExtra("ToNavigation", "HomeFragment");
                 //intent.putExtra("ProfileInfo", username);
                 startActivity(intent);
