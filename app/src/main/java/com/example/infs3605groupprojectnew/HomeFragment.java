@@ -12,8 +12,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.example.infs3605groupprojectnew.Quizzes.Quizzes;
 
@@ -58,6 +61,19 @@ public class HomeFragment extends Fragment {
                 return true;
             }
         });*/
+
+        FrameLayout bannerLayout = rootView.findViewById(R.id.banner_layout);
+        TextView bannerText = rootView.findViewById(R.id.banner_text);
+        ImageButton bannerClose = rootView.findViewById(R.id.banner_close);
+
+        bannerLayout.setVisibility(View.VISIBLE);
+        bannerText.setText("This is the acknowledgement of country.");
+        bannerClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bannerLayout.setVisibility(View.GONE);
+            }
+        });
 
         Button toPlantsBtn = (Button) rootView.findViewById(R.id.toPlantsBtn);
 

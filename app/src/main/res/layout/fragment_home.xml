@@ -20,15 +20,43 @@
             android:layout_height="match_parent"
             android:background="@color/green1">
 
+            <FrameLayout
+                android:id="@+id/banner_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:background="@color/green4"
+                android:elevation="8dp"
+                android:padding="16dp"
+                >
+
+                <ImageButton
+                    android:id="@+id/banner_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_baseline_close_24"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/banner_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Your message here"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+            </FrameLayout>
+
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="380dp"
                 android:layout_height="179dp"
+                android:layout_below="@+id/banner_layout"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="69dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="15dp"
                 android:src="@drawable/green4_box" />
 
@@ -37,8 +65,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/imageView"
                 android:layout_alignTop="@+id/imageView"
-                android:layout_marginStart="17dp"
-                android:layout_marginTop="19dp"
+                android:layout_marginStart="166dp"
+                android:layout_marginTop="18dp"
                 android:text="BUCKER TRAIL APP"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -48,10 +76,10 @@
                 android:id="@+id/welcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="41dp"
-                android:layout_marginTop="125dp"
+                android:layout_alignTop="@+id/imageView"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="50dp"
+                android:layout_toEndOf="@+id/imageView2"
                 android:text="Welcome, "
                 android:textColor="@color/white"
                 android:textSize="24sp"
@@ -61,11 +89,10 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="125dp"
-                android:layout_toEndOf="@id/welcome"
+                android:layout_below="@+id/welcome"
+                android:layout_alignStart="@+id/welcome"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="1dp"
                 android:text="Anna"
                 android:textColor="@color/white"
                 android:textSize="24sp"
@@ -75,10 +102,9 @@
                 android:id="@+id/textview1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/welcome"
                 android:layout_marginStart="1dp"
-                android:layout_marginTop="125dp"
+                android:layout_marginTop="1dp"
                 android:layout_toEndOf="@id/name"
                 android:text="!"
                 android:textColor="@color/white"
@@ -89,20 +115,20 @@
                 android:id="@+id/imageView2"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
+                android:layout_alignStart="@+id/imageView"
                 android:layout_alignTop="@+id/imageView"
-                android:layout_alignEnd="@+id/imageView"
+                android:layout_marginStart="23dp"
                 android:layout_marginTop="29dp"
-                android:layout_marginEnd="23dp"
                 android:src="@drawable/white_box" />
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="85dp"
                 android:layout_height="25dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="41dp"
-                android:layout_marginTop="194dp"
+                android:layout_alignTop="@+id/imageView"
+                android:layout_alignEnd="@+id/imageView"
+                android:layout_marginTop="125dp"
+                android:layout_marginEnd="26dp"
                 android:src="@drawable/green2_box" />
 
             <TextView
@@ -110,9 +136,9 @@
                 android:layout_width="85dp"
                 android:layout_height="25dp"
                 android:layout_alignStart="@id/imageView3"
-                android:layout_alignTop="@id/imageView3"
+                android:layout_alignTop="@+id/imageView"
                 android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="125dp"
                 android:gravity="center"
                 android:text="Edit Profile"
                 android:textColor="@color/white"
@@ -203,7 +229,7 @@
                 android:layout_marginTop="33dp"
                 android:layout_marginEnd="18dp"
                 android:layout_marginBottom="35dp"
-                android:text="Medium"
+                android:text="Hard"
                 android:textColor="@color/white" />
 
             <TextView
@@ -212,13 +238,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/imageView8"
                 android:layout_alignTop="@+id/imageView8"
-                android:layout_alignEnd="@+id/imageView8"
                 android:layout_alignBottom="@+id/imageView8"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="35dp"
-                android:layout_marginEnd="21dp"
                 android:layout_marginBottom="35dp"
-                android:text="Hard"
+                android:text="Location"
                 android:textColor="@color/white" />
 
             <TextView
@@ -329,6 +353,8 @@
                 android:layout_marginTop="714dp"
                 android:layout_marginEnd="221dp"
                 android:text="Scroll View Test" />
+
+
 
         </RelativeLayout>
     </ScrollView>
