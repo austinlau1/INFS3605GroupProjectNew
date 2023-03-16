@@ -37,6 +37,7 @@ public class TestQuiz extends AppCompatActivity {
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                quizQuestions = new ArrayList<>();
                 for (DataSnapshot questionSnapshot : dataSnapshot.getChildren()) {
                     String question = questionSnapshot.child("question").getValue(String.class);
                     String option1 = questionSnapshot.child("option1").getValue(String.class);
@@ -46,7 +47,6 @@ public class TestQuiz extends AppCompatActivity {
                     String answer = questionSnapshot.child("answer").getValue(String.class);
 
                     // Add the extracted data to an array list
-                    quizQuestions = new ArrayList<>();
                     QuizQuestion quizQuestion = new QuizQuestion(question, option1, option2, option3, option4, answer);
                     quizQuestions.add(quizQuestion);
                 }
