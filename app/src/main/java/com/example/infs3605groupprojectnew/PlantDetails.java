@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Locale;
 import java.util.concurrent.Executors;
 
-public class IndividualPlant extends AppCompatActivity {
+public class PlantDetails extends AppCompatActivity {
     DatabaseReference database;
 
 
@@ -44,50 +44,51 @@ public class IndividualPlant extends AppCompatActivity {
         ImageView plant_map = findViewById(R.id.plant_map);
         Button learn_more_but = findViewById(R.id.learn_more_but);
 
-        /*Intent intent = getIntent();
+        Intent intent = getIntent();
         String plantId = intent.getStringExtra(PlantList.PLANT_SYMBOL_KEY);
 
-        Executors.newSingleThreadExecutor().execute(new Runnable() {
+        /*Executors.newSingleThreadExecutor().execute(new Runnable() {
             @Override
             public void run() {
-                Plant plant = database.getPlant(plantId);
+                Plant plant = database.
                 runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (plant != null) {
-                            id.setText(plant.getId());
-                            plant_name.setText(plant.getName());
-                            scientific_name.setText(plant.getScientificName());
-                            geographic_distribution.setText(plant.getGeographicDistribution());
-                            plant_description.setText(plant.getGeographicDistribution());
+                                  @Override
+                                  public void run() {
+                                      if (plant != null) {
+                                          id.setText(plant.getId());
+                                          plant_name.setText(plant.getName());
+                                          scientific_name.setText(plant.getScientificName());
+                                          geographic_distribution.setText(plant.getGeographicDistribution());
+                                          plant_description.setText(plant.getGeographicDistribution());
 
-                            database.addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    // Handle data changes
-                                    // Use getValue() to get the data
-                                }
+                                          database.addValueEventListener(new ValueEventListener() {
+                                              @Override
+                                              public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                  // Handle data changes
+                                                  // Use getValue() to get the data
+                                              }
 
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-                                    // Handle errors
-                                }
-                            });
+                                              @Override
+                                              public void onCancelled(@NonNull DatabaseError error) {
+                                                  // Handle errors
+                                              }
+                                          });
 
-                            learn_more_but.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    Intent google_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=" + plant.getName()));
-                                    // Intent google_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=eth&rlz=1C5CHFA_enHK1019HK1019&oq=eth+&aqs=chrome..69i57j0i67j0i67i131i433j0i67i433j0i67j69i65j69i61l2.1874j1j7&sourceid=chrome&ie=UTF-8"));
-                                    startActivity(google_search);
-                                }
-                            });
+                                          learn_more_but.setOnClickListener(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View view) {
+                                                  Intent google_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=" + plant.getName()));
+                                                  // Intent google_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=eth&rlz=1C5CHFA_enHK1019HK1019&oq=eth+&aqs=chrome..69i57j0i67j0i67i131i433j0i67i433j0i67j69i65j69i61l2.1874j1j7&sourceid=chrome&ie=UTF-8"));
+                                                  startActivity(google_search);
+                                              }
+                                          });
 
-                        }*/
-                    }
+                                      }
+                                  }
+                              }*/
 
 
-                    // mDb =
+        // mDb =
 
        /* Intent intent = getIntent();
         String plantId = intent.getStringExtra(PlantFragment.PLANT_SYMBOL_KEY);
@@ -161,4 +162,5 @@ public class IndividualPlant extends AppCompatActivity {
     }
 }*/
 
-                }
+    }
+}

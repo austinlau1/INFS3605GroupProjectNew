@@ -1,17 +1,23 @@
-package com.example.infs3605groupprojectnew;
+package com.example.infs3605groupprojectnew.PlantDB;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-public class Plant {
-
+@Entity
+public class Plant2 {
+    @PrimaryKey (autoGenerate = true)
+    @NonNull
+    private Integer id;
     private String name;
     private String scientificName;
     private String traditionalUses;
     private String geographicDistribution;
-    private Integer id;
 
-    public Plant() {}
 
-    public Plant(String name, String scientificName, String traditionalUses, String geographicDistribution, Integer id) {
+    public Plant2() {}
+
+    public Plant2(String name, String scientificName, String traditionalUses, String geographicDistribution, Integer id) {
         this.name = name;
         this.scientificName = scientificName;
         this.traditionalUses = traditionalUses;
@@ -60,3 +66,4 @@ public class Plant {
 
 
 }
+

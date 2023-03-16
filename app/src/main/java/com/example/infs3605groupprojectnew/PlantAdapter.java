@@ -17,10 +17,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
-public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder> implements Filterable {
+public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder> implements Filterable{
+    //Filterable
     private ClickListener mListener;
     private List<Plant> mPlantList, mPlantsFiltered;
 
@@ -79,7 +82,8 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
         return mPlantsFiltered.size();
     }
 
-    @Override
+
+   @Override
     public Filter getFilter() {
         return new Filter() {
             @Override
@@ -89,9 +93,9 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
                     mPlantsFiltered = mPlantList;
                 } else {
                     ArrayList<Plant> filteredList = new ArrayList<>();
-                    for (Plant coin : mPlantList) {
-                        if (coin.getName().contains(query)) {
-                            filteredList.add(coin);
+                    for (Plant plant : mPlantList) {
+                        if (plant.getName().contains(query)) {
+                            filteredList.add(plant);
                         }
                     }
                     mPlantsFiltered = filteredList;
@@ -125,6 +129,11 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
             }
         });
 
+        notifyDataSetChanged();
+    }*/
+
+/*    public void setFilteredList (List<Plant> filteredList){
+        this.mPlantsFiltered = filteredList;
         notifyDataSetChanged();
     }*/
 
