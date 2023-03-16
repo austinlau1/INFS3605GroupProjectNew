@@ -72,7 +72,7 @@ public class TestQuiz extends AppCompatActivity {
     private void displayQuestion() {
         QuizQuestion currentQuestion = quizQuestions.get(currentQuestionIndex);
 
-        TextView questionTextView = findViewById(R.id.questionTextView);
+        TextView questionTextView = findViewById(R.id.question_text_view);
         questionTextView.setText(currentQuestion.getQuestion());
 
         RadioButton option1RadioButton = findViewById(R.id.option1RadioButton);
