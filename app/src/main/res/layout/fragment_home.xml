@@ -354,6 +354,15 @@
                 android:layout_marginEnd="221dp"
                 android:text="Scroll View Test" />
 
+            <Button
+                android:id="@+id/logout_but"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_alignTop="@+id/imageView"
+                android:layout_alignEnd="@+id/imageView"
+                android:layout_marginTop="127dp"
+                android:layout_marginEnd="128dp"
+                android:text="Logout" />
 
 
         </RelativeLayout>

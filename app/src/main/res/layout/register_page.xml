@@ -167,7 +167,7 @@
         tools:ignore="TouchTargetSizeCheck" />
 
     <ImageView
-        android:id="@+id/imageView15"
+        android:id="@+id/plant_wallpaper"
         android:layout_width="270dp"
         android:layout_height="178dp"
         app:layout_constraintBottom_toTopOf="@+id/first_name"

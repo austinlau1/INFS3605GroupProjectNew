@@ -14,11 +14,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.Locale;
 import java.util.concurrent.Executors;
@@ -43,6 +47,38 @@ public class PlantDetails extends AppCompatActivity {
         ImageView plant_image = findViewById(R.id.plant_image);
         ImageView plant_map = findViewById(R.id.plant_map);
         Button learn_more_but = findViewById(R.id.learn_more_but);
+
+        //Firebase storage for image
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference().child("images/plant 3.jpeg");
+
+        // Select picture by plant name
+        // StorageReference storageRef = storage.getReference().child(""images/"" + plant.getName() + ".jpg")
+
+        storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                // Load the image into an ImageView
+                ImageView imageView = findViewById(R.id.plant_image);
+                Glide.with(getApplicationContext())
+                        .load(uri.toString())
+                        .into(imageView);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
+
+        /*learn_more_but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent google_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=" + plant.getName()));
+                // Intent google_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=eth&rlz=1C5CHFA_enHK1019HK1019&oq=eth+&aqs=chrome..69i57j0i67j0i67i131i433j0i67i433j0i67j69i65j69i61l2.1874j1j7&sourceid=chrome&ie=UTF-8"));
+                startActivity(google_search);
+            }
+        });*/
 
         Intent intent = getIntent();
         String plantId = intent.getStringExtra(PlantList.PLANT_SYMBOL_KEY);

@@ -13,7 +13,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+
 import com.example.infs3605groupprojectnew.Quizzes.QuizOptions;
+//import com.example.infs3605groupprojectnew.Quizzes.Quizzes;
 
 
 public class HomeFragment extends Fragment {
@@ -86,6 +88,17 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), QuizOptions.class);
+                startActivity(intent);
+            }
+        });
+
+        Button logoutButton = (Button) rootView.findViewById(R.id.logout_but);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Log the user out
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getActivity(), WelcomeActivity.class);
                 startActivity(intent);
             }
         });
