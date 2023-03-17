@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import com.example.infs3605groupprojectnew.Quizzes.QuizOptions;
 //import com.example.infs3605groupprojectnew.Quizzes.Quizzes;
+import com.google.firebase.auth.FirebaseAuth;
+
 
 
 public class HomeFragment extends Fragment {
