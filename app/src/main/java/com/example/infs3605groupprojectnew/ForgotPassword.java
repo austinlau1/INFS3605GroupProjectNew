@@ -1,10 +1,12 @@
 package com.example.infs3605groupprojectnew;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,9 +22,11 @@ public class ForgotPassword extends AppCompatActivity{
 
     private EditText emailEditText;
     private Button resetPW;
+
     // private ProgressBar mProgressBar;
     private static final String TAG = "Forgot Password Page";
     private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,9 @@ public class ForgotPassword extends AppCompatActivity{
         emailEditText = findViewById(R.id.email_reset_ps);
         resetPW = findViewById(R.id.reset_button);
         mAuth = FirebaseAuth.getInstance();
+
+
+
         //mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         // mAuth = FirebaseAuth.getInstance();
@@ -67,8 +74,20 @@ public class ForgotPassword extends AppCompatActivity{
 
             }
         });
+        Button mBack = (Button) findViewById(R.id.BackWelcomeBtn);
 
+        mBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ForgotPassword.this, WelcomeActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+    }
+
+
+
 
     /*// From ChatGPT
     private void sendPasswordResetEmail() {
@@ -83,7 +102,7 @@ public class ForgotPassword extends AppCompatActivity{
                     }
                 });*/
 
-    }
+
 
     /*private void resetPassword() {
 

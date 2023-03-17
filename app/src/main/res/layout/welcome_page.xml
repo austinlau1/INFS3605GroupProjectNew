@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/UNSW_icon"
+        android:id="@+id/Arrow_back"
         android:layout_width="161dp"
         android:layout_height="53dp"
         android:src="@drawable/img"
@@ -100,7 +100,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UNSW_icon"
+        app:layout_constraintTop_toBottomOf="@+id/Arrow_back"
         app:layout_constraintVertical_bias="0.758" />
 
     <Button
