@@ -10,20 +10,31 @@
         android:id="@+id/question_text_view"
         android:layout_width="238dp"
         android:layout_height="98dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="180dp"
         android:text="Test Question"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="124dp"
+        android:text="1:00"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="116dp"
         android:text="Question:"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,11 +42,11 @@
         android:id="@+id/optionsRadioGroup"
         android:layout_width="159dp"
         android:layout_height="210dp"
-        android:layout_marginTop="216dp"
+        android:layout_marginTop="32dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/question_text_view">
 
         <RadioButton
             android:id="@+id/option1RadioButton"
