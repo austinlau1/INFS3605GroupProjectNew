@@ -21,8 +21,8 @@
 
     <Button
         android:id="@+id/login_button"
-        android:layout_width="264dp"
-        android:layout_height="45dp"
+        android:layout_width="269dp"
+        android:layout_height="55dp"
         android:background="@drawable/newbuttondesign"
         android:fontFamily="@font/inter_semibold"
         android:shadowColor="#6A6A6A"
@@ -32,10 +32,10 @@
         app:backgroundTint="@color/green5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pass_input"
-        app:layout_constraintVertical_bias="0.28"
+        app:layout_constraintVertical_bias="0.387"
         app:rippleColor="@color/green5"
         app:strokeColor="#FF5E5E"
         tools:ignore="TouchTargetSizeCheck" />
@@ -49,6 +49,7 @@
         android:background="@drawable/green1_box"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
+        android:fontFamily="@font/inter"
         android:hint="Email"
         android:paddingLeft="18dp"
         android:textSize="16sp"
@@ -57,7 +58,7 @@
         app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description_text"
-        app:layout_constraintVertical_bias="0.147" />
+        app:layout_constraintVertical_bias="0.09" />
 
     <EditText
         android:id="@+id/pass_input"
@@ -66,9 +67,11 @@
         android:background="@drawable/green1_box"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
+        android:fontFamily="@font/inter"
         android:hint="Password"
         android:inputType="textPersonName"
         android:paddingLeft="18dp"
+        app:passwordToggleEnabled="true"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

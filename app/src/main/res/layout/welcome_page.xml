@@ -47,7 +47,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/welcome_text"
         app:layout_constraintVertical_bias="0.369"
-        app:rippleColor="@color/green3"
+        app:rippleColor="@color/green5"
         app:strokeColor="#FF5E5E" />
 
     <Button
@@ -66,7 +66,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup_button"
         app:layout_constraintVertical_bias="0.0"
-        app:rippleColor="@color/green6" />
+        app:rippleColor="@color/green5" />
 
     <TextView
         android:id="@+id/welcome_text"
