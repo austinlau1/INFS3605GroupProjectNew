@@ -37,6 +37,7 @@ public class TestQuiz extends AppCompatActivity {
     private int score = 0;
     private CountDownTimer timer;
     private AlertDialog dialog;
+    RadioGroup optionsRadioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +124,7 @@ public class TestQuiz extends AppCompatActivity {
 
     private boolean checkAnswer() {
         QuizQuestion currentQuestion = quizQuestions.get(currentQuestionIndex);
-        RadioGroup optionsRadioGroup = findViewById(R.id.optionsRadioGroup);
+        optionsRadioGroup = findViewById(R.id.optionsRadioGroup);
         int selectedOptionId = optionsRadioGroup.getCheckedRadioButtonId();
         if (selectedOptionId == -1) {
             // No option selected
@@ -145,7 +146,7 @@ public class TestQuiz extends AppCompatActivity {
         currentQuestionIndex++;
 
         // Clear the checked radio button
-        radioGroup.clearCheck();
+        optionsRadioGroup.clearCheck();
 
         if (currentQuestionIndex >= quizQuestions.size()) {
             // Quiz is over
