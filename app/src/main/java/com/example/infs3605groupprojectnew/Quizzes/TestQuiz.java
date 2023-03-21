@@ -145,7 +145,7 @@ public class TestQuiz extends AppCompatActivity {
         currentQuestionIndex++;
 
         // Clear the checked radio button
-//        radioGroup.clearCheck();
+        radioGroup.clearCheck();
 
         if (currentQuestionIndex >= quizQuestions.size()) {
             // Quiz is over

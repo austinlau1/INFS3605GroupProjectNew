@@ -34,33 +34,6 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-        //Intent intent = getActivity().getIntent();
-        //Boolean popup = intent.getBooleanExtra("popup", false);
-        //System.out.println(popup);
-
-        /*LayoutInflater inflater2 = (LayoutInflater)
-                getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater2.inflate(R.layout.popup_acknowledgement, container, false);
-
-        // create the popup window
-        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-
-        // show the popup window
-        // which view you pass in doesn't matter, it is only used for the window tolken
-        popupWindow.showAtLocation(rootView, Gravity.CENTER, 0, 0);
-
-        // dismiss the popup window when touched
-        popupView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                popupWindow.dismiss();
-                return true;
-            }
-        });*/
-
         FrameLayout bannerLayout = rootView.findViewById(R.id.banner_layout);
         TextView bannerText = rootView.findViewById(R.id.banner_text);
         ImageButton bannerClose = rootView.findViewById(R.id.banner_close);
