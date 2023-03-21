@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id = "@+id/fragmenthome"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -137,8 +138,10 @@
                 android:layout_height="25dp"
                 android:layout_alignStart="@id/imageView3"
                 android:layout_alignTop="@+id/imageView"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="125dp"
+                android:layout_alignBottom="@+id/imageView"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="124dp"
+                android:layout_marginBottom="30dp"
                 android:gravity="center"
                 android:text="Edit Profile"
                 android:textColor="@color/white"
@@ -357,11 +360,15 @@
             <Button
                 android:id="@+id/logout_but"
                 android:layout_width="wrap_content"
-                android:layout_height="37dp"
+                android:layout_height="38dp"
                 android:layout_alignTop="@+id/imageView"
                 android:layout_alignEnd="@+id/imageView"
-                android:layout_marginTop="127dp"
-                android:layout_marginEnd="128dp"
+                android:layout_alignBottom="@+id/imageView"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="121dp"
+                android:layout_marginEnd="127dp"
+                android:layout_marginBottom="20dp"
+                android:layout_toEndOf="@+id/imageView2"
                 android:text="Logout" />
 
 
