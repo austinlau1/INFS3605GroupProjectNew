@@ -73,7 +73,7 @@ public class PlantList extends AppCompatActivity {
     PlantAdapter.ClickListener listener = new PlantAdapter.ClickListener() {
         @Override
         public void onPlantClick(View view, String plantSymbol) {
-            Intent intent = new Intent(PlantList.this, PlantFragment.class);
+            Intent intent = new Intent(PlantList.this, PlantDetails.class);
             intent.putExtra(PLANT_SYMBOL_KEY, plantSymbol);
             startActivity(intent);
         }
@@ -125,4 +125,3 @@ public class PlantList extends AppCompatActivity {
 
 
 }
-

@@ -10,14 +10,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 //import com.bumptech.glide.Glide;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder> implements Filterable{
     //Filterable
@@ -29,7 +32,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
     // Firebase
     // private DatabaseReference mDatabase;
 
-    public PlantAdapter(PlantList plantList, List<Plant> plants, ClickListener listener) {
+    public PlantAdapter(Context context, List<Plant> plants, ClickListener listener) {
 
         //Firebase
         // mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -59,19 +62,10 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         // Plant plant = mPlantsFiltered.get(position);
         Plant plant = mPlantsFiltered.get(position);
-        holder.mPlantName.setText(plant.getName());
+        holder.mPlant.setText(plant.getName());
         holder.mPlantScientific.setText(plant.getScientificName());
         holder.mPlantId.setText((plant.getId().toString()));
 
-//        holder.mPlant.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                AppCompatActivity activity = (AppCompatActivity)view.getContext();
-//                activity.getSupportFragmentManager().beginTransaction().replace(R.id.plant_id, new PlantFragment(Plant.class.getName()).addToBackStack(null).commit();
-//            }
-//        });
-
-    }
 
         /*holder.itemView.setTag(plant.getId());
 
@@ -81,7 +75,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
                 .centerCrop()
                 .override(140, 140)
                 .into(holder.mImage);*/
-
+    }
 
     @Override
     public int getItemCount() {
@@ -89,7 +83,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
     }
 
 
-   @Override
+    @Override
     public Filter getFilter() {
         return new Filter() {
             @Override
@@ -147,43 +141,28 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
     // Interface to implement on click function
     public interface ClickListener {
         void onPlantClick(View v, String plantSymbol);
-
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView mPlantName;
+        private TextView mPlant;
         private TextView mPlantScientific;
         private TextView mPlantId;
         private ImageView mImage;
         private ClickListener listener;
 
-
-
         public MyViewHolder(@NonNull View itemView, ClickListener listener) {
             super(itemView);
             this.listener = listener;
             mImage = itemView.findViewById(R.id.plantPicture);
-            mPlantName = itemView.findViewById(R.id.plantName);
-            mPlantScientific = itemView.findViewById(R.id.plantSciName);
-            mPlantId = itemView.findViewById(R.id.plantID);
+            mPlant = itemView.findViewById(R.id.cPlant);
+            mPlantScientific = itemView.findViewById(R.id.cPlant2);
+            mPlantId = itemView.findViewById(R.id.cPlant3);
             itemView.setOnClickListener(this);
-
-            mPlantId.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.rvList, new PlantFragment(Plant.class.getName())).addToBackStack(null).commit();
-                }
-            });
         }
 
         @Override
         public void onClick(View v) {
-//            / Do something when the button is clicked
             listener.onPlantClick(v, (String) v.getTag());
-            if (mListener != null) {
-                listener.onPlantClick(v, mPlantId.getTransitionName());
-            }
 
         }
     }

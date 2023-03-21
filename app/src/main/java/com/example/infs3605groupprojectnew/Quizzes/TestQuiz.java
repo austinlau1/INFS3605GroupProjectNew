@@ -75,7 +75,7 @@ public class TestQuiz extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Handle the error
-                Log.e("QuizActivity", "Error getting questions from database", databaseError.toException());
+                Log.e("TestQuiz", "Error getting questions from database", databaseError.toException());
             }
         });
     }
