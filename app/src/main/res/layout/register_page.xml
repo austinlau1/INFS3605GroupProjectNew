@@ -15,7 +15,7 @@
         app:layout_constraintHorizontal_bias="0.41"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.415"
+        app:layout_constraintVertical_bias="0.408"
         app:srcCompat="@drawable/light_green_background" />
 
     <EditText
@@ -191,10 +191,10 @@
 
     <Button
         android:id="@+id/have_acc_button"
-        android:layout_width="84dp"
-        android:layout_height="35dp"
+        android:layout_width="94dp"
+        android:layout_height="46dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="18dp"
         android:background="@drawable/green2_box"
         android:text="Login"
         android:textAlignment="viewEnd"
