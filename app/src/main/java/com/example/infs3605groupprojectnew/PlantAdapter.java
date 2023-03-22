@@ -32,12 +32,12 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
     // Firebase
     // private DatabaseReference mDatabase;
 
-    public PlantAdapter(List<Plant> plants, ClickListener listener) {
+    public PlantAdapter(Context context, List<Plant> plants, ClickListener listener) {
 
         //Firebase
         // mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        //this.context = context;
+        this.context = context;
         this.mPlantList = plants;
         this.mPlantsFiltered = plants;
         this.mListener = listener;
