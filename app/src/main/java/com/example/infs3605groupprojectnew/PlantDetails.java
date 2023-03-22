@@ -42,25 +42,41 @@ public class PlantDetails extends AppCompatActivity {
 
         Intent intent = getIntent();
         String plantSymbol = intent.getStringExtra(PlantList.PLANT_SYMBOL_KEY);
+        Log.d("PlantDetails", "plantSymbol: " + plantSymbol);
 
-        database.child(plantSymbol).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Plant plant = snapshot.getValue(Plant.class);
-                // Use the plant data to populate the UI elements in the layout XML file
-                if (plant != null) {
-                    // Display the data for the selected plant in the activity layout
-                    plant_name.setText(plant.getName());
-                    scientific_name.setText(plant.getScientificName());
+        if (plantSymbol != null) {
+            DatabaseReference database = FirebaseDatabase.getInstance().getReference("Plants Database").child(plantSymbol);
+            database.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Plant plant = snapshot.getValue(Plant.class);
+                    if (plant != null) {
+                        // Display the data for the selected plant in the activity layout
+                        if (plant.getName() != null) {
+                            plant_name.setText(plant.getName());
+                        } else {
+                            plant_name.setText("Name not available");
+                        }
+                        if (plant.getScientificName() != null) {
+                            scientific_name.setText(plant.getScientificName());
+                        } else {
+                            scientific_name.setText("Scientific name not available");
+                        }
+                    } else {
+                        // Display an error message if the plant data is missing or invalid
+                        plant_name.setText("Plant not found");
+                        scientific_name.setText("");
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Handle any errors that occur while querying the database
-                Log.e("PlantDetails", "Error getting questions from database", error.toException());
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // Handle any errors that occur while querying the database
+                    Log.e("PlantDetails", "Error getting questions from database", error.toException());
+                }
+            });
+        }
+
 
 
 
