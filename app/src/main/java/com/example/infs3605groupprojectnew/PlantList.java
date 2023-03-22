@@ -75,7 +75,7 @@ public class PlantList extends AppCompatActivity {
             }
         };
 
-        plantAdapter = new PlantAdapter(mPlantList, listener);
+        plantAdapter = new PlantAdapter(this, mPlantList, listener);
         recyclerView.setAdapter(plantAdapter);
 
 
