@@ -1,6 +1,21 @@
 package com.example.infs3605groupprojectnew;
 
 
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.annotation.NonNull;
+
+import com.example.infs3605groupprojectnew.Quizzes.QuizQuestion;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
 public class Plant {
 
     private String name;
@@ -11,7 +26,7 @@ public class Plant {
 
     public Plant() {}
 
-    public Plant(String name, String scientificName, String traditionalUses, String geographicDistribution, Integer id) {
+    public Plant(String geographicDistribution, Integer id, String name, String scientificName, String traditionalUses) {
         this.name = name;
         this.scientificName = scientificName;
         this.traditionalUses = traditionalUses;
@@ -56,6 +71,35 @@ public class Plant {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public static ArrayList<Plant> getPlants() {
+        ArrayList<Plant> plantList = new ArrayList<>();
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Plants Database");
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot questionSnapshot : dataSnapshot.getChildren()) {
+                    String geographicDistribution = questionSnapshot.child("geographicDistribution").getValue(String.class);
+                    int id = questionSnapshot.child("id").getValue(int.class);
+                    String name = questionSnapshot.child("name").getValue(String.class);
+                    String scientificName = questionSnapshot.child("scientificName").getValue(String.class);
+                    String traditionalUses = questionSnapshot.child("traditionalUses").getValue(String.class);
+
+                    // Add the extracted data to an array list
+                    Plant onlyList = new Plant(geographicDistribution, id, name, scientificName, traditionalUses);
+                    plantList.add(onlyList);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle the error
+                Log.e("TestQuiz", "Error getting questions from database", databaseError.toException());
+            }
+        });
+
+        return plantList;
     }
 
 

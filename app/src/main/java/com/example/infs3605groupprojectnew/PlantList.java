@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -30,7 +31,7 @@ public class PlantList extends AppCompatActivity {
     private RecyclerView recyclerView;
     private DatabaseReference database;
     private PlantAdapter plantAdapter;
-    private ArrayList<Plant> mPlantList;
+    List<Plant> mPlantList = new ArrayList<>(Plant.getPlants());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +41,9 @@ public class PlantList extends AppCompatActivity {
         recyclerView = findViewById(R.id.rvList);
         database = FirebaseDatabase.getInstance().getReference("Plants Database");
         // recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-        mPlantList = new ArrayList();
-        plantAdapter = new PlantAdapter(this, mPlantList, null);
-        recyclerView.setAdapter(plantAdapter);
-
-        //plantAdapter = new PlantAdapter(new ArrayList<Plant>(), listener);
-
-
+        //mPlantList = new ArrayList();
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -66,18 +61,39 @@ public class PlantList extends AppCompatActivity {
             }
         });
 
+
+
+        //plantAdapter = new PlantAdapter(new ArrayList<Plant>(), listener);
+
+        PlantAdapter.ClickListener listener = new PlantAdapter.ClickListener() {
+            @Override
+            public void onPlantClick(View view, String plantSymbol) {
+                Intent intent = new Intent(PlantList.this, PlantDetails.class);
+                Log.d("PlantDetails", "plantSymbol: " + plantSymbol);
+                intent.putExtra(PLANT_SYMBOL_KEY, plantSymbol);
+                startActivity(intent);
+            }
+        };
+
+        plantAdapter = new PlantAdapter(mPlantList, listener);
         recyclerView.setAdapter(plantAdapter);
+
 
     }
 
-    PlantAdapter.ClickListener listener = new PlantAdapter.ClickListener() {
-        @Override
-        public void onPlantClick(View view, String plantSymbol) {
-            Intent intent = new Intent(PlantList.this, PlantDetails.class);
-            intent.putExtra(PLANT_SYMBOL_KEY, plantSymbol);
-            startActivity(intent);
-        }
-    };
+    /*@Override
+    public void onStart() {
+        super.onStart();
+        plantAdapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        plantAdapter.stopListening();
+    }*/
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

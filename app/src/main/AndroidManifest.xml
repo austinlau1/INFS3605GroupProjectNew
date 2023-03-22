@@ -40,6 +40,9 @@
             android:name=".PlantList"
             android:exported="false" />
         <activity
+            android:name=".PlantDetails"
+            android:exported="false" />
+        <activity
             android:name=".MenuPage"
             android:exported="false" />
         <activity
