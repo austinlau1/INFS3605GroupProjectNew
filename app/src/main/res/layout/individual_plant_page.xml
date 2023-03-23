@@ -43,7 +43,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="202dp"
-                android:text="Plant Name" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/plant_id"
@@ -103,7 +103,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="41dp"
                 android:layout_marginTop="253dp"
-                android:text="Traditional uses" />
+                android:text="Plant Name" />
 
             <TextView
                 android:id="@+id/geographic_distribution"

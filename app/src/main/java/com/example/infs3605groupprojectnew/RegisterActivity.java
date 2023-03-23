@@ -61,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity{
         Button rego_save = findViewById(R.id.register_button);
         rego_save.setOnClickListener(v-> {
 
-            if(!validateUsername() |  !validateEmail() | !validateFirstName() | !validateLastName()) {
+            if(!validateUsername() |  !validateEmail() | !validateFirstName() | !validateLastName() | !validatePassword()) {
                 return;
             }
 
