@@ -19,7 +19,7 @@
         android:theme="@style/Theme.INFS3605GroupProjectNew"
         tools:targetApi="31">
         <activity
-            android:name=".MapView"
+            android:name=".ViewMap"
             android:exported="false" />
         <activity
             android:name=".Quizzes.TestQuiz"
@@ -70,6 +70,11 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/gmaps_api_key" />
+
     </application>
 
 </manifest>

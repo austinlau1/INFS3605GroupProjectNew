@@ -55,6 +55,16 @@ public class WelcomeActivity extends AppCompatActivity{
             }
         });
 
+        Button toMapButton = (Button) findViewById(R.id.toMapButton);
+
+        toMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WelcomeActivity.this, ViewMap.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 

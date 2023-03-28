@@ -5,6 +5,7 @@
     <string name="app_ackdes">UNSW acknowledges the Bidjigal (Kensington campus) and Gadigal (City campus) the traditional custodians of the lands where each campus is located </string>
     <string name="welcome_text">Welcome to Bush Tucker Trail! </string>
     <string name="copyright_text">Copyright © 2023 Team GRAD® </string>
+    <string name="gmaps_api_key">AIzaSyBobkTSzmJ1O5WAcVetFf6iFbooLT7EW-g</string>
     <string name="mapbox_access_token">pk.eyJ1Ijoicm9oaXQtd2FycmllciIsImEiOiJjbGZycnIzYWgwNHV0M3dqeHQzNHdvYm8xIn0.CVmbiCDugPw1u0ON7VJ1iQ</string>
     <string name="forgot_pw_text">Please enter the email address connected to your account. A link to reset your password will be sent shortly</string>
 </resources>
