@@ -25,7 +25,7 @@ public class MapFragment extends Fragment {
         toMapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MapView.class);
+                Intent intent = new Intent(getActivity(), ViewMap.class);
                 startActivity(intent);
             }
         });
