@@ -40,7 +40,7 @@ dependencies {
     implementation 'com.github.jinatonic.confetti:confetti:1.1.2'
 
     implementation 'com.google.android.gms:play-services-maps:18.0.1'
-    implementation files('libs/osmdroid-android-X.X.X.jar')
+    // implementation files('libs/osmdroid-android-X.X.X.jar')
     implementation 'org.slf4j:slf4j-android:1.7.25'
 
     testImplementation 'junit:junit:4.13.2'

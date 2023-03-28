@@ -1,6 +1,7 @@
 package com.example.infs3605groupprojectnew;
 
-import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,18 +14,90 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 //import com.bumptech.glide.Glide;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 
-public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder> implements Filterable{
+public class PlantAdapter extends RecyclerView.Adapter /*implements Filterable*/ {
+
+    List<Plant> plant;
+
+    public PlantAdapter(List<Plant> plant) {
+        this.plant = plant;
+    }
+
+    @NonNull
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.plant_list, parent, false);
+        ViewHolderClass viewHolderClass = new ViewHolderClass(view);
+        return viewHolderClass;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+
+        ViewHolderClass viewHolderClass = (ViewHolderClass)holder;
+        final Plant plantsList = plant.get(position);
+        viewHolderClass.plantName.setText(plantsList.getName());
+        viewHolderClass.plantScientificName.setText(plantsList.getScientificName());
+        viewHolderClass.plantId.setText((plantsList.getId().toString()));
+        viewHolderClass.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(),PlantDetails.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("key", plantsList);
+                intent.putExtras(bundle);
+                v.getContext().startActivity(intent);
+
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return plant.size();
+    }
+
+    public class ViewHolderClass extends RecyclerView.ViewHolder{
+
+        TextView plantName;
+        private TextView plantScientificName;
+        private TextView plantId;
+
+        public ViewHolderClass(@NonNull View itemView) {
+            super(itemView);
+            plantName=itemView.findViewById(R.id.plantNm);
+            plantScientificName=itemView.findViewById(R.id.plantScientific);
+            plantId = itemView.findViewById(R.id.plantIDNum);
+
+        }
+    }
+
+    //Search Menu Filter NOT WORKING YET
+    /*@Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+
+            }
+        };
+    }*/
+
+
+}
     //Filterable
-    private ClickListener mListener;
+   /* private ClickListener mListener;
     private List<Plant> mPlantList, mPlantsFiltered;
 
     private Context context;
@@ -43,11 +116,11 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
         this.mListener = listener;
     }
 
-    /*public void setData(ArrayList<Plant> plants) {
+    *//*public void setData(ArrayList<Plant> plants) {
         mPlantList.clear();
         mPlantList.addAll(plants);
         notifyDataSetChanged();
-    }*/
+    }*//*
 
     @NonNull
     @Override
@@ -67,14 +140,14 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
         holder.mPlantId.setText((plant.getId().toString()));
 
 
-        /*holder.itemView.setTag(plant.getId());
+        *//*holder.itemView.setTag(plant.getId());
 
         String url = "https://www.coinlore.com/img/" + plant.getName().toLowerCase(Locale.ROOT) + ".png";
         Glide.with(holder.mImage)
                 .load(url)
                 .centerCrop()
                 .override(140, 140)
-                .into(holder.mImage);*/
+                .into(holder.mImage);*//*
     }
 
     @Override
@@ -115,7 +188,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
     }
 
     // Sorting plants
-    /*public void Sort(int sortBy){
+    *//*public void Sort(int sortBy){
         Collections.sort(mPlantsFiltered, new Comparator<Plant>() {
             @Override
             public int compare(Plant p1, Plant p2) {
@@ -130,12 +203,12 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
         });
 
         notifyDataSetChanged();
-    }*/
+    }*//*
 
-/*    public void setFilteredList (List<Plant> filteredList){
+*//*    public void setFilteredList (List<Plant> filteredList){
         this.mPlantsFiltered = filteredList;
         notifyDataSetChanged();
-    }*/
+    }*//*
 
 
     // Interface to implement on click function
@@ -166,4 +239,4 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.MyViewHolder
 
         }
     }
-}
+}*/

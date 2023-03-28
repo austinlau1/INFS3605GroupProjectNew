@@ -1,11 +1,16 @@
 package com.example.infs3605groupprojectnew;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,16 +18,119 @@ import androidx.appcompat.app.AppCompatActivity;
 //import com.google.firebase.storage.FirebaseStorage;
 //import com.google.firebase.storage.StorageReference;
 //import com.bumptech.glide.Glide;
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
 
 
 public class PlantDetails extends AppCompatActivity {
-    DatabaseReference database;
+
+    StorageReference mStorageReference;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.individual_plant_page);
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        Plant plant = (Plant) bundle.getSerializable("key");
+
+        TextView id = findViewById(R.id.plant_id);
+        TextView plant_name = findViewById(R.id.plantNm2);
+        TextView scientific_name = findViewById(R.id.scientific_name);
+        TextView geographic_distribution = findViewById(R.id.geographic_distribution);
+        TextView plant_description = findViewById(R.id.plant_description);
+        Button learn_more_btn = findViewById(R.id.learn_more_btn);
+        Button audio_btn = findViewById(R.id.audio_btn);
+
+        id.setText(plant.getId().toString());
+        scientific_name.setText(plant.getScientificName());
+        plant_name.setText(plant.getName());
+        geographic_distribution.setText(plant.getGeographicDistribution());
+        plant_description.setText(plant.getTraditionalUses());
+
+        // Plant Image
+        mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + plant.getName() + ".jpeg");
+
+        try {
+            final File localFile = File.createTempFile(""+ plant.getName() + "","jpeg");
+            mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                    // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
+                    Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                    ((ImageView) findViewById(R.id.plant_image)).setImageBitmap(bitmap);
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(PlantDetails.this, "Error occured", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Plant Map
+        mStorageReference = FirebaseStorage.getInstance().getReference().child("Map/" + plant.getName() + ".jpeg");
+
+        try {
+            final File localFile = File.createTempFile(""+ plant.getName() + "","jpeg");
+            mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                    // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
+                    Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                    ((ImageView) findViewById(R.id.plant_map)).setImageBitmap(bitmap);
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(PlantDetails.this, "Error occured", Toast.LENGTH_SHORT).show();
+
+
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Learn more button with google search
+        learn_more_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent google_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=" + plant.getName()));
+                startActivity(google_search);
+            }
+        });
+
+        // Audio button with youtube search
+        audio_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent youtube_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/results?search_query=" + plant.getName()));
+                startActivity(youtube_search);
+            }
+        });
+    }
+}
+
+
+
+    /*DatabaseReference database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +183,7 @@ public class PlantDetails extends AppCompatActivity {
                     Log.e("PlantDetails", "Error getting questions from database", error.toException());
                 }
             });
-        }
+        }*/
 
 
 
@@ -250,5 +358,5 @@ public class PlantDetails extends AppCompatActivity {
 }*//*
 
     }*/
-    }
-}
+ /*   }
+}*/
