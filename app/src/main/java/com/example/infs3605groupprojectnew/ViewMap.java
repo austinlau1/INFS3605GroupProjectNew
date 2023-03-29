@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -18,7 +20,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class ViewMap extends AppCompatActivity implements OnMapReadyCallback, OnMarkerClickListener {
+public class ViewMap extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mapView;
     private Marker[] markers = new Marker[5];
@@ -76,8 +78,16 @@ public class ViewMap extends AppCompatActivity implements OnMapReadyCallback, On
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                 UNSW_LOCATION, 17f));
 
-        // Set an OnMarkerClickListener to detect marker clicks
-        mapView.setOnMarkerClickListener(this);
+
+        mapView.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                Intent intent = new Intent(ViewMap.this, PlantDetails.class);
+                intent.putExtra("plant_name", marker.getTitle());
+                Log.e("ViewMap", marker.getTitle());
+                startActivity(intent);
+            }
+        });
 
 
         // Set the boundary on the map
@@ -86,21 +96,5 @@ public class ViewMap extends AppCompatActivity implements OnMapReadyCallback, On
         //mapView.addMarker(new MarkerOptions().position(UNSW_LOCATION).title("UNSW"));
 
     }
-
-    // Implement the OnMarkerClickListener method to handle marker clicks
-    @Override
-    public boolean onMarkerClick(Marker marker) {
-        // Check if the marker has been clicked twice
-        if (marker.isInfoWindowShown()) {
-            // Take the user to another activity
-            Intent intent = new Intent(ViewMap.this, PlantDetails.class);
-            intent.putExtra("plant_name", marker.getTitle());
-            startActivity(intent);
-        } else {
-            marker.showInfoWindow();
-        }
-        return true;
-    }
-
 
 }

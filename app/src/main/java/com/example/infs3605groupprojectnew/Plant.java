@@ -16,6 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Plant implements Serializable {
 
@@ -34,6 +35,8 @@ public class Plant implements Serializable {
         this.geographicDistribution = geographicDistribution;
         this.id = id;
     }
+
+
     public String getName() {
         return name;
     }

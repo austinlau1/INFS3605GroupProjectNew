@@ -32,6 +32,8 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class PlantDetails extends AppCompatActivity {
@@ -43,8 +45,8 @@ public class PlantDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.individual_plant_page);
         Intent intent = this.getIntent();
+        Intent mapIntent = getIntent();
         Bundle bundle = intent.getExtras();
-        Plant plant = (Plant) bundle.getSerializable("key");
 
         TextView id = findViewById(R.id.plant_id);
         TextView plant_name = findViewById(R.id.plantNm2);
@@ -54,77 +56,172 @@ public class PlantDetails extends AppCompatActivity {
         Button learn_more_btn = findViewById(R.id.learn_more_btn);
         Button audio_btn = findViewById(R.id.audio_btn);
 
-        id.setText(plant.getId().toString());
-        scientific_name.setText(plant.getScientificName());
-        plant_name.setText(plant.getName());
-        geographic_distribution.setText(plant.getGeographicDistribution());
-        plant_description.setText(plant.getTraditionalUses());
+        if (bundle != null) {
+            Plant plant = (Plant) bundle.getSerializable("key");
 
-        // Plant Image
-        mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + plant.getName() + ".jpeg");
+            id.setText(plant.getId().toString());
+            scientific_name.setText(plant.getScientificName());
+            plant_name.setText(plant.getName());
+            geographic_distribution.setText(plant.getGeographicDistribution());
+            plant_description.setText(plant.getTraditionalUses());
 
-        try {
-            final File localFile = File.createTempFile(""+ plant.getName() + "","jpeg");
-            mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+            // Plant Image
+            mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + plant.getName() + ".jpeg");
+
+            try {
+                final File localFile = File.createTempFile(""+ plant.getName() + "","jpeg");
+                mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                        // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
+                        Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                        ((ImageView) findViewById(R.id.plant_image)).setImageBitmap(bitmap);
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(PlantDetails.this, "Error occured", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Plant Map
+            mStorageReference = FirebaseStorage.getInstance().getReference().child("Map/" + plant.getName() + ".jpeg");
+
+            try {
+                final File localFile = File.createTempFile(""+ plant.getName() + "","jpeg");
+                mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                        // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
+                        Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                        ((ImageView) findViewById(R.id.plant_map)).setImageBitmap(bitmap);
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(PlantDetails.this, "Error occured", Toast.LENGTH_SHORT).show();
+
+
+                    }
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Learn more button with google search
+            learn_more_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
-                    Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                    ((ImageView) findViewById(R.id.plant_image)).setImageBitmap(bitmap);
-
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(PlantDetails.this, "Error occured", Toast.LENGTH_SHORT).show();
+                public void onClick(View view) {
+                    Intent google_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=" + plant.getName()));
+                    startActivity(google_search);
                 }
             });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        // Plant Map
-        mStorageReference = FirebaseStorage.getInstance().getReference().child("Map/" + plant.getName() + ".jpeg");
-
-        try {
-            final File localFile = File.createTempFile(""+ plant.getName() + "","jpeg");
-            mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+            // Audio button with youtube search
+            audio_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
-                    Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                    ((ImageView) findViewById(R.id.plant_map)).setImageBitmap(bitmap);
-
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(PlantDetails.this, "Error occured", Toast.LENGTH_SHORT).show();
-
-
+                public void onClick(View view) {
+                    Intent youtube_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/results?search_query=" + plant.getName()));
+                    startActivity(youtube_search);
                 }
             });
-        } catch (IOException e) {
-            e.printStackTrace();
+        } else {
+            // Retrieve the value of the extra
+            String plantName = intent.getStringExtra("plant_name");
+
+            /*// Search the list for a Plant with a matching name
+            Plant matchingPlant = new Plant(" ", 0, " ", " ", " ");
+
+            List<Plant> plantList = new ArrayList<>(Plant.getPlants());
+            for (Plant plant : plantList) {
+                if (plant.getName().equals(plantName)) {
+                    matchingPlant = plant;
+                    break;
+                }
+            }
+
+            // Check if a matching plant was found
+
+            id.setText(matchingPlant.getId().toString());
+            scientific_name.setText(matchingPlant.getScientificName());
+            plant_name.setText(matchingPlant.getName());
+            geographic_distribution.setText(matchingPlant.getGeographicDistribution());
+            plant_description.setText(matchingPlant.getTraditionalUses());
+
+            // Plant Image
+            mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + matchingPlant.getName() + ".jpeg");
+
+            try {
+                final File localFile = File.createTempFile(""+ matchingPlant.getName() + "","jpeg");
+                mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                        // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
+                        Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                        ((ImageView) findViewById(R.id.plant_image)).setImageBitmap(bitmap);
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(PlantDetails.this, "Error occured", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Plant Map
+            mStorageReference = FirebaseStorage.getInstance().getReference().child("Map/" + matchingPlant.getName() + ".jpeg");
+
+            try {
+                final File localFile = File.createTempFile(""+ matchingPlant.getName() + "","jpeg");
+                mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                        // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
+                        Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                        ((ImageView) findViewById(R.id.plant_map)).setImageBitmap(bitmap);
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(PlantDetails.this, "Error occured", Toast.LENGTH_SHORT).show();
+
+
+                    }
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            // Learn more button with google search
+            final Plant finalMatchingPlant = matchingPlant;
+            learn_more_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent google_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=" + finalMatchingPlant.getName()));
+                    startActivity(google_search);
+                }
+            });
+
+            // Audio button with youtube search
+            audio_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent youtube_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/results?search_query=" + finalMatchingPlant.getName()));
+                    startActivity(youtube_search);
+                }
+            });*/
+
         }
-
-        // Learn more button with google search
-        learn_more_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent google_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=" + plant.getName()));
-                startActivity(google_search);
-            }
-        });
-
-        // Audio button with youtube search
-        audio_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent youtube_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/results?search_query=" + plant.getName()));
-                startActivity(youtube_search);
-            }
-        });
     }
 }
 
