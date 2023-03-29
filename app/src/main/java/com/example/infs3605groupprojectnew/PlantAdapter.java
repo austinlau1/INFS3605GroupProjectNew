@@ -9,6 +9,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +25,8 @@ import java.util.List;
 public class PlantAdapter extends RecyclerView.Adapter /*implements Filterable*/ {
 
     List<Plant> plant;
+//    private RecyclerViewClickListener mListener;
+
 
     public PlantAdapter(List<Plant> plant) {
         this.plant = plant;
@@ -78,6 +81,36 @@ public class PlantAdapter extends RecyclerView.Adapter /*implements Filterable*/
 
         }
     }
+//    @Override
+//    public Filter getFilter() {
+//        return new Filter() {
+//            @Override
+//            protected FilterResults performFiltering(CharSequence charSequence) {
+//                String query = charSequence.toString();
+//                if (query.isEmpty()) {
+//                    mPlantsFiltered = plant;
+//                } else {
+//                    ArrayList<Plant> filteredList = new ArrayList<>();
+//                    for (Plant plant : plant) {
+//                        if (plant.getName().contains(query)) {
+//                            filteredList.add(plant);
+//                        }
+//                    }
+//                    mPlantsFiltered = filteredList;
+//                }
+//                FilterResults filterResults = new FilterResults();
+//                filterResults.values = mPlantsFiltered;
+//                return filterResults;
+//
+//            }
+//
+//            @Override
+//            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+//                mPlantsFiltered = (ArrayList<Plant>) filterResults.values;
+//                notifyDataSetChanged();
+//            }
+//        };
+//    }
 
     //Search Menu Filter NOT WORKING YET
     /*@Override
@@ -93,7 +126,9 @@ public class PlantAdapter extends RecyclerView.Adapter /*implements Filterable*/
             }
         };
     }*/
-
+    public interface RecyclerViewClickListener {
+        void onClick(View view, String placesId);
+    }
 
 }
     //Filterable

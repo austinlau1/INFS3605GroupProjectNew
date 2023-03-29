@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.SearchView;
@@ -40,6 +41,8 @@ public class PlantList extends AppCompatActivity {
     PlantAdapter plantAdapter;
     DatabaseReference databaseReference;
 
+    SearchView searchView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,13 +56,14 @@ public class PlantList extends AppCompatActivity {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Plant plantList = ds.getValue(Plant.class);
                     plant.add(plantList);
                 }
                 plantAdapter = new PlantAdapter(plant);
                 recyclerView.setAdapter(plantAdapter);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -69,36 +73,75 @@ public class PlantList extends AppCompatActivity {
 
     // Search Menu NOT WORKING YET
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.search_menu, menu);
-        MenuItem searchItem = menu.findItem(R.id.actionSearch);
-        SearchView searchView = (SearchView) searchItem.getActionView();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+        SearchView searchView = (SearchView) menu.findItem(R.id.actionSearch).getActionView();
         searchView.setQueryHint("Search...");
+
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                // plantSearch(query);
+            public boolean onQueryTextSubmit(String s) {
+                search(s);
                 return false;
             }
 
             @Override
-            public boolean onQueryTextChange(String newText) {
-                // plantSearch(newText);
-                //PlantAdapter.getFilter().filter(newText);
+            public boolean onQueryTextChange(String s) {
+                search(s);
                 return false;
             }
         });
-
         return true;
 
     }
+    private void search (String str){
 
-    private void plantSearch(String s) {
+        ArrayList<Plant> myList = new ArrayList<>();
+        for (Plant object : plant )
+        {
+            if (object.getName().toLowerCase().contains(str.toLowerCase()))
+            {
+                 myList.add(object);
+            }
+        }
+        PlantAdapter plantAdapter1 = new PlantAdapter(myList);
+        recyclerView.setAdapter(plantAdapter1);
 
     }
-
 }
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//
+//        getMenuInflater().inflate(R.menu.search_menu, menu);
+//        MenuItem searchItem = menu.findItem(R.id.actionSearch);
+//        SearchView searchView = (SearchView) searchItem.getActionView();
+//        searchView.setQueryHint("Search...");
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                // plantSearch(query);
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                // plantSearch(newText);
+//                //PlantAdapter.getFilter().filter(newText);
+//                return false;
+//            }
+//        });
+//
+//        return true;
+//
+//    }
+//
+//    private void plantSearch(String s) {
+//
+//    }
+
+
 
 
 
