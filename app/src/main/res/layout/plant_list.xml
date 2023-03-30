@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/recyclerviewbg2"
     android:layout_height="wrap_content">
 
     <ImageView
@@ -11,47 +12,54 @@
         android:layout_height="94dp"
         android:layout_marginStart="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/plantIDNum"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/plantNm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.428"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/plantNm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="222dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/inter_semibold"
         android:text="Plant Name"
+        android:textColor="#000000"
+        android:textSize="14sp"
         app:drawableTint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/plantScientific"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.713"
+        app:layout_constraintHorizontal_bias="0.917"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/plantIDNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:text="ID"
-        app:layout_constraintEnd_toStartOf="@+id/plantNm"
-        app:layout_constraintHorizontal_bias="0.805"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/plantPicture"
+        app:layout_constraintHorizontal_bias="0.714"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.388" />
 
     <TextView
         android:id="@+id/plantScientific"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="223dp"
+        android:layout_height="35dp"
+        android:fontFamily="@font/inter"
         android:text="Scientific Name"
+        android:textColor="@color/green5"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.773"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/plantNm"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/plantNm"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.786" />
+        app:layout_constraintVertical_bias="0.763" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

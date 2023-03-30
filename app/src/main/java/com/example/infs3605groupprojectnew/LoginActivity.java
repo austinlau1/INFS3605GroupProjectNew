@@ -87,6 +87,7 @@ public class LoginActivity extends AppCompatActivity{
                     if(task.isSuccessful()) {
                         mLoadingProgressBar.dismiss();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.putExtra("email",inputEmail);
                         startActivity(intent);
