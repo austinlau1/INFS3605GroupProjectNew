@@ -47,6 +47,7 @@ public class PlantDetails extends AppCompatActivity {
         Intent intent = this.getIntent();
         Intent mapIntent = getIntent();
         Bundle bundle = intent.getExtras();
+        Plant plant = (Plant) bundle.getSerializable("key");
 
         TextView id = findViewById(R.id.plant_id);
         TextView plant_name = findViewById(R.id.plantNm2);
@@ -56,8 +57,7 @@ public class PlantDetails extends AppCompatActivity {
         Button learn_more_btn = findViewById(R.id.learn_more_btn);
         Button audio_btn = findViewById(R.id.audio_btn);
 
-        if (bundle != null) {
-            Plant plant = (Plant) bundle.getSerializable("key");
+        if (plant != null) {
 
             id.setText(plant.getId().toString());
             scientific_name.setText(plant.getScientificName());
@@ -134,13 +134,13 @@ public class PlantDetails extends AppCompatActivity {
             // Retrieve the value of the extra
             String plantName = intent.getStringExtra("plant_name");
 
-            /*// Search the list for a Plant with a matching name
-            Plant matchingPlant = new Plant(" ", 0, " ", " ", " ");
+            // Search the list for a Plant with a matching name
+            Plant matchingPlant = new Plant("Geographic Distribution", 0, "Plant Name", "Scientific Name", "Description");
 
             List<Plant> plantList = new ArrayList<>(Plant.getPlants());
-            for (Plant plant : plantList) {
-                if (plant.getName().equals(plantName)) {
-                    matchingPlant = plant;
+            for (Plant mapPlant : plantList) {
+                if (mapPlant.getName().equals(plantName)) {
+                    matchingPlant = mapPlant;
                     break;
                 }
             }
@@ -219,7 +219,7 @@ public class PlantDetails extends AppCompatActivity {
                     Intent youtube_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/results?search_query=" + finalMatchingPlant.getName()));
                     startActivity(youtube_search);
                 }
-            });*/
+            });
 
         }
     }
