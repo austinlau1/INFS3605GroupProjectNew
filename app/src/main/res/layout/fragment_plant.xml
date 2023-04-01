@@ -1,50 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/plantfrgmentphoto3"
+    android:textAlignment="textEnd"
     tools:context=".PlantFragment">
 
-    <ImageView
-        android:id="@+id/plant_wallpaper"
-        android:layout_width="match_parent"
-        android:layout_height="294dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        tools:src="@tools:sample/backgrounds/scenic" />
-
-    <Button
-        android:id="@+id/view_plants_but"
-        android:layout_width="167dp"
-        android:layout_height="73dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="535dp"
-        android:text="View Plants" />
-
     <TextView
-        android:id="@+id/plant_fact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="300dp"
-        android:text="Scientific Name" />
-
-    <TextView
-        android:id="@+id/plant_des"
-        android:layout_width="wrap_content"
-        android:layout_height="165dp"
+        android:id="@+id/pagedesc_text"
+        android:layout_width="391dp"
+        android:layout_height="76dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="328dp"
-        android:layout_marginEnd="44dp"
-        android:text="Traditional Use" />
-</RelativeLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="416dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center"
+        android:text="Explore more the world of Indigenous Plants on Campus"
+        android:textAlignment="center"
+        android:textColor="@color/grey1"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.63"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/plant_location"
+        android:layout_width="298dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/inter"
+        android:text="All parts of the plant are edible, both raw and cooked"
+        android:textAlignment="center"
+        android:textColor="@color/green4"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/view_plants_btn"
+        app:layout_constraintEnd_toEndOf="@+id/plant_name_pic"
+        app:layout_constraintStart_toStartOf="@+id/plant_name_pic"
+        app:layout_constraintTop_toBottomOf="@+id/plant_name_pic"
+        app:layout_constraintVertical_bias="0.325" />
+
+    <TextView
+        android:id="@+id/plant_name_pic"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/inter_extrabold"
+        android:text="Alpinia Caerulea"
+        android:textAlignment="center"
+        android:textColor="@color/green4"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/view_plants_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Arrow_back"
+        app:layout_constraintVertical_bias="0.118" />
+
+    <ImageView
+        android:id="@+id/Arrow_back"
+        android:layout_width="413dp"
+        android:layout_height="266dp"
+        android:src="@drawable/plantfrgmentphoto1"
+        app:layout_constraintBottom_toTopOf="@+id/view_plants_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pagedesc_text"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/view_plants_btn"
+        android:layout_width="210dp"
+        android:layout_height="55dp"
+        android:background="@drawable/newbuttondesign"
+        android:fontFamily="@font/inter_semibold"
+        android:shadowColor="#6A6A6A"
+        android:text="VIEW MORE PLANTS"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:backgroundTint="@color/green5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.894"
+        app:rippleColor="@color/green2"
+        app:strokeColor="#FF5E5E"
+        tools:ignore="TouchTargetSizeCheck" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

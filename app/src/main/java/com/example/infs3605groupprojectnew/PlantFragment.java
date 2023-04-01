@@ -48,7 +48,7 @@ public class PlantFragment extends Fragment implements View.OnClickListener {
 
         //adapter = new PlantAdapter(new ArrayList<Plant>(), listener);
 
-        navigateToList = (Button) rootView.findViewById(R.id.view_plants_but);
+        navigateToList = (Button) rootView.findViewById(R.id.view_plants_btn);
         navigateToList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
