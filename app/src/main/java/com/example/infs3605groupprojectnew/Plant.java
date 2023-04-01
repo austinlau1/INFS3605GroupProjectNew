@@ -25,17 +25,15 @@ public class Plant implements Serializable {
     private String traditionalUses;
     private String geographicDistribution;
     private Integer id;
-    private String image;
 
     public Plant() {}
 
-    public Plant(String geographicDistribution, Integer id, String name, String scientificName, String traditionalUses, String image) {
+    public Plant(String geographicDistribution, Integer id, String name, String scientificName, String traditionalUses) {
         this.name = name;
         this.scientificName = scientificName;
         this.traditionalUses = traditionalUses;
         this.geographicDistribution = geographicDistribution;
         this.id = id;
-        this.image = image;
     }
 
 
@@ -79,14 +77,6 @@ public class Plant implements Serializable {
         this.id = id;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image){
-        this.image = image;
-    }
-
     public static ArrayList<Plant> getPlants() {
         ArrayList<Plant> plantList = new ArrayList<>();
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Plants Database");
@@ -99,10 +89,9 @@ public class Plant implements Serializable {
                     String name = questionSnapshot.child("name").getValue(String.class);
                     String scientificName = questionSnapshot.child("scientificName").getValue(String.class);
                     String traditionalUses = questionSnapshot.child("traditionalUses").getValue(String.class);
-                    String image = questionSnapshot.child("image").getValue(String.class);
 
                     // Add the extracted data to an array list
-                    Plant onlyList = new Plant(geographicDistribution, id, name, scientificName, traditionalUses, image);
+                    Plant onlyList = new Plant(geographicDistribution, id, name, scientificName, traditionalUses);
                     plantList.add(onlyList);
                 }
             }
