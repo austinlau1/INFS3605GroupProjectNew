@@ -93,8 +93,8 @@ public class ViewMap extends AppCompatActivity implements OnMapReadyCallback {
 
         // Set Boundaries for the map
         LatLngBounds UNSW_BOUNDS = new LatLngBounds(
-                new LatLng(-33.918861, 151.228165), // South-west corner
-                new LatLng(-33.913424, 151.237360) // North-east corner
+                new LatLng(-33.921597, 151.223430), // South-west corner
+                new LatLng(-33.916677, 151.238434) // North-east corner
         );
 
         createMarkers();
@@ -159,20 +159,20 @@ public class ViewMap extends AppCompatActivity implements OnMapReadyCallback {
 
     private void createMarkers() {
         // Add a marker for each plant
-        LatLng hillsFig = new LatLng(-33.917263, 151.226437);
-        markers[0] = mapView.addMarker(new MarkerOptions().position(hillsFig).title("Hills Fig"));
+        LatLng stranglingFig = new LatLng(-33.917263, 151.226437);
+        markers[0] = mapView.addMarker(new MarkerOptions().position(stranglingFig).title("Strangling Fig"));
 
         LatLng gymeaLily = new LatLng(-33.916721, 151.226312);
         markers[1] = mapView.addMarker(new MarkerOptions().position(gymeaLily).title("Gymea Lily"));
 
-        LatLng broadLeavedPaperback = new LatLng(-33.916172, 151.226620);
-        markers[2] = mapView.addMarker(new MarkerOptions().position(broadLeavedPaperback).title("Broad Leaved Paperback"));
+        LatLng paperbark = new LatLng(-33.916172, 151.226620);
+        markers[2] = mapView.addMarker(new MarkerOptions().position(paperbark).title("Paperbark"));
 
-        LatLng crimsonBottlebush = new LatLng(-33.915816, 151.226514);
-        markers[3] = mapView.addMarker(new MarkerOptions().position(crimsonBottlebush).title("Crimson Bottlebush"));
+        LatLng crimsonBottlebrush = new LatLng(-33.915816, 151.226514);
+        markers[3] = mapView.addMarker(new MarkerOptions().position(crimsonBottlebrush).title("Crimson Bottlebrush"));
 
-        LatLng healthBanksia = new LatLng(-33.915667, 151.226618);
-        markers[4] = mapView.addMarker(new MarkerOptions().position(healthBanksia).title("Health Banksia"));
+        LatLng banksia = new LatLng(-33.915667, 151.226618);
+        markers[4] = mapView.addMarker(new MarkerOptions().position(banksia).title("Banksia"));
 
         LatLng mountainCedarWattle = new LatLng(-33.915686, 151.226898);
         markers[5] = mapView.addMarker(new MarkerOptions().position(mountainCedarWattle).title("Mountain Cedar Wattle"));
@@ -184,7 +184,7 @@ public class ViewMap extends AppCompatActivity implements OnMapReadyCallback {
         markers[7] = mapView.addMarker(new MarkerOptions().position(tuckeroo).title("Tuckeroo"));
 
         LatLng pricklyLeavedTeaTree = new LatLng(-33.917091, 151.232192);
-        markers[8] = mapView.addMarker(new MarkerOptions().position(pricklyLeavedTeaTree).title("Prickly Leaved Tea Tree"));
+        markers[8] = mapView.addMarker(new MarkerOptions().position(pricklyLeavedTeaTree).title("Prickly-leaved Tea Tree"));
 
         LatLng waterVine = new LatLng(-33.917207, 151.232165);
         markers[9] = mapView.addMarker(new MarkerOptions().position(waterVine).title("Water Vine"));
@@ -199,7 +199,7 @@ public class ViewMap extends AppCompatActivity implements OnMapReadyCallback {
         markers[12] = mapView.addMarker(new MarkerOptions().position(burrawang).title("Burrawang"));
 
         LatLng plumPine = new LatLng(-33.916251, 151.234503);
-        markers[13] = mapView.addMarker(new MarkerOptions().position(plumPine).title("Plum Pine"));
+        markers[13] = mapView.addMarker(new MarkerOptions().position(plumPine).title("Plum Pine/Brown Pine"));
 
         LatLng tussockGrass = new LatLng(-33.916503, 151.234676);
         markers[14] = mapView.addMarker(new MarkerOptions().position(tussockGrass).title("Tussock Grass"));
@@ -211,16 +211,16 @@ public class ViewMap extends AppCompatActivity implements OnMapReadyCallback {
         markers[16] = mapView.addMarker(new MarkerOptions().position(bolwarra).title("Bolwarra"));
 
         LatLng blueFlaxLily = new LatLng(-33.917972, 151.234534);
-        markers[17] = mapView.addMarker(new MarkerOptions().position(blueFlaxLily).title("Blue Flax Lily"));
+        markers[17] = mapView.addMarker(new MarkerOptions().position(blueFlaxLily).title("Blue Flax Lily/Blueberry Lily"));
 
         LatLng oldManBanksia = new LatLng(-33.917945, 151.234238);
-        markers[18] = mapView.addMarker(new MarkerOptions().position(oldManBanksia).title("Old man banksia"));
+        markers[18] = mapView.addMarker(new MarkerOptions().position(oldManBanksia).title("Saw Banksia/Old Man Banksia"));
 
         LatLng matrush = new LatLng(-33.917789, 151.232173);
-        markers[19] = mapView.addMarker(new MarkerOptions().position(matrush).title("Matrush"));
+        markers[19] = mapView.addMarker(new MarkerOptions().position(matrush).title("Spiny-headed Mat-rush"));
 
         LatLng ribery = new LatLng(-33.917964, 151.232071);
-        markers[20] = mapView.addMarker(new MarkerOptions().position(ribery).title("Ribery"));
+        markers[20] = mapView.addMarker(new MarkerOptions().position(ribery).title("Riberry"));
 
         LatLng grassTree = new LatLng(-33.918203, 151.232105);
         markers[21] = mapView.addMarker(new MarkerOptions().position(grassTree).title("Grass Tree"));
@@ -229,7 +229,7 @@ public class ViewMap extends AppCompatActivity implements OnMapReadyCallback {
         markers[22] = mapView.addMarker(new MarkerOptions().position(nativeGinger).title("Native Ginger"));
 
         LatLng flameTree = new LatLng(-33.917351, 151.230178);
-        markers[23] = mapView.addMarker(new MarkerOptions().position(flameTree).title("Flame Tree"));
+        markers[23] = mapView.addMarker(new MarkerOptions().position(flameTree).title("Illawarra Flame Tree"));
 
         LatLng portJacksonFig = new LatLng(-33.917499, 151.227739);
         markers[24] = mapView.addMarker(new MarkerOptions().position(portJacksonFig).title("Port Jackson Fig"));
@@ -255,7 +255,7 @@ public class ViewMap extends AppCompatActivity implements OnMapReadyCallback {
                 }
             }
         });
-        
+
 
         /*// Enable the user's location on the map
         mapView.setMyLocationEnabled(true);
