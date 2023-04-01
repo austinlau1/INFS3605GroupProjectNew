@@ -34,7 +34,6 @@ public class PlantFragment extends Fragment implements View.OnClickListener {
     // RecyclerView mRecyclerView;
     // private PlantAdapter adapter;
     Button navigateToList;
-    Button  mBacktoHome;
 
     @Nullable
     @Override
@@ -49,26 +48,16 @@ public class PlantFragment extends Fragment implements View.OnClickListener {
 
         //adapter = new PlantAdapter(new ArrayList<Plant>(), listener);
 
-        navigateToList = (Button) rootView.findViewById(R.id.view_plants_btn);
-
-
+        navigateToList = (Button) rootView.findViewById(R.id.view_plants_but);
         navigateToList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent;
                 intent = new Intent(getActivity(), PlantList.class);
                 startActivity(intent);
-
             }
         });
-
-
-
-
         return rootView;
-
-
-
     }
 
     /*PlantAdapter.ClickListener listener = new PlantAdapter.ClickListener() {
@@ -146,4 +135,6 @@ public class PlantFragment extends Fragment implements View.OnClickListener {
         return true;
 
     }*/
+
+
 }
