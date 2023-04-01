@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class UserDetails extends AppCompatActivity {
-    /*private FirebaseUser user;
+    private FirebaseUser user;
     private DatabaseReference mDatabase;
     private String userId;
 
@@ -32,7 +32,7 @@ public class UserDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_profile_page);
 
-*//*        Intent intent = this.getIntent();
+/*        Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
         User users = (User) bundle.getSerializable("key");*//*
 
@@ -94,4 +94,5 @@ public class UserDetails extends AppCompatActivity {
 
         }*/
     }
+}
 
