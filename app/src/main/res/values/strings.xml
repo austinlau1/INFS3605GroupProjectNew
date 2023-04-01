@@ -7,5 +7,6 @@
     <string name="copyright_text">Copyright © 2023 Team GRAD® </string>
     <string name="gmaps_api_key">AIzaSyBobkTSzmJ1O5WAcVetFf6iFbooLT7EW-g</string>
     <string name="mapbox_access_token">pk.eyJ1Ijoicm9oaXQtd2FycmllciIsImEiOiJjbGZycnIzYWgwNHV0M3dqeHQzNHdvYm8xIn0.CVmbiCDugPw1u0ON7VJ1iQ</string>
+    <string name="fragment_plant_desc">If you have ever marveled at the beauty of a blooming flower then you are in the right place</string>
     <string name="forgot_pw_text">Please enter the email address connected to your account. A link to reset your password will be sent shortly</string>
 </resources>
