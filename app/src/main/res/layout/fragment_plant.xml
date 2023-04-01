@@ -10,8 +10,8 @@
 
     <TextView
         android:id="@+id/pagedesc_text"
-        android:layout_width="391dp"
-        android:layout_height="76dp"
+        android:layout_width="324dp"
+        android:layout_height="77dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -20,19 +20,19 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="17dp"
         android:layout_marginBottom="416dp"
-        android:fontFamily="@font/inter_bold"
+        android:fontFamily="@font/inter_thin"
         android:gravity="center"
-        android:text="Explore more the world of Indigenous Plants on Campus"
+        android:text="Explore the world of Indigenous plants"
         android:textAlignment="center"
         android:textColor="@color/grey1"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.63"
+        app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.125" />
 
     <TextView
         android:id="@+id/plant_location"
@@ -72,10 +72,9 @@
         android:src="@drawable/plantfrgmentphoto1"
         app:layout_constraintBottom_toTopOf="@+id/view_plants_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pagedesc_text"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.193" />
 
     <Button
         android:id="@+id/view_plants_btn"

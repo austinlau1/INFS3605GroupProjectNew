@@ -58,6 +58,9 @@
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
+            android:name=".UserDetails"
+            android:exported="false" />
+        <activity
             android:name=".WelcomeActivity"
             android:exported="true">
             <intent-filter>

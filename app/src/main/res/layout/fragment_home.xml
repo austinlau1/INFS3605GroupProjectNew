@@ -66,8 +66,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/imageView"
                 android:layout_alignTop="@+id/imageView"
-                android:layout_marginStart="166dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginStart="143dp"
+                android:layout_marginTop="9dp"
                 android:text="BUCKER TRAIL APP"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -88,15 +88,15 @@
 
             <TextView
                 android:id="@+id/name"
-                android:layout_width="wrap_content"
+                android:layout_width="198dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/welcome"
                 android:layout_alignStart="@+id/welcome"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="1dp"
-                android:text="Anna"
+                android:text="User Email"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -121,31 +121,6 @@
                 android:layout_marginStart="23dp"
                 android:layout_marginTop="29dp"
                 android:src="@drawable/white_box" />
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="85dp"
-                android:layout_height="25dp"
-                android:layout_alignTop="@+id/imageView"
-                android:layout_alignEnd="@+id/imageView"
-                android:layout_marginTop="89dp"
-                android:layout_marginEnd="25dp"
-                android:src="@drawable/green2_box" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="85dp"
-                android:layout_height="25dp"
-                android:layout_alignStart="@id/imageView3"
-                android:layout_alignTop="@+id/imageView"
-                android:layout_alignBottom="@+id/imageView"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="89dp"
-                android:layout_marginBottom="65dp"
-                android:gravity="center"
-                android:text="Edit Profile"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -364,12 +339,22 @@
                 android:layout_alignTop="@+id/imageView"
                 android:layout_alignEnd="@+id/imageView"
                 android:layout_alignBottom="@+id/imageView"
-                android:layout_marginStart="18dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="121dp"
-                android:layout_marginEnd="104dp"
+                android:layout_marginEnd="116dp"
                 android:layout_marginBottom="14dp"
                 android:layout_toEndOf="@+id/imageView2"
                 android:text="Logout" />
+
+            <Button
+                android:id="@+id/editProfileBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="296dp"
+                android:layout_marginTop="192dp"
+                android:text="edit pfl" />
 
 
         </RelativeLayout>
