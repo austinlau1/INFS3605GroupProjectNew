@@ -4,8 +4,12 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private String firstname;
+    public String firstname;
     private String lastname;
+
+    public User(){
+
+    }
 
     public User(String username, String password, String email, String firstname, String lastname) {
         this.username = username;

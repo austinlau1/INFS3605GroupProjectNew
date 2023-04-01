@@ -89,10 +89,10 @@ public class PlantDetails extends AppCompatActivity {
             }
 
             // Plant Map
-            mStorageReference = FirebaseStorage.getInstance().getReference().child("Map/" + plant.getName() + ".jpeg");
+            mStorageReference = FirebaseStorage.getInstance().getReference().child("Map/" + plant.getScientificName() + ".png");
 
             try {
-                final File localFile = File.createTempFile(""+ plant.getName() + "","jpeg");
+                final File localFile = File.createTempFile(""+ plant.getScientificName() + "","png");
                 mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
@@ -135,7 +135,7 @@ public class PlantDetails extends AppCompatActivity {
             String plantName = intent.getStringExtra("plant_name");
 
             // Search the list for a Plant with a matching name
-            Plant matchingPlant = new Plant("Geographic Distribution", 0, "Plant Name", "Scientific Name", "Description");
+            Plant matchingPlant = new Plant("Geographic Distribution", 0, "Plant Name", "Scientific Name", "Description", "Image");
 
             List<Plant> plantList = new ArrayList<>(Plant.getPlants());
             for (Plant mapPlant : plantList) {
