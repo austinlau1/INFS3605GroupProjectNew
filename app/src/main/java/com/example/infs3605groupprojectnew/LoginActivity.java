@@ -3,10 +3,13 @@ package com.example.infs3605groupprojectnew;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -47,6 +50,26 @@ public class LoginActivity extends AppCompatActivity{
             }
         });
 
+
+        //show hide password using eye icon
+
+        ImageView imageViewShowHidePwd = findViewById(R.id.imageView_show_hide_pwd);
+        imageViewShowHidePwd.setImageResource(R.drawable.img_hidepw);
+        imageViewShowHidePwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //check whether is visible in the beginning
+                if(user_passw.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())){
+                    user_passw.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+                    //change icon
+                    imageViewShowHidePwd.setImageResource(R.drawable.img_hidepw);
+                } else{
+                    user_passw.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    imageViewShowHidePwd.setImageResource(R.drawable.img_showpw);
+                }
+            }
+        });
 
         //user forget password
 
