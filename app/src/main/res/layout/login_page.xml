@@ -13,10 +13,10 @@
         android:layout_height="890dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.922"
+        app:layout_constraintHorizontal_bias="0.92"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/light_green_background" />
 
     <Button
@@ -60,6 +60,9 @@
         app:layout_constraintTop_toBottomOf="@+id/description_text"
         app:layout_constraintVertical_bias="0.09" />
 
+
+
+
     <EditText
         android:id="@+id/pass_input"
         android:layout_width="269dp"
@@ -80,6 +83,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_input"
         app:layout_constraintVertical_bias="0.072" />
+
+    <ImageView
+        android:id="@+id/imageView_show_hide_pwd"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_below="@id/pass_input"
+        app:layout_constraintBottom_toBottomOf="@+id/pass_input"
+        app:layout_constraintEnd_toEndOf="@+id/pass_input"
+        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintStart_toStartOf="@+id/pass_input"
+        app:layout_constraintTop_toTopOf="@+id/pass_input"
+        app:layout_constraintVertical_bias="0.48" />
 
     <Button
         android:id="@+id/forgot_button"
@@ -176,9 +191,10 @@
         android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.011"
         app:srcCompat="@drawable/three_trees" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

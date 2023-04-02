@@ -3,10 +3,13 @@ package com.example.infs3605groupprojectnew;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +57,25 @@ public class RegisterActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+            }
+        });
+
+        // hide and show password for users
+        ImageView imageViewShowHidePwd = findViewById(R.id.imageView_show_hide_pwd1);
+        imageViewShowHidePwd.setImageResource(R.drawable.img_hidepw);
+        imageViewShowHidePwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //check whether is visible in the beginning
+                if(Inuser_password.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())){
+                    Inuser_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+                    //change icon
+                    imageViewShowHidePwd.setImageResource(R.drawable.img_hidepw);
+                } else{
+                    Inuser_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    imageViewShowHidePwd.setImageResource(R.drawable.img_showpw);
+                }
             }
         });
 
@@ -105,6 +127,8 @@ public class RegisterActivity extends AppCompatActivity{
             });
         });
     }
+
+
 
     //method to validate user's input
     private Boolean validateUsername(){
