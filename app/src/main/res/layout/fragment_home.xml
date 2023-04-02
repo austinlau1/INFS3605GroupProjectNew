@@ -51,14 +51,14 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="380dp"
+                android:layout_width="match_parent"
                 android:layout_height="179dp"
                 android:layout_below="@+id/banner_layout"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginEnd="13dp"
+                android:layout_marginStart="-1dp"
+                android:layout_marginTop="33dp"
+                android:layout_marginEnd="1dp"
                 android:src="@drawable/green4_box" />
 
             <TextView
@@ -66,21 +66,26 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/imageView"
                 android:layout_alignTop="@+id/imageView"
+                android:layout_alignEnd="@+id/imageView"
+                android:layout_alignBottom="@+id/imageView"
                 android:layout_marginStart="143dp"
                 android:layout_marginTop="9dp"
+                android:layout_marginEnd="95dp"
+                android:layout_marginBottom="148dp"
                 android:text="BUCKER TRAIL APP"
-                android:textColor="@color/black"
+                android:textColor="@color/green1"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/welcome"
-                android:layout_width="wrap_content"
+                android:layout_width="201dp"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/imageView"
-                android:layout_marginStart="21dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="40dp"
                 android:layout_toEndOf="@+id/imageView2"
+                android:fontFamily="@font/inter_thin"
                 android:text="Welcome, "
                 android:textColor="@color/white"
                 android:textSize="24sp"
@@ -92,34 +97,22 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/welcome"
                 android:layout_alignStart="@+id/welcome"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="1dp"
+                android:layout_marginStart="-1dp"
+                android:layout_marginTop="9dp"
+                android:fontFamily="@font/inter_bold"
                 android:text="User Email"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textview1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/welcome"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="1dp"
-                android:layout_toEndOf="@id/name"
-                android:text="!"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="122dp"
+                android:layout_height="124dp"
                 android:layout_alignStart="@+id/imageView"
                 android:layout_alignTop="@+id/imageView"
-                android:layout_marginStart="23dp"
-                android:layout_marginTop="29dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="17dp"
                 android:src="@drawable/white_box" />
 
             <ImageView
@@ -334,27 +327,33 @@
 
             <Button
                 android:id="@+id/logout_but"
-                android:layout_width="117dp"
-                android:layout_height="44dp"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
                 android:layout_alignTop="@+id/imageView"
                 android:layout_alignEnd="@+id/imageView"
                 android:layout_alignBottom="@+id/imageView"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="121dp"
-                android:layout_marginEnd="116dp"
-                android:layout_marginBottom="14dp"
+                android:layout_marginStart="121dp"
+                android:layout_marginTop="114dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="26dp"
                 android:layout_toEndOf="@+id/imageView2"
-                android:text="Logout" />
+                android:background="@drawable/green1_box"
+                android:text="Logout"
+                />
 
             <Button
                 android:id="@+id/editProfileBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="137dp"
+                android:layout_height="40dp"
+                android:layout_alignBottom="@+id/imageView"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="296dp"
-                android:layout_marginTop="192dp"
-                android:text="edit pfl" />
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="202dp"
+                android:layout_marginBottom="26dp"
+                android:background="@drawable/green1_box"
+                android:text="edit user"
+                app:rippleColor="@color/green5"/>
 
 
         </RelativeLayout>

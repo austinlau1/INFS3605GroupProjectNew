@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/plantfrgmentphoto4"
     android:layout_height="match_parent">
 
     <ScrollView
@@ -16,14 +17,27 @@
             <com.google.android.gms.maps.MapView
                 android:id="@+id/mapView4"
                 android:layout_width="wrap_content"
-                android:layout_height="180dp"
+                android:layout_height="161dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="37dp"
-                android:layout_marginTop="551dp"
+                android:layout_marginTop="571dp"
                 android:layout_marginEnd="33dp"
                 android:contentDescription='Location of Plant' />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="149dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="37dp"
+                android:layout_marginTop="542dp"
+                android:layout_marginEnd="225dp"
+                android:fontFamily="@font/inter"
+                android:text="Location" />
 
             <ImageView
                 android:id="@+id/plant_image"
@@ -31,8 +45,8 @@
                 android:layout_height="147dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="39dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="46dp"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
@@ -51,49 +65,66 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="18dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="221dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="177dp"
                 android:text="ID" />
 
             <TextView
                 android:id="@+id/scientific_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/plant_image"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="41dp"
-                android:layout_marginTop="225dp"
-                android:text="Scientific Name" />
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="34dp"
+                android:fontFamily="@font/inter_semibold"
+                android:text="Scientific Name"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/plant_description"
-                android:layout_width="332dp"
-                android:layout_height="188dp"
+                android:layout_width="335dp"
+                android:layout_height="170dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="41dp"
-                android:layout_marginTop="280dp"
-                android:text="Description" />
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="37dp"
+                android:layout_marginTop="293dp"
+                android:layout_marginEnd="38dp"
+                android:fontFamily="@font/inter"
+                android:text="Description"
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/learn_more_btn"
-                android:layout_width="wrap_content"
+                android:layout_width="151dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="130dp"
-                android:layout_marginTop="478dp"
-                android:text="Learn More" />
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="37dp"
+                android:layout_marginTop="475dp"
+                android:layout_marginEnd="222dp"
+                android:background="@drawable/green3_box"
+                android:text="Learn More"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@color/green5" />
 
-            <TextView
-                android:id="@+id/textView21"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/audio_btn"
+                android:layout_width="146dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="527dp"
-                android:text="Location" />
+                android:layout_marginStart="228dp"
+                android:layout_marginTop="475dp"
+                android:background="@drawable/newbuttondesign"
+                android:fontFamily="@font/inter_semibold"
+                android:text="Audio"
+                android:textColor="#000000"
+                app:backgroundTint="#FFC107" />
 
             <TextView
                 android:id="@+id/plantNm2"
@@ -101,40 +132,36 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="41dp"
-                android:layout_marginTop="253dp"
-                android:text="Plant Name" />
+                android:layout_marginStart="38dp"
+                android:layout_marginTop="260dp"
+                android:fontFamily="@font/inter_bold"
+                android:text="Plant Name"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/geographic_distribution"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="185dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/plant_map"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="216dp"
-                android:layout_marginTop="210dp"
-                android:text="Geographic distribution" />
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="212dp"
+                android:layout_marginTop="29dp"
+                android:layout_marginEnd="12dp"
+                android:fontFamily="@font/inter_light"
+                android:text="Geographic distribution"
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/plant_map"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="151dp"
+                android:layout_height="147dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="231dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginStart="220dp"
+                android:layout_marginTop="46dp"
                 tools:srcCompat="@tools:sample/avatars" />
 
-            <Button
-                android:id="@+id/audio_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="291dp"
-                android:layout_marginTop="478dp"
-                android:text="Audio"
-                app:backgroundTint="#A3BC2828" />
         </RelativeLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
