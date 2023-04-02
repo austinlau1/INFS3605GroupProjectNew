@@ -46,30 +46,11 @@ public class ViewMap extends AppCompatActivity implements OnMapReadyCallback {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Mapbox.getInstance(this, getString(R.string.mapbox_access_token));
         setContentView(R.layout.activity_map_view);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        // Initialize the FusedLocationProviderClient
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        enableUserLocation();
-
-        /*// Initialize the LocationCallback
-        locationCallback = new LocationCallback() {
-            @Override
-            public void onLocationResult(LocationResult locationResult) {
-                if (locationResult == null) {
-                    return;
-                }
-                for (Location location : locationResult.getLocations()) {
-                    // Update the user's location on the map
-                    LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-                    mapView.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-                }
-            }
-        };*/
     }
 
     @Override
@@ -80,16 +61,6 @@ public class ViewMap extends AppCompatActivity implements OnMapReadyCallback {
         googleMap.getUiSettings().setZoomControlsEnabled(true);
         googleMap.getUiSettings().setCompassEnabled(true);
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            enableUserLocation();
-        } else {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
-            } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
-            }
-        }
 
         // Set Boundaries for the map
         LatLngBounds UNSW_BOUNDS = new LatLngBounds(
@@ -115,47 +86,13 @@ public class ViewMap extends AppCompatActivity implements OnMapReadyCallback {
             }
         });
 
+        int padding = 50;
 
         // Set the boundary on the map
-        googleMap.setLatLngBoundsForCameraTarget(UNSW_BOUNDS);
-        googleMap.setMinZoomPreference(15f);
-        //mapView.addMarker(new MarkerOptions().position(UNSW_LOCATION).title("UNSW"));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(UNSW_BOUNDS, 0));
+        googleMap.animateCamera(CameraUpdateFactory.zoomTo(17f));
 
     }
-
-
-    /*@Override
-    protected void onResume() {
-        super.onResume();
-        startLocationUpdates();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        stopLocationUpdates();
-    }*/
-
-    /*private void startLocationUpdates() {
-        // Check if location permissions are granted
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-
-        // Define the location request settings
-        LocationRequest locationRequest = LocationRequest.create();
-        locationRequest.setInterval(5000); // update location every 5 seconds
-        locationRequest.setFastestInterval(3000); // update location at fastest interval of 3 seconds
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-
-        // Request location updates
-        fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, null);
-    }
-
-    private void stopLocationUpdates() {
-        fusedLocationProviderClient.removeLocationUpdates(locationCallback);
-    }*/
 
     private void createMarkers() {
         // Add a marker for each plant
@@ -204,8 +141,8 @@ public class ViewMap extends AppCompatActivity implements OnMapReadyCallback {
         LatLng tussockGrass = new LatLng(-33.916503, 151.234676);
         markers[14] = mapView.addMarker(new MarkerOptions().position(tussockGrass).title("Tussock Grass"));
 
-        LatLng cabbageTreePalm = new LatLng(-33.916774, 151.234849);
-        markers[15] = mapView.addMarker(new MarkerOptions().position(cabbageTreePalm).title("Cabbage Tree Palm"));
+        //LatLng cabbageTreePalm = new LatLng(-33.916774, 151.234849);
+        //markers[15] = mapView.addMarker(new MarkerOptions().position(cabbageTreePalm).title("Cabbage Tree Palm"));
 
         LatLng bolwarra = new LatLng(-33.918027, 151.234931);
         markers[16] = mapView.addMarker(new MarkerOptions().position(bolwarra).title("Bolwarra"));
@@ -235,88 +172,4 @@ public class ViewMap extends AppCompatActivity implements OnMapReadyCallback {
         markers[24] = mapView.addMarker(new MarkerOptions().position(portJacksonFig).title("Port Jackson Fig"));
     }
 
-    private void enableUserLocation() {
-        // Check if location permissions are granted
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
-            return;
-        }
-
-        Task<Location> task = fusedLocationProviderClient.getLastLocation();
-
-        task.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if(location != null) {
-                    currentLocation = location;
-                    SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-                    mapFragment.getMapAsync(ViewMap.this);
-                }
-            }
-        });
-
-
-        /*// Enable the user's location on the map
-        mapView.setMyLocationEnabled(true);
-
-        // Request the user's last known location
-        fusedLocationProviderClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if (location != null) {
-                    // Move the camera to the user's location
-                    LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-                    mapView.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-                }
-            }
-        });*/
-    }
-
-    /*private void zoomToUserLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        Task<Location> locationTask = fusedLocationProviderClient.getLastLocation();
-        locationTask.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                LatLng currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
-                mapView.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 17));
-            }
-        });
-
-    }*/
-
-    /*@Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                enableUserLocation();
-            } else {
-
-            }
-        }
-    }
-*/
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (REQUEST_CODE) {
-            case REQUEST_CODE:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    enableUserLocation();
-                }
-                break;
-        }
-    }
 }
