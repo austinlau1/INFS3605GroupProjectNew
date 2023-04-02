@@ -133,91 +133,98 @@ public class PlantDetails extends AppCompatActivity {
         } else {
             // Retrieve the value of the extra
             String plantName = intent.getStringExtra("plant_name");
+            Log.e("PlantDetails", plantName);
 
             // Search the list for a Plant with a matching name
-            Plant matchingPlant = new Plant("Geographic Distribution", 0, "Plant Name", "Scientific Name", "Description");
 
-            List<Plant> plantList = new ArrayList<>(Plant.getPlants());
-            for (Plant mapPlant : plantList) {
-                if (mapPlant.getName().equals(plantName)) {
-                    matchingPlant = mapPlant;
-                    break;
-                }
-            }
-
-            // Check if a matching plant was found
-
-            id.setText(matchingPlant.getId().toString());
-            scientific_name.setText(matchingPlant.getScientificName());
-            plant_name.setText(matchingPlant.getName());
-            geographic_distribution.setText(matchingPlant.getGeographicDistribution());
-            plant_description.setText(matchingPlant.getTraditionalUses());
-
-            // Plant Image
-            mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + matchingPlant.getName() + ".jpeg");
-
-            try {
-                final File localFile = File.createTempFile(""+ matchingPlant.getName() + "","jpeg");
-                mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                        // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
-                        Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                        ((ImageView) findViewById(R.id.plant_image)).setImageBitmap(bitmap);
-
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(PlantDetails.this, "Error occured", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            // Plant Map
-            mStorageReference = FirebaseStorage.getInstance().getReference().child("Map/" + matchingPlant.getName() + ".jpeg");
-
-            try {
-                final File localFile = File.createTempFile(""+ matchingPlant.getName() + "","jpeg");
-                mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                        // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
-                        Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                        ((ImageView) findViewById(R.id.plant_map)).setImageBitmap(bitmap);
-
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(PlantDetails.this, "Error occured", Toast.LENGTH_SHORT).show();
-
-
-                    }
-                });
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-            // Learn more button with google search
-            final Plant finalMatchingPlant = matchingPlant;
-            learn_more_btn.setOnClickListener(new View.OnClickListener() {
+            Plant.getPlants(new Plant.OnPlantsLoadedListener() {
                 @Override
-                public void onClick(View view) {
-                    Intent google_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=" + finalMatchingPlant.getName()));
-                    startActivity(google_search);
-                }
-            });
+                public void onPlantsLoaded(ArrayList<Plant> plantList) {
+                    Log.e("PlantDetails", Integer.toString(plantList.size()));
+                    for (Plant mapPlant : plantList) {
+                        if (mapPlant.getName().equals(plantName)) {
+                            Log.e("PlantDetails", "Matched");
 
-            // Audio button with youtube search
-            audio_btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent youtube_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/results?search_query=" + finalMatchingPlant.getName()));
-                    startActivity(youtube_search);
+                            // Assign Values to Fields
+
+                            id.setText(mapPlant.getId().toString());
+                            scientific_name.setText(mapPlant.getScientificName());
+                            plant_name.setText(mapPlant.getName());
+                            geographic_distribution.setText(mapPlant.getGeographicDistribution());
+                            plant_description.setText(mapPlant.getTraditionalUses());
+
+                            // Plant Image
+                            mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + mapPlant.getName() + ".jpeg");
+
+                            try {
+                                final File localFile = File.createTempFile(""+ mapPlant.getName() + "","jpeg");
+                                mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                        // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
+                                        Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                                        ((ImageView) findViewById(R.id.plant_image)).setImageBitmap(bitmap);
+
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(PlantDetails.this, "Error occured", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            // Plant Map
+                            mStorageReference = FirebaseStorage.getInstance().getReference().child("Map/" + mapPlant.getName() + ".jpeg");
+
+                            try {
+                                final File localFile = File.createTempFile(""+ mapPlant.getName() + "","jpeg");
+                                mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                        // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
+                                        Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                                        ((ImageView) findViewById(R.id.plant_map)).setImageBitmap(bitmap);
+
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(PlantDetails.this, "Error occured", Toast.LENGTH_SHORT).show();
+
+
+                                    }
+                                });
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+
+                            // Learn more button with google search
+                            final Plant finalMatchingPlant = mapPlant;
+                            learn_more_btn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Intent google_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=" + finalMatchingPlant.getName()));
+                                    startActivity(google_search);
+                                }
+                            });
+
+                            // Audio button with youtube search
+                            audio_btn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Intent youtube_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/results?search_query=" + finalMatchingPlant.getName()));
+                                    startActivity(youtube_search);
+                                }
+                            });
+                            break;
+                        } else {
+                            Log.e("PlantDetails", "Not Matched");
+                        }
+                    }
                 }
             });
 

@@ -77,12 +77,12 @@ public class Plant implements Serializable {
         this.id = id;
     }
 
-    public static ArrayList<Plant> getPlants() {
-        ArrayList<Plant> plantList = new ArrayList<>();
+    public static void getPlants(OnPlantsLoadedListener listener) {
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Plants Database");
-        dbRef.addValueEventListener(new ValueEventListener() {
+        dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ArrayList<Plant> plantList = new ArrayList<>();
                 for (DataSnapshot questionSnapshot : dataSnapshot.getChildren()) {
                     String geographicDistribution = questionSnapshot.child("geographicDistribution").getValue(String.class);
                     int id = questionSnapshot.child("id").getValue(int.class);
@@ -90,20 +90,22 @@ public class Plant implements Serializable {
                     String scientificName = questionSnapshot.child("scientificName").getValue(String.class);
                     String traditionalUses = questionSnapshot.child("traditionalUses").getValue(String.class);
 
-                    // Add the extracted data to an array list
                     Plant onlyList = new Plant(geographicDistribution, id, name, scientificName, traditionalUses);
                     plantList.add(onlyList);
                 }
+                listener.onPlantsLoaded(plantList);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Handle the error
-                Log.e("TestQuiz", "Error getting questions from database", databaseError.toException());
+                Log.e("Plant", "Error getting plants from database", databaseError.toException());
             }
         });
+    }
 
-        return plantList;
+    public interface OnPlantsLoadedListener {
+        void onPlantsLoaded(ArrayList<Plant> plantList);
     }
 
 
