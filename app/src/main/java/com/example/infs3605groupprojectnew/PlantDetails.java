@@ -138,6 +138,28 @@ public class PlantDetails extends AppCompatActivity {
                 e.printStackTrace();
             }
 
+            // OnClickListener for plant location map
+            ImageView plantLocationMap = findViewById(R.id.plantLocationMap);
+
+            plantLocationMap.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(PlantDetails.this, ViewMap.class);
+                    startActivity(intent);
+                }
+            });
+
+            // OnClickListener button for plant location map
+            Button plantLocationBtn = findViewById(R.id.plantLocationBtn);
+
+            plantLocationBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(PlantDetails.this, ViewMap.class);
+                    startActivity(intent);
+                }
+            });
+
             // Learn more button with google search
             learn_more_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
