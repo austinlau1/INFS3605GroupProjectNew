@@ -66,10 +66,10 @@ public class PlantDetails extends AppCompatActivity {
             plant_description.setText(plant.getTraditionalUses());
 
             // Plant Image
-            mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + plant.getName() + ".jpeg");
+            mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + plant.getScientificName() + ".jpeg");
 
             try {
-                final File localFile = File.createTempFile(""+ plant.getName() + "","jpeg");
+                final File localFile = File.createTempFile(""+ plant.getScientificName() + "","jpeg");
                 mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
@@ -88,17 +88,42 @@ public class PlantDetails extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            // Plant Map
-            mStorageReference = FirebaseStorage.getInstance().getReference().child("Map/" + plant.getName() + ".jpeg");
+            // Plant MiniMap
+            mStorageReference = FirebaseStorage.getInstance().getReference().child("MiniMap/" + plant.getScientificName() + ".png");
 
             try {
-                final File localFile = File.createTempFile(""+ plant.getName() + "","jpeg");
+                final File localFile = File.createTempFile(""+ plant.getScientificName() + "","png");
                 mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                         // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
                         Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
                         ((ImageView) findViewById(R.id.plant_map)).setImageBitmap(bitmap);
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(PlantDetails.this, "Error occured", Toast.LENGTH_SHORT).show();
+
+
+                    }
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Plant location
+            mStorageReference = FirebaseStorage.getInstance().getReference().child("PlantLocation/" + plant.getScientificName() + ".png");
+
+            try {
+                final File localFile = File.createTempFile(""+ plant.getScientificName() + "","png");
+                mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                        // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
+                        Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                        ((ImageView) findViewById(R.id.plantLocationMap)).setImageBitmap(bitmap);
 
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -177,7 +202,7 @@ public class PlantDetails extends AppCompatActivity {
                             }
 
                             // Plant Map
-                            mStorageReference = FirebaseStorage.getInstance().getReference().child("Map/" + mapPlant.getName() + ".jpeg");
+                            mStorageReference = FirebaseStorage.getInstance().getReference().child("MiniMap/" + mapPlant.getName() + ".jpeg");
 
                             try {
                                 final File localFile = File.createTempFile(""+ mapPlant.getName() + "","jpeg");

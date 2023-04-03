@@ -8,23 +8,27 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.google.android.gms.maps.MapView
-                android:id="@+id/mapView4"
+            <ImageView
+                android:id="@+id/plantLocationMap"
                 android:layout_width="wrap_content"
-                android:layout_height="161dp"
+                android:layout_height="150dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="37dp"
-                android:layout_marginTop="571dp"
-                android:layout_marginEnd="33dp"
-                android:contentDescription='Location of Plant' />
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="573dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="4dp"
+                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/textView21"
