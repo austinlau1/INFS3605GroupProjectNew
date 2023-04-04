@@ -71,6 +71,18 @@
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
+            android:name=".HistoryOfUNSWLand"
+            android:exported="false" />
+        <activity
+            android:name=".LinkToResources"
+            android:exported="false" />
+        <activity
+            android:name=".Biodiversity"
+            android:exported="false" />
+        <activity
+            android:name=".WellBeingOnCampus"
+            android:exported="false" />
+        <activity
             android:name=".UserDetails"
             android:exported="false" />
         <activity
