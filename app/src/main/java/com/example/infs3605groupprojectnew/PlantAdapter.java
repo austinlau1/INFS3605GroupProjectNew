@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 //import com.bumptech.glide.Glide;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -49,6 +50,8 @@ public class PlantAdapter extends RecyclerView.Adapter /*implements Filterable*/
         viewHolderClass.plantName.setText(plantsList.getName());
         viewHolderClass.plantScientificName.setText(plantsList.getScientificName());
         viewHolderClass.plantId.setText((plantsList.getId().toString()));
+        Glide.with(viewHolderClass.plantPicture.getContext()).load(plantsList.getImage()).into(viewHolderClass.plantPicture);
+
         viewHolderClass.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,12 +75,15 @@ public class PlantAdapter extends RecyclerView.Adapter /*implements Filterable*/
         TextView plantName;
         private TextView plantScientificName;
         private TextView plantId;
+        private ImageView plantPicture;
 
         public ViewHolderClass(@NonNull View itemView) {
             super(itemView);
             plantName=itemView.findViewById(R.id.plantNm);
             plantScientificName=itemView.findViewById(R.id.plantScientific);
             plantId = itemView.findViewById(R.id.plantIDNum);
+            plantPicture = itemView.findViewById(R.id.plantPicture);
+
 
         }
     }
