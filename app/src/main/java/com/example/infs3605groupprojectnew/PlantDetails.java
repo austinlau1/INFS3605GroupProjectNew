@@ -3,6 +3,7 @@ package com.example.infs3605groupprojectnew;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -19,14 +20,8 @@ import androidx.appcompat.app.AppCompatActivity;
 //import com.google.firebase.storage.FirebaseStorage;
 //import com.google.firebase.storage.StorageReference;
 //import com.bumptech.glide.Glide;
-import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -34,7 +29,6 @@ import com.google.firebase.storage.StorageReference;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class PlantDetails extends AppCompatActivity {
@@ -57,6 +51,7 @@ public class PlantDetails extends AppCompatActivity {
         TextView plant_description = findViewById(R.id.plant_description);
         Button learn_more_btn = findViewById(R.id.learn_more_btn);
         Button audio_btn = findViewById(R.id.audio_btn);
+        Button audio_end_btn = findViewById(R.id.audioEndBtn);
 
         // Textview Scroll for plant description
         plant_description.setMovementMethod(new ScrollingMovementMethod());
@@ -162,14 +157,53 @@ public class PlantDetails extends AppCompatActivity {
                 }
             });
 
-            // Audio button with youtube search
             audio_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
-                    Intent youtube_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/results?search_query=" + plant.getName()));
-                    startActivity(youtube_search);
+                public void onClick(View v) {
+                    mStorageReference = FirebaseStorage.getInstance().getReference().child("Audio/" + plant.getScientificName() + ".mp3");
+
+                    File localFile;
+                    try {
+                        localFile = File.createTempFile("audio", "mp3");
+                    } catch (IOException e) {
+                        //Log.e(TAG, "Error creating temp file", e);
+                        return;
+                    }
+
+                    mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                            // Play the audio file using MediaPlayer
+                            MediaPlayer mediaPlayer = new MediaPlayer();
+                            try {
+                                mediaPlayer.setDataSource(localFile.getAbsolutePath());
+                                mediaPlayer.prepare();
+                                mediaPlayer.start();
+                            } catch (IOException e) {
+                                //Log.e(TAG, "Error playing audio file", e);
+                            }
+
+                            // Stop audio button
+                            Button endButton = findViewById(R.id.audioEndBtn);
+                            endButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    mediaPlayer.stop();
+                                    mediaPlayer.release();
+                                }
+                            });
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            //Log.e(TAG, "Error downloading audio file", exception);
+                        }
+                    });
                 }
             });
+
+
+
         } else {
             // Retrieve the value of the extra
             String plantName = intent.getStringExtra("plant_name");

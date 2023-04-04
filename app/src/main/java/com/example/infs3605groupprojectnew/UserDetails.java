@@ -32,6 +32,10 @@ public class UserDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_profile_page);
 
+
+        // User userRecord = FirebaseAuth.getInstance().getUser(uid);
+        // System.out.println("Successfully fetched user data: " + userRecord.getUid());
+
 /*        Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
         User users = (User) bundle.getSerializable("key");*//*
