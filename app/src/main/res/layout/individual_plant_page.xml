@@ -95,6 +95,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="36dp"
+                android:scrollbars = "vertical"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
                 android:layout_marginTop="263dp"
                 android:layout_marginEnd="39dp"
                 android:fontFamily="@font/inter"

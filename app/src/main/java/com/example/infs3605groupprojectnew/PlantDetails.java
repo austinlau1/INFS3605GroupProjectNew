@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -56,6 +57,9 @@ public class PlantDetails extends AppCompatActivity {
         TextView plant_description = findViewById(R.id.plant_description);
         Button learn_more_btn = findViewById(R.id.learn_more_btn);
         Button audio_btn = findViewById(R.id.audio_btn);
+
+        // Textview Scroll for plant description
+        plant_description.setMovementMethod(new ScrollingMovementMethod());
 
         if (plant != null) {
 
