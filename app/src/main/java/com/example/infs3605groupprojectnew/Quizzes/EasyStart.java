@@ -20,7 +20,7 @@ public class EasyStart extends AppCompatActivity {
         startQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EasyStart.this, TestQuiz.class);
+                Intent intent = new Intent(EasyStart.this, EasyProgress.class);
                 //intent.putExtra("ProfileInfo", username);
                 startActivity(intent);
 

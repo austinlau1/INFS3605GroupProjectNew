@@ -95,11 +95,11 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="36dp"
-                android:scrollbars = "vertical"
-                android:scrollbarAlwaysDrawVerticalTrack="true"
                 android:layout_marginTop="263dp"
                 android:layout_marginEnd="39dp"
                 android:fontFamily="@font/inter"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:scrollbars="vertical"
                 android:text="Description"
                 android:textSize="16sp" />
 
@@ -146,14 +146,12 @@
 
             <TextView
                 android:id="@+id/geographic_distribution"
-                android:layout_width="185dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
                 android:layout_below="@+id/plant_map"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="212dp"
+                android:layout_alignEnd="@+id/plant_map"
                 android:layout_marginTop="-179dp"
-                android:layout_marginEnd="12dp"
+                android:layout_marginEnd="1dp"
                 android:fontFamily="@font/inter_light"
                 android:text="Geographic distribution"
                 android:textSize="16sp" />

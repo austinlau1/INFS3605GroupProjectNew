@@ -1,188 +1,217 @@
 package com.example.infs3605groupprojectnew.Quizzes;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.infs3605groupprojectnew.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Locale;
 
-public class EasyProgress extends AppCompatActivity implements View.OnClickListener {
+public class EasyProgress extends AppCompatActivity {
 
-    // Values for Timer
-    private static final long START_TIME_IN_MILLISECONDS = 60000;
-    private static TextView timeLeft;
-    private static CountDownTimer mCountDownTimer;
-    private static Boolean timerRunning;
-    private static long timeLeftInMilliseconds = START_TIME_IN_MILLISECONDS;
-
-    // Values for Quiz
-    TextView questionNumber;
-    TextView totalNumber;
-    TextView quizQuestion;
-    Button option1;
-    Button option2;
-    Button option3;
-    Button submitButton;
-    int correctCount = 0;
-    int incorrectCount = 0;
-    int totalQuestionCount = 5;
-    int currentQuestionCount = 0;
-    int randomNumber = 0;
-    String selectedAnswer = "";
-    ArrayList<Integer> list;
+    private ArrayList<QuizQuestion> quizQuestions;
+    private int currentQuestionIndex = 0;
+    private int score = 0;
+    private CountDownTimer timer;
+    private AlertDialog dialog;
+    RadioGroup optionsRadioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_easy_progress);
+        setContentView(R.layout.quiz_template);
 
-        // Timer
-        //timeLeft = findViewById(R.id.timeLeft);
+        // Get the list of questions from Firebase Realtime Database
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Easy Quiz");
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                quizQuestions = new ArrayList<>();
+                for (DataSnapshot questionSnapshot : dataSnapshot.getChildren()) {
+                    String question = questionSnapshot.child("question").getValue(String.class);
+                    String option1 = questionSnapshot.child("option1").getValue(String.class);
+                    String option2 = questionSnapshot.child("option2").getValue(String.class);
+                    String option3 = questionSnapshot.child("option3").getValue(String.class);
+                    String option4 = questionSnapshot.child("option4").getValue(String.class);
+                    String answer = questionSnapshot.child("answer").getValue(String.class);
 
-        // Randomiser to get random questions from bank
-        int size = 20;
+                    // Add the extracted data to an array list
+                    QuizQuestion quizQuestion = new QuizQuestion(question, option1, option2, option3, option4, answer);
+                    quizQuestions.add(quizQuestion);
+                }
 
-        list = new ArrayList<Integer>(size);
-        for(int i = 0; i < size; i++) {
-            list.add(i);
-        }
+                startTimer();
 
-        Collections.shuffle(list);
-        System.out.println(list);
+                Button nextButton = findViewById(R.id.next_button);
+                nextButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        nextQuestion();
+                    }
+                });
+            }
 
-        //Quiz
-        /*questionNumber = findViewById(R.id.questionNumber);
-        totalNumber = findViewById(R.id.totalNumber);
-        quizQuestion = findViewById(R.id.quizQuestion);
-        option1 = findViewById(R.id.option1);
-        option2 = findViewById(R.id.option2);
-        option3 = findViewById(R.id.option3);
-        submitButton = findViewById(R.id.submitButton);*/
-
-        option1.setOnClickListener(this);
-        option2.setOnClickListener(this);
-        option3.setOnClickListener(this);
-        submitButton.setOnClickListener(this);
-
-        questionNumber.setText(currentQuestionCount + 1 + "");
-        totalNumber.setText("" + totalQuestionCount);
-
-        //resetTimer();
-        startTimer();
-        loadNewQuestion();
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle the error
+                Log.e("Easy Progress", "Error getting questions from database", databaseError.toException());
+            }
+        });
     }
 
-    // Method to Start the Timer
     private void startTimer() {
-        mCountDownTimer = new CountDownTimer(timeLeftInMilliseconds, 1000) {
+        timer = new CountDownTimer(60000, 1000) {
             @Override
-            public void onTick(long timeTillFinish) {
-                timeLeftInMilliseconds = timeTillFinish;
-                updateCountdownTextView();
+            public void onTick(long millisUntilFinished) {
+                // Update the timer TextView every second
+                int secondsLeft = (int) millisUntilFinished / 1000;
+                String timeLeft = String.format(Locale.getDefault(), ":%02d", secondsLeft);
+                TextView tvTimer = findViewById(R.id.tv_timer);
+                //Change "0" if total time is changed
+                tvTimer.setText("0" + timeLeft);
             }
 
             @Override
             public void onFinish() {
-                //Add incomplete questions to incorrectCount
-                int temp = totalQuestionCount - currentQuestionCount;
-                incorrectCount = temp + incorrectCount;
-                //Move to CompletedQuiz page
-                finishQuiz();
-                resetTimer();
+                // Handle timer finish
+                showResult();
             }
         }.start();
-
-        timerRunning = true;
-
+        displayQuestion();
     }
 
-    // Method that updates the timer
-    private void updateCountdownTextView() {
-        int minutes = (int) timeLeftInMilliseconds / 1000 / 60;
-        int seconds = (int) (timeLeftInMilliseconds / 1000) % 60;
+    private void displayQuestion() {
+        QuizQuestion currentQuestion = quizQuestions.get(currentQuestionIndex);
 
-        String timeLeftTimer = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+        TextView questionTextView = findViewById(R.id.question_text_view);
+        questionTextView.setText(currentQuestion.getQuestion());
 
-        timeLeft.setText(timeLeftTimer);
+        RadioButton option1RadioButton = findViewById(R.id.option1RadioButton);
+        option1RadioButton.setText(currentQuestion.getOption1());
+
+        RadioButton option2RadioButton = findViewById(R.id.option2RadioButton);
+        option2RadioButton.setText(currentQuestion.getOption2());
+
+        RadioButton option3RadioButton = findViewById(R.id.option3RadioButton);
+        option3RadioButton.setText(currentQuestion.getOption3());
+
+        RadioButton option4RadioButton = findViewById(R.id.option4RadioButton);
+        option4RadioButton.setText(currentQuestion.getOption4());
     }
 
-    // Method to reset the timer
-    private void resetTimer() {
-        if (timerRunning = true) {
-            mCountDownTimer.cancel();
-        }
-        timerRunning = false;
-        timeLeftInMilliseconds = START_TIME_IN_MILLISECONDS;
-        updateCountdownTextView();
-    }
-
-    // Code that actions what each button click does
-    @Override
-    public void onClick(View view) {
-
-        //Drawable btnBackground = getResources().getDrawable(R.drawable.gradient2);
-        //Drawable btnBackground2 = getResources().getDrawable(R.drawable.gradient_outline);
-        //option1.setBackground(btnBackground);
-        //option2.setBackground(btnBackground);
-        //option3.setBackground(btnBackground);
-
-        /*Button buttonClicked = (Button) view;
-        if (buttonClicked.getId() == R.id.submitButton) {
-            if (selectedAnswer.equals(QuizQuestions.savingsAnswers[list.get(randomNumber)])) {
-                correctCount++;
-            } else {
-                incorrectCount++;
-            }
-
-            currentQuestionCount++;
-            System.out.println("Number is: " + list.get(randomNumber));
-            randomNumber++;
-            loadNewQuestion();
-
+    private boolean checkAnswer() {
+        QuizQuestion currentQuestion = quizQuestions.get(currentQuestionIndex);
+        optionsRadioGroup = findViewById(R.id.optionsRadioGroup);
+        int selectedOptionId = optionsRadioGroup.getCheckedRadioButtonId();
+        if (selectedOptionId == -1) {
+            // No option selected
+            return false;
         } else {
-
-            selectedAnswer = buttonClicked.getText().toString();
-            buttonClicked.setBackground(btnBackground2);
-        }*/
-
-    }
-
-    // Method to load the next question
-    void loadNewQuestion() {
-
-        if (currentQuestionCount == totalQuestionCount) {
-            finishQuiz();
-            return;
+            RadioButton selectedRadioButton = findViewById(selectedOptionId);
+            String selectedOptionText = selectedRadioButton.getText().toString();
+            return selectedOptionText.equals(currentQuestion.getAnswer());
         }
-        questionNumber.setText(currentQuestionCount + 1 + "");
-
-        //quizQuestion.setText(QuizQuestions.savingsQuestions[list.get(randomNumber)]);
-        //option1.setText(QuizQuestions.savingsOptions[list.get(randomNumber)][0]);
-        //option2.setText(QuizQuestions.savingsOptions[list.get(randomNumber)][1]);
-        //.setText(QuizQuestions.savingsOptions[list.get(randomNumber)][2]);
     }
 
-    // Method to finish the quiz
-    void finishQuiz() {
-        Intent intent = new Intent(EasyProgress.this, EasyCompleted.class);
-        System.out.println(correctCount);
-        System.out.println(incorrectCount);
+    private void nextQuestion() {
+        boolean isCorrect = checkAnswer();
 
-        //intent.putExtra("ProfileInfo", username);
-        intent.putExtra("Correct Score", Integer.toString(correctCount));
-        intent.putExtra("Incorrect Score", Integer.toString(incorrectCount));
-        startActivity(intent);
-        resetTimer();
+        if (isCorrect) {
+            score++;
+        }
+
+        currentQuestionIndex++;
+
+        // Clear the checked radio button
+        optionsRadioGroup.clearCheck();
+
+        if (currentQuestionIndex >= quizQuestions.size()) {
+            // Quiz is over
+            showResult();
+        } else {
+            displayQuestion();
+        }
+    }
+
+    private void showResult() {
+
+        // Inflate the layout file for the "show result" screen
+        View resultView = getLayoutInflater().inflate(R.layout.quiz_result, null);
+
+        // Find the FrameLayout view in the layout
+        FrameLayout trophyFrameLayout = resultView.findViewById(R.id.trophyFrameLayout);
+
+        // Create an AlertDialog with the custom layout
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(resultView);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        // Create an ImageView and add it to the FrameLayout
+        ImageView trophyImageView = new ImageView(this);
+        trophyImageView.setImageResource(R.drawable.gold_trophy);
+        trophyFrameLayout.addView(trophyImageView);
+
+        // Create a ConfettiView and add it to the FrameLayout
+        //ConfettiView confettiView = new ConfettiView(this, null);
+        //trophyFrameLayout.addView(confettiView);
+
+        // Find any relevant views in the layout and update their values or add listeners
+        TextView scoreTextView = resultView.findViewById(R.id.scoreTextView);
+        scoreTextView.setText("You scored " + score + " out of " + quizQuestions.size() + "!");
+
+        Button restartButton = resultView.findViewById(R.id.restartButton);
+        restartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                restartQuiz();
+            }
+        });
+
+        Button exitButton = resultView.findViewById(R.id.exitButton);
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
+        double calc = 0.6* quizQuestions.size();
+
+        // If the user scored 100%, show the trophy and confetti animation
+        if (score >= calc) {
+            // Set the visibility of the trophy FrameLayout to visible
+            trophyFrameLayout.setVisibility(View.VISIBLE);
+
+        }
 
     }
+
+
+    private void restartQuiz() {
+        score = 0;
+        currentQuestionIndex = 0;
+        displayQuestion();
+    }
+
 }

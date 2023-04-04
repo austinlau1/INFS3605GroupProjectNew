@@ -6,12 +6,12 @@ import android.os.Bundle;
 
 import com.example.infs3605groupprojectnew.R;
 
-public class EasyCompleted extends AppCompatActivity {
+public class HardStart extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_easy_completed);
+        setContentView(R.layout.activity_hard_start);
 
 
 
