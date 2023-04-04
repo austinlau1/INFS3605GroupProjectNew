@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,72 +21,93 @@
             android:background="@color/green1">
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/infoText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="95dp"
-                android:layout_marginTop="68dp"
-                android:fontFamily="@font/inter"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="62dp"
+                android:layout_marginTop="61dp"
+                android:layout_marginEnd="57dp"
+                android:drawableLeft="@drawable/ic_baseline_info_24"
+                android:fontFamily="@font/inter_bold"
                 android:text="INFORMATION"
+                android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="34sp"
+                android:textSize="36dp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
+                android:id="@+id/FAQText"
+                android:layout_width="128dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="18dp"
-                android:layout_marginTop="492dp"
+                android:layout_marginTop="460dp"
+                android:drawableLeft="@drawable/ic_baseline_email_24"
+                android:fontFamily="@font/inter_bold"
                 android:text="FAQs"
+                android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="28sp"
+                android:textSize="34sp"
                 android:textStyle="bold" />
 
             <Button
                 android:id="@+id/HistoryLandBtn"
-                android:layout_width="140dp"
-                android:layout_height="91dp"
+                android:layout_width="167dp"
+                android:layout_height="71dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="43dp"
-                android:layout_marginTop="173dp"
-                android:text="History of UNSW land" />
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="165dp"
+                android:background="@drawable/grey1_box"
+                android:text="History of UNSW land"
+                android:textColor="@color/white"
+                app:icon="@android:drawable/ic_dialog_map"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
                 android:id="@+id/BiodiversityBtn"
-                android:layout_width="140dp"
-                android:layout_height="91dp"
+                android:layout_width="167dp"
+                android:layout_height="71dp"
+                android:layout_below="@+id/HistoryLandBtn"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="229dp"
-                android:layout_marginTop="175dp"
-                android:text="Biodiversity" />
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="38dp"
+                android:background="@drawable/grey1_box"
+                android:text="Bio
+                diversity"
+                app:icon="?android:attr/actionModeFindDrawable" />
 
             <Button
                 android:id="@+id/WellBeingBtn"
-                android:layout_width="140dp"
-                android:layout_height="91dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="44dp"
-                android:layout_marginTop="304dp"
-                android:text="Wellbeing on Campus" />
+                android:layout_width="167dp"
+                android:layout_height="71dp"
+                android:layout_alignStart="@+id/HistoryLandBtn"
+                android:layout_alignTop="@+id/infoText"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="187dp"
+                android:layout_marginTop="104dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/grey1_box"
+                android:text="Wellbeing on Campus"
+                app:icon="@android:drawable/btn_star_big_on" />
 
             <Button
                 android:id="@+id/LinkResourceBtn"
-                android:layout_width="140dp"
-                android:layout_height="91dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="228dp"
-                android:layout_marginTop="308dp"
-                android:text="Link to Resources" />
+                android:layout_width="167dp"
+                android:layout_height="71dp"
+                android:layout_below="@+id/WellBeingBtn"
+                android:layout_alignStart="@+id/BiodiversityBtn"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="189dp"
+                android:layout_marginTop="39dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/grey1_box"
+                android:text="Link to Resources"
+                app:icon="@android:drawable/sym_contact_card" />
 
         </RelativeLayout>
     </ScrollView>
