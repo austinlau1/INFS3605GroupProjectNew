@@ -52,7 +52,7 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="179dp"
+                android:layout_height="200dp"
                 android:layout_below="@+id/banner_layout"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
@@ -345,15 +345,14 @@
                 android:id="@+id/editProfileBtn"
                 android:layout_width="137dp"
                 android:layout_height="40dp"
-                android:layout_alignBottom="@+id/imageView"
+                android:layout_below="@+id/imageView2"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="202dp"
-                android:layout_marginBottom="26dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/green1_box"
                 android:text="edit user"
-                app:rippleColor="@color/green5"/>
+                app:rippleColor="@color/green5" />
 
 
         </RelativeLayout>

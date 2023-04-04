@@ -9,18 +9,18 @@ import android.widget.Button;
 
 import com.example.infs3605groupprojectnew.R;
 
-public class EasyStart extends AppCompatActivity {
+public class LocationStart extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_easy_start);
+        setContentView(R.layout.activity_location_start);
 
         Button startQuiz = (Button) findViewById(R.id.startQuizBtn);
         startQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EasyStart.this, EasyProgress.class);
+                Intent intent = new Intent(LocationStart.this, LocationProgress.class);
                 //intent.putExtra("ProfileInfo", username);
                 startActivity(intent);
 
@@ -32,7 +32,7 @@ public class EasyStart extends AppCompatActivity {
         changeDifficulty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EasyStart.this, QuizOptions.class);
+                Intent intent = new Intent(LocationStart.this, QuizOptions.class);
                 intent.putExtra("ToNavigation", "QuizFragment");
                 //intent.putExtra("ProfileInfo", username);
                 startActivity(intent);

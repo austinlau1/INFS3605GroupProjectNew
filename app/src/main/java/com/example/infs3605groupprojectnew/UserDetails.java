@@ -3,12 +3,16 @@ package com.example.infs3605groupprojectnew;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.infs3605groupprojectnew.Quizzes.HardStart;
+import com.example.infs3605groupprojectnew.Quizzes.QuizOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -33,8 +37,29 @@ public class UserDetails extends AppCompatActivity {
         setContentView(R.layout.user_profile_page);
 
 
+
         // User userRecord = FirebaseAuth.getInstance().getUser(uid);
         // System.out.println("Successfully fetched user data: " + userRecord.getUid());
+
+        /*Button TCBtn = (Button) findViewById(R.id.hardBtn);
+
+        TCBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserDetails.this, TermsAndConditions.class);
+                startActivity(intent);
+            }
+        });
+
+        Button PPBtn = (Button) findViewById(R.id.hardBtn);
+
+        PPBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserDetails.this, PrivacyPolicy.class);
+                startActivity(intent);
+            }
+        });*/
 
 /*        Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();

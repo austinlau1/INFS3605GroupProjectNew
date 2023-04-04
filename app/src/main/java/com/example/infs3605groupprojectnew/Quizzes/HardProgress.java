@@ -25,8 +25,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Locale;
 
+public class HardProgress extends AppCompatActivity {
 
-public class TestQuiz extends AppCompatActivity {
     private ArrayList<QuizQuestion> quizQuestions;
     private int currentQuestionIndex = 0;
     private int score = 0;
@@ -40,7 +40,7 @@ public class TestQuiz extends AppCompatActivity {
         setContentView(R.layout.quiz_template);
 
         // Get the list of questions from Firebase Realtime Database
-        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Easy Quiz");
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Hard Quiz");
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -72,7 +72,7 @@ public class TestQuiz extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Handle the error
-                Log.e("TestQuiz", "Error getting questions from database", databaseError.toException());
+                Log.e("Hard Progress", "Error getting questions from database", databaseError.toException());
             }
         });
     }

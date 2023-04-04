@@ -23,17 +23,7 @@ public class QuizOptions extends AppCompatActivity {
         easyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(QuizOptions.this, TestQuiz.class);
-                startActivity(intent);
-            }
-        });
-
-        Button mediumBtn = (Button) findViewById(R.id.mediumBtn);
-
-        mediumBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(QuizOptions.this, MenuPage.class);
+                Intent intent = new Intent(QuizOptions.this, EasyStart.class);
                 startActivity(intent);
             }
         });
@@ -43,7 +33,17 @@ public class QuizOptions extends AppCompatActivity {
         hardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(QuizOptions.this, MenuPage.class);
+                Intent intent = new Intent(QuizOptions.this, HardStart.class);
+                startActivity(intent);
+            }
+        });
+
+        Button locationBtn = (Button) findViewById(R.id.locationBtn);
+
+        locationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QuizOptions.this, LocationStart.class);
                 startActivity(intent);
             }
         });
