@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/pageContent"
+        android:id="@+id/wellbeingContent"
         android:layout_width="345dp"
         android:layout_height="128dp"
         android:layout_marginTop="20dp"
@@ -45,9 +45,9 @@
         android:textAlignment="center"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/pageContent1"
-        app:layout_constraintEnd_toEndOf="@+id/pageContent"
+        app:layout_constraintEnd_toEndOf="@+id/wellbeingContent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/pageContent"
+        app:layout_constraintStart_toStartOf="@+id/wellbeingContent"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
     <TextView
@@ -63,7 +63,7 @@
         app:layout_constraintEnd_toEndOf="@+id/pageContent2"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/pageContent2"
-        app:layout_constraintTop_toBottomOf="@+id/pageContent"
+        app:layout_constraintTop_toBottomOf="@+id/wellbeingContent"
         app:layout_constraintVertical_bias="0.165" />
 
     <Button
