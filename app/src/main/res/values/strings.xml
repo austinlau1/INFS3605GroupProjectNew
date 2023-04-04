@@ -6,6 +6,17 @@
     <string name="welcome_text">Welcome to Bush Tucker Trail! </string>
     <string name="copyright_text">Copyright © 2023 Team GRAD® </string>
     <string name="gmaps_api_key">AIzaSyBobkTSzmJ1O5WAcVetFf6iFbooLT7EW-g</string>
+    <string name="HistorypageContent">As part of the UNSW 2025 Strategy, the University engaged historian Paul Irish, author of Hidden In Plain View:  The Aboriginal People of Coastal Sydney (NewSouth Publishing), to provide a historical and anthropological history of UNSW.</string>
+    <string name="bullted_list"><b><big></big></b>
+        \n <li>Pre-contact</li>
+        \n <li>First contact and Invasion</li>
+        \n <li>Conciliation</li>
+        \n <li>Frontier Wars</li>
+        \n <li>Compulsory Racial Segregation</li>
+        \n <li>Assimilation</li>
+        \n <li>Self-determination</li>
+        \n <li>Post self-determination</li>
+    </string>
     <string name="mapbox_access_token">pk.eyJ1Ijoicm9oaXQtd2FycmllciIsImEiOiJjbGZycnIzYWgwNHV0M3dqeHQzNHdvYm8xIn0.CVmbiCDugPw1u0ON7VJ1iQ</string>
     <string name="forgot_pw_text">Please enter the email address connected to your account. A link to reset your password will be sent shortly</string>
 </resources>

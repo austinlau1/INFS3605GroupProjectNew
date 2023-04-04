@@ -26,7 +26,7 @@
         android:fontFamily="@font/inter_semibold"
         android:text="Plant Name"
         android:textColor="#000000"
-        android:textSize="14sp"
+        android:textSize="20sp"
         app:drawableTint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/plantScientific"
         app:layout_constraintEnd_toEndOf="parent"
