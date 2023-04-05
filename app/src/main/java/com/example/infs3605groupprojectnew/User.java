@@ -1,12 +1,16 @@
 package com.example.infs3605groupprojectnew;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private String username;
     private String password;
     private String email;
     private String firstname;
     private String lastname;
 /*    private String id;*/
+
+    public User() {}
 
     public User(String username, String password, String email, String firstname, String lastname/*, String id*/) {
         this.username = username;

@@ -71,6 +71,8 @@ public class HomeFragment extends Fragment {
             firstNameTextView.setText(email);
         }
 
+
+
         // Button to explore plants
         Button toPlantsBtn = (Button) rootView.findViewById(R.id.toPlantsBtn);
 

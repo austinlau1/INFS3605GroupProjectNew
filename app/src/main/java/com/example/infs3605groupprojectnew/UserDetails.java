@@ -21,20 +21,87 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 public class UserDetails extends AppCompatActivity {
-    private FirebaseUser user;
+    /*private FirebaseUser user;
     private DatabaseReference mDatabase;
-    private String userId;
+    private String userId;*/
+
+    List <User> users;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_profile_page);
+        /*Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        User users = (User) bundle.getSerializable("key");*/
+
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("User/" + user.getUid());
+
+        TextView userName = findViewById(R.id.username);
+        TextView userEmail = findViewById(R.id.userEmail);
+
+        users = new ArrayList<>();
+
+        //if (users != null) {
+
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
+                userEmail.setText(userProfile.getEmail());
+                userName.setText(userProfile.getUsername());
+                System.out.println("Username: " + userName);
+                System.out.println("Email: " + userEmail);
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+            /*myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // Loop through the children nodes
+                    for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                        // Get the values of the user's fields
+                    *//*String name = userSnapshot.child("username").getValue(String.class);
+                    String email = userSnapshot.child("email").getValue(String.class);*//*
+                        //int age = userSnapshot.child("age").getValue(Integer.class);
+                        User userProfile = dataSnapshot.getValue(User.class);
+                        userEmail.setText(userProfile.getEmail());
+                        userName.setText(userProfile.getLastname());
+
+                        // Do something with the user's details, e.g. print them to the console
+                        System.out.println("Username: " + userName);
+                        System.out.println("Email: " + userEmail);
+
+
+                        // System.out.println("Age: " + age);
+                    }
+                }*/
+
+                /*@Override
+                public void onCancelled(DatabaseError error) {
+                    // Failed to read value
+                    // Log.w(TAG, "Failed to read value.", error.toException());
+                }
+            });*/
+        }
+
 
 
 
@@ -122,6 +189,6 @@ public class UserDetails extends AppCompatActivity {
 
 
         }*/
-    }
+    //}
 }
 
