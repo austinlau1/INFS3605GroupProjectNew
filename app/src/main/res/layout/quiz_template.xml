@@ -39,6 +39,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
+        android:gravity="center_horizontal"
+        android:layout_gravity="center"
         android:id="@+id/optionsRadioGroup"
         android:layout_width="159dp"
         android:layout_height="210dp"
@@ -49,24 +51,28 @@
         app:layout_constraintTop_toBottomOf="@+id/question_text_view">
 
         <RadioButton
+            android:padding="10dp"
             android:id="@+id/option1RadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Option 1" />
 
         <RadioButton
+            android:padding="10dp"
             android:id="@+id/option2RadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Option 2" />
 
         <RadioButton
+            android:padding="10dp"
             android:id="@+id/option3RadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Option 3" />
 
         <RadioButton
+            android:padding="10dp"
             android:id="@+id/option4RadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<stroke android:color="@color/primary"
+        android:width="2dp"/>
+    <corners android:radius = "@dimen/dimen20" />
+
+    <padding android:top="@dimen/dimen20"
+        android:buttom="@dimen/@dimen_20"
+        android:left="@dimen/@dimen_20"
+        android:right="@dimen/@dimen_20"/>-->
+
+</selector>

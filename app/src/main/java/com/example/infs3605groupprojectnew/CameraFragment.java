@@ -2,6 +2,7 @@ package com.example.infs3605groupprojectnew;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -49,12 +50,20 @@ public class CameraFragment extends Fragment {
     ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result -> {
         if(result.getContents() !=null) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle("Result");
-            builder.setMessage(result.getContents());
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            builder.setTitle("Plant Audio");
+            builder.setMessage("Click 'Listen' to hear about the Plant");
+            builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int which) {
                     dialogInterface.dismiss();
+                }
+            });
+            builder.setPositiveButton("Listen", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int which) {
+                    String url = result.getContents();
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(browserIntent);
                 }
             }).show();
         }

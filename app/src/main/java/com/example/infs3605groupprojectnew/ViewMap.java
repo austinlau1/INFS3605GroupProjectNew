@@ -2,46 +2,38 @@ package com.example.infs3605groupprojectnew;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationRequest;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationResult;
-import android.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 
 public class ViewMap extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mapView;
-    private Marker[] markers = new Marker[25];
+    private Marker[] plantMarkers = new Marker[25];
+    private Marker[] shadeMarkers = new Marker[9];
     private final int REQUEST_CODE = 10001;
     private FusedLocationProviderClient fusedLocationProviderClient;
     Location currentLocation;
     private LocationCallback locationCallback;
+    CheckBox toggleShadeMarker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +60,20 @@ public class ViewMap extends AppCompatActivity implements OnMapReadyCallback {
                 new LatLng(-33.916677, 151.238434) // North-east corner
         );
 
-        createMarkers();
+        displayPlantMarkers();
+
+        toggleShadeMarker = findViewById(R.id.toggleShadeMarker);
+        toggleShadeMarker.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    displayShadeMarkers();
+                } else {
+                    hideShadeMarkers();
+                }
+            }
+        });
+
 
         // Set the camera position and zoom level to a location inside the boundary
         LatLng UNSW_LOCATION = new LatLng(-33.9172, 151.2305);
@@ -94,82 +99,119 @@ public class ViewMap extends AppCompatActivity implements OnMapReadyCallback {
 
     }
 
-    private void createMarkers() {
+    private void displayShadeMarkers() {
+        BitmapDescriptor blueMarker = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE);
+
+        LatLng shade1 = new LatLng(-33.916135, 151.226598);
+        shadeMarkers[0] = mapView.addMarker(new MarkerOptions().position(shade1).title("Shade 1").icon(blueMarker));
+
+        LatLng shade2 = new LatLng(-33.916053, 151.226476);
+        shadeMarkers[1] = mapView.addMarker(new MarkerOptions().position(shade2).title("Shade 2").icon(blueMarker));
+
+        LatLng stairs = new LatLng(-33.918099, 151.232028);
+        shadeMarkers[2] = mapView.addMarker(new MarkerOptions().position(stairs).title("Stairs").icon(blueMarker));
+
+        LatLng shade4 = new LatLng(-33.916613, 151.234654);
+        shadeMarkers[3] = mapView.addMarker(new MarkerOptions().position(shade4).title("Shade 4").icon(blueMarker));
+
+        LatLng shade5 = new LatLng(-33.916573, 151.234597);
+        shadeMarkers[4] = mapView.addMarker(new MarkerOptions().position(shade5).title("Shade 5").icon(blueMarker));
+
+        LatLng shade6 = new LatLng(-33.916927, 151.235211);
+        shadeMarkers[5] = mapView.addMarker(new MarkerOptions().position(shade6).title("Shade 6").icon(blueMarker));
+
+        LatLng shade7 = new LatLng(-33.916965, 151.235415);
+        shadeMarkers[6] = mapView.addMarker(new MarkerOptions().position(shade7).title("Shade 7").icon(blueMarker));
+
+        LatLng shade8 = new LatLng(-33.917973, 151.234417);
+        shadeMarkers[7] = mapView.addMarker(new MarkerOptions().position(shade8).title("Shade 8").icon(blueMarker));
+
+        LatLng shade9 = new LatLng(-33.917924, 151.234101);
+        shadeMarkers[8] = mapView.addMarker(new MarkerOptions().position(shade9).title("Shade 9").icon(blueMarker));
+    }
+
+    private void hideShadeMarkers() {
+        for (Marker marker : shadeMarkers) {
+            marker.remove();
+        }
+    }
+
+    private void displayPlantMarkers() {
         // Add a marker for each plant
         LatLng stranglingFig = new LatLng(-33.917263, 151.226437);
-        markers[0] = mapView.addMarker(new MarkerOptions().position(stranglingFig).title("Strangling Fig"));
+        plantMarkers[0] = mapView.addMarker(new MarkerOptions().position(stranglingFig).title("Strangling Fig"));
 
         LatLng gymeaLily = new LatLng(-33.916721, 151.226312);
-        markers[1] = mapView.addMarker(new MarkerOptions().position(gymeaLily).title("Gymea Lily"));
+        plantMarkers[1] = mapView.addMarker(new MarkerOptions().position(gymeaLily).title("Gymea Lily"));
 
         LatLng paperbark = new LatLng(-33.916172, 151.226620);
-        markers[2] = mapView.addMarker(new MarkerOptions().position(paperbark).title("Paperbark"));
+        plantMarkers[2] = mapView.addMarker(new MarkerOptions().position(paperbark).title("Paperbark"));
 
         LatLng crimsonBottlebrush = new LatLng(-33.915816, 151.226514);
-        markers[3] = mapView.addMarker(new MarkerOptions().position(crimsonBottlebrush).title("Crimson Bottlebrush"));
+        plantMarkers[3] = mapView.addMarker(new MarkerOptions().position(crimsonBottlebrush).title("Crimson Bottlebrush"));
 
         LatLng banksia = new LatLng(-33.915667, 151.226618);
-        markers[4] = mapView.addMarker(new MarkerOptions().position(banksia).title("Banksia"));
+        plantMarkers[4] = mapView.addMarker(new MarkerOptions().position(banksia).title("Banksia"));
 
         LatLng mountainCedarWattle = new LatLng(-33.915686, 151.226898);
-        markers[5] = mapView.addMarker(new MarkerOptions().position(mountainCedarWattle).title("Mountain Cedar Wattle"));
+        plantMarkers[5] = mapView.addMarker(new MarkerOptions().position(mountainCedarWattle).title("Mountain Cedar Wattle"));
 
         LatLng nativeMint = new LatLng(-33.915863, 151.226838);
-        markers[6] = mapView.addMarker(new MarkerOptions().position(nativeMint).title("Native Mint"));
+        plantMarkers[6] = mapView.addMarker(new MarkerOptions().position(nativeMint).title("Native Mint"));
 
         LatLng tuckeroo = new LatLng(-33.916110, 151.228196);
-        markers[7] = mapView.addMarker(new MarkerOptions().position(tuckeroo).title("Tuckeroo"));
+        plantMarkers[7] = mapView.addMarker(new MarkerOptions().position(tuckeroo).title("Tuckeroo"));
 
         LatLng pricklyLeavedTeaTree = new LatLng(-33.917091, 151.232192);
-        markers[8] = mapView.addMarker(new MarkerOptions().position(pricklyLeavedTeaTree).title("Prickly-leaved Tea Tree"));
+        plantMarkers[8] = mapView.addMarker(new MarkerOptions().position(pricklyLeavedTeaTree).title("Prickly-leaved Tea Tree"));
 
         LatLng waterVine = new LatLng(-33.917207, 151.232165);
-        markers[9] = mapView.addMarker(new MarkerOptions().position(waterVine).title("Water Vine"));
+        plantMarkers[9] = mapView.addMarker(new MarkerOptions().position(waterVine).title("Water Vine"));
 
         LatLng rockLily = new LatLng(-33.917308, 151.232144);
-        markers[10] = mapView.addMarker(new MarkerOptions().position(rockLily).title("Rock Lily"));
+        plantMarkers[10] = mapView.addMarker(new MarkerOptions().position(rockLily).title("Rock Lily"));
 
         LatLng sandpaperFig = new LatLng(-33.917407, 151.232119);
-        markers[11] = mapView.addMarker(new MarkerOptions().position(sandpaperFig).title("Sandpaper Fig"));
+        plantMarkers[11] = mapView.addMarker(new MarkerOptions().position(sandpaperFig).title("Sandpaper Fig"));
 
         LatLng burrawang = new LatLng(-33.916716, 151.234349);
-        markers[12] = mapView.addMarker(new MarkerOptions().position(burrawang).title("Burrawang"));
+        plantMarkers[12] = mapView.addMarker(new MarkerOptions().position(burrawang).title("Burrawang"));
 
         LatLng plumPine = new LatLng(-33.916251, 151.234503);
-        markers[13] = mapView.addMarker(new MarkerOptions().position(plumPine).title("Plum Pine/Brown Pine"));
+        plantMarkers[13] = mapView.addMarker(new MarkerOptions().position(plumPine).title("Plum Pine/Brown Pine"));
 
         LatLng tussockGrass = new LatLng(-33.916503, 151.234676);
-        markers[14] = mapView.addMarker(new MarkerOptions().position(tussockGrass).title("Tussock Grass"));
+        plantMarkers[14] = mapView.addMarker(new MarkerOptions().position(tussockGrass).title("Tussock Grass"));
 
         //LatLng cabbageTreePalm = new LatLng(-33.916774, 151.234849);
         //markers[15] = mapView.addMarker(new MarkerOptions().position(cabbageTreePalm).title("Cabbage Tree Palm"));
 
         LatLng bolwarra = new LatLng(-33.918027, 151.234931);
-        markers[16] = mapView.addMarker(new MarkerOptions().position(bolwarra).title("Bolwarra"));
+        plantMarkers[16] = mapView.addMarker(new MarkerOptions().position(bolwarra).title("Bolwarra"));
 
         LatLng blueFlaxLily = new LatLng(-33.917972, 151.234534);
-        markers[17] = mapView.addMarker(new MarkerOptions().position(blueFlaxLily).title("Blue Flax Lily/Blueberry Lily"));
+        plantMarkers[17] = mapView.addMarker(new MarkerOptions().position(blueFlaxLily).title("Blue Flax Lily/Blueberry Lily"));
 
         LatLng oldManBanksia = new LatLng(-33.917945, 151.234238);
-        markers[18] = mapView.addMarker(new MarkerOptions().position(oldManBanksia).title("Saw Banksia/Old Man Banksia"));
+        plantMarkers[18] = mapView.addMarker(new MarkerOptions().position(oldManBanksia).title("Saw Banksia/Old Man Banksia"));
 
         LatLng matrush = new LatLng(-33.917789, 151.232173);
-        markers[19] = mapView.addMarker(new MarkerOptions().position(matrush).title("Spiny-headed Mat-rush"));
+        plantMarkers[19] = mapView.addMarker(new MarkerOptions().position(matrush).title("Spiny-headed Mat-rush"));
 
         LatLng ribery = new LatLng(-33.917964, 151.232071);
-        markers[20] = mapView.addMarker(new MarkerOptions().position(ribery).title("Riberry"));
+        plantMarkers[20] = mapView.addMarker(new MarkerOptions().position(ribery).title("Riberry"));
 
         LatLng grassTree = new LatLng(-33.918203, 151.232105);
-        markers[21] = mapView.addMarker(new MarkerOptions().position(grassTree).title("Grass Tree"));
+        plantMarkers[21] = mapView.addMarker(new MarkerOptions().position(grassTree).title("Grass Tree"));
 
         LatLng nativeGinger = new LatLng(-33.917056, 151.230081);
-        markers[22] = mapView.addMarker(new MarkerOptions().position(nativeGinger).title("Native Ginger"));
+        plantMarkers[22] = mapView.addMarker(new MarkerOptions().position(nativeGinger).title("Native Ginger"));
 
         LatLng flameTree = new LatLng(-33.917351, 151.230178);
-        markers[23] = mapView.addMarker(new MarkerOptions().position(flameTree).title("Illawarra Flame Tree"));
+        plantMarkers[23] = mapView.addMarker(new MarkerOptions().position(flameTree).title("Illawarra Flame Tree"));
 
         LatLng portJacksonFig = new LatLng(-33.917499, 151.227739);
-        markers[24] = mapView.addMarker(new MarkerOptions().position(portJacksonFig).title("Port Jackson Fig"));
+        plantMarkers[24] = mapView.addMarker(new MarkerOptions().position(portJacksonFig).title("Port Jackson Fig"));
     }
 
 }
