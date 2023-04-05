@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.infs3605groupprojectnew.R;
 import com.google.firebase.database.DataSnapshot;
@@ -33,6 +34,10 @@ public class EasyProgress extends AppCompatActivity {
     private CountDownTimer timer;
     private AlertDialog dialog;
     RadioGroup optionsRadioGroup;
+    RadioButton option1RadioButton;
+    RadioButton option2RadioButton;
+    RadioButton option3RadioButton;
+    RadioButton option4RadioButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +69,14 @@ public class EasyProgress extends AppCompatActivity {
                 nextButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        nextQuestion();
+                        // Check if an option has been selected
+                        if (!option1RadioButton.isChecked() && !option2RadioButton.isChecked() &&
+                                !option3RadioButton.isChecked() && !option4RadioButton.isChecked()) {
+                            Toast.makeText(getApplicationContext(), "Choose an Option", Toast.LENGTH_SHORT).show();
+                            return;
+                        } else {
+                            nextQuestion();
+                        }
                     }
                 });
             }
@@ -104,16 +116,16 @@ public class EasyProgress extends AppCompatActivity {
         TextView questionTextView = findViewById(R.id.question_text_view);
         questionTextView.setText(currentQuestion.getQuestion());
 
-        RadioButton option1RadioButton = findViewById(R.id.option1RadioButton);
+        option1RadioButton = findViewById(R.id.option1RadioButton);
         option1RadioButton.setText(currentQuestion.getOption1());
 
-        RadioButton option2RadioButton = findViewById(R.id.option2RadioButton);
+        option2RadioButton = findViewById(R.id.option2RadioButton);
         option2RadioButton.setText(currentQuestion.getOption2());
 
-        RadioButton option3RadioButton = findViewById(R.id.option3RadioButton);
+        option3RadioButton = findViewById(R.id.option3RadioButton);
         option3RadioButton.setText(currentQuestion.getOption3());
 
-        RadioButton option4RadioButton = findViewById(R.id.option4RadioButton);
+        option4RadioButton = findViewById(R.id.option4RadioButton);
         option4RadioButton.setText(currentQuestion.getOption4());
     }
 
@@ -145,7 +157,11 @@ public class EasyProgress extends AppCompatActivity {
 
         if (currentQuestionIndex >= quizQuestions.size()) {
             // Quiz is over
-            showResult();
+            // Stop the timer
+            if (timer != null) {
+                timer.cancel();
+                showResult();
+            }
         } else {
             displayQuestion();
         }
@@ -211,7 +227,7 @@ public class EasyProgress extends AppCompatActivity {
     private void restartQuiz() {
         score = 0;
         currentQuestionIndex = 0;
-        displayQuestion();
+        startTimer();
     }
 
 }

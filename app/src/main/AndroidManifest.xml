@@ -26,10 +26,13 @@
             android:name=".TermsAndConditions"
             android:exported="false" />
         <activity
-            android:name=".LocationStart"
+            android:name=".Quizzes.LocationStart"
             android:exported="false" />
         <activity
-            android:name=".HardProgress"
+            android:name=".Quizzes.LocationProgress"
+            android:exported="false" />
+        <activity
+            android:name=".Quizzes.HardProgress"
             android:exported="false" />
         <activity
             android:name=".ViewMap"
