@@ -1,6 +1,7 @@
 package com.example.infs3605groupprojectnew;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -43,34 +44,70 @@ public class UserDetails extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         User users = (User) bundle.getSerializable("key");*/
 
+        Button termsncond = findViewById(R.id.TCBtn);
+        Button privacy = findViewById(R.id.PPBtn);
+
+        //direct to terms and conditions and privacy policy page
+        termsncond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserDetails.this,TermsAndConditions.class);
+                startActivity(intent);
+            }
+        });
+
+
+        privacy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserDetails.this,PrivacyPolicy.class);
+                startActivity(intent);
+            }
+        });
+
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("User/" + user.getUid());
+        DatabaseReference myRef = null;
+        if (user != null) {
+            myRef = FirebaseDatabase.getInstance().getReference("User/" + user.getUid());
+        }
 
-        TextView userName = findViewById(R.id.username);
+        TextView userName = findViewById(R.id.userUsername);
+        TextView hiFirstName = findViewById(R.id.hiUserName);
         TextView userEmail = findViewById(R.id.userEmail);
+        TextView userFName = findViewById(R.id.userFirstName);
+        TextView userLName = findViewById(R.id.userLastName);
+
 
         users = new ArrayList<>();
 
         //if (users != null) {
 
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User userProfile = snapshot.getValue(User.class);
-                userEmail.setText(userProfile.getEmail());
-                userName.setText(userProfile.getUsername());
-                System.out.println("Username: " + userName);
-                System.out.println("Email: " + userEmail);
+        if (myRef != null) {
+            myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    User userProfile = snapshot.getValue(User.class);
+                    if (userProfile != null) {
+                        hiFirstName.setText(userProfile.getFirstname());
+                        userEmail.setText(userProfile.getEmail());
+                        userName.setText(userProfile.getUsername());
+                        userFName.setText(userProfile.getFirstname());
+                        userLName.setText(userProfile.getLastname());
+                    }
+    //                userName.setText(userProfile.getUsername());
+                    System.out.println("Username: " + userName);
+                    System.out.println("Email: " + userEmail);
 
 
-            }
+                }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+                }
+            });
+        }
 
             /*myRef.addValueEventListener(new ValueEventListener() {
                 @Override
