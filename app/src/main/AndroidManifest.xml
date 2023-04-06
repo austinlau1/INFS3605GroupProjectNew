@@ -86,6 +86,9 @@
             android:name=".WellBeingOnCampus"
             android:exported="false" />
         <activity
+            android:name=".ModifyDetails"
+            android:exported="false" />
+        <activity
             android:name=".AdminLogin"
             android:exported="false" />
         <activity

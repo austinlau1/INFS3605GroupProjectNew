@@ -46,6 +46,16 @@ public class UserDetails extends AppCompatActivity {
 
         Button termsncond = findViewById(R.id.TCBtn);
         Button privacy = findViewById(R.id.PPBtn);
+        Button modifyDetailsBtn = findViewById(R.id.modifyDetailsBtn);
+
+        // Direct users to modify user details page
+        modifyDetailsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserDetails.this,ModifyDetails.class);
+                startActivity(intent);
+            }
+        });
 
         //direct to terms and conditions and privacy policy page
         termsncond.setOnClickListener(new View.OnClickListener() {
