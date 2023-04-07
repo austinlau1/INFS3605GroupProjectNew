@@ -6,8 +6,15 @@
     <string name="welcome_text">Welcome to Bush Tucker Trail! </string>
     <string name="copyright_text">Copyright © 2023 Team GRAD® </string>
     <string name="gmaps_api_key">AIzaSyBobkTSzmJ1O5WAcVetFf6iFbooLT7EW-g</string>
+    <string name="bio_values">Biodiversity is also important for people and the survival of humanity. The CSIRO describes five core values that humans place on biodiversity:
+    \n <li><b>Economic</b>—biodiversity provides humans with raw materials for consumption and production. Many livelihoods, such as those of farmers, fishers and timber workers, are dependent on biodiversity.</li>
+        \n <li><b>Ecological life support</b> —biodiversity provides functioning ecosystems that supply oxygen, clean air and water, pollination of plants, pest control, wastewater treatment and many ecosystem services.</li>
+        \n <li><b>Recreational</b>—many recreational pursuits rely on our unique biodiversity, such as birdwatching, hiking, camping and fishing. Our tourism industry also depends on biodiversity.</li>
+        \n <li><b>Cultural</b>—the Australian culture is closely connected to biodiversity through the expression of identity, through spirituality and through aesthetic appreciation. Indigenous Australians have strong connections and obligations to biodiversity arising from spiritual beliefs about animals and plants.</li>
+        \n <li><b>Scientific</b>—biodiversity represents a wealth of systematic ecological data that help us to understand the natural world and its origins.</li>
+       </string>
     <string name="HistorypageContent">As part of the UNSW 2025 Strategy, the University engaged historian Paul Irish, author of Hidden In Plain View:  The Aboriginal People of Coastal Sydney (NewSouth Publishing), to provide a historical and anthropological history of UNSW.</string>
-    <string name="bullted_list"><b><big></big></b>
+    <string name="bullted_list"><b>A timeline of Aboriginal occupation of the area encompassing UNSW consists of the following sequential phases:</b>
         \n <li>Pre-contact</li>
         \n <li>First contact and Invasion</li>
         \n <li>Conciliation</li>
@@ -18,8 +25,25 @@
         \n <li>Post self-determination</li>
     </string>
 
+    <string name="bio_benefits">\n <li>Disease Resistance</li>
+        \n <li>Carbon Sequestration</li>
+        \n <li>Storm, Flooding, and Coastal Erosion Regulation</li>
+        \n <li>Food Security</li>
+        \n <li>Overall Health and Happiness</li></string>
     <string name="mapbox_access_token">pk.eyJ1Ijoicm9oaXQtd2FycmllciIsImEiOiJjbGZycnIzYWgwNHV0M3dqeHQzNHdvYm8xIn0.CVmbiCDugPw1u0ON7VJ1iQ</string>
-    <string name="wellbeing2">As well as providing a habitat for wildlife and contributing to a pleasing aesthetic, trees create a microclimate that can significantly reduce the  \"urban heat island effect\". This provides staff, students and members of the UNSW community with a more comfortable campus environment and the temperature decreases can significantly reduce the amount of energy required to cool (and in some instances to heat) buildings. There is also a growing body of evidence that even an outlook on trees and other greenspace can significantly improve mood and has even been shown to accelerate recovery of people in hospitals! UNSW welcomes visitors to enjoy the benefits of the green spaces on campus all year round, free of charge.</string>
+    <string name="Gujaga_foundation">The Gujaga Foundation is the peak organisation leading language, cultural and research activities within the La Perouse Aboriginal community. Gujaga works collaboratively with Elders, knowledge holders and leading academics. Gujaga provides services to educational, cultural and corporate organisations relating to their cultural area within eastern, southern and south western Sydney.</string>
+    <string name="nura_gili">Nura Gili at Balnaves Place is situated at the heart of UNSW Kensington campus. They have study and meeting spaces for students and researchers. The team is also situated in the centre.</string>
+    <string name="la_perouse">The objectives of the La Perouse Local Aboriginal Land Council are to improve, protect and foster the best interests of all Aboriginal persons within the La Perouse Local Aboriginal Council’s area and other persons who are members of the La Perouse Local Aboriginal Land Council.</string>
+    <string name="IndigiGrow">IndigiGrow native plant initiative was created in 2018 and is based at La Perouse Public School Sydney, NSW. IndigiGrow, is a social enterprise from First Hand Solutions Aboriginal Corporation. It sustains people, land and culture through the propagation and growing of native plants, including bush foods and the critically endangered Eastern Suburbs Banksia Scrub (ESBS). IndigiGrow has been operating at La Perouse in Sydney for 5 years.</string>
+    <string name="what_is_biodi">Biodiversity refers to the variety and variability of life on Earth. <b>‘Biodiversity’</b> comes from two words: <b>‘biological’</b>, which means relating to biology or living organisms, and <b>‘diversity’</b>, meaning a range of different things or variety. Biodiversity is variation at the genetic, species, and ecosystem levels. Biodiversity is the variety of all living things: the different plants, animals and microorganisms, the different genetic information they contain, and the varied ecosystems they form.</string>
+    <string name="bio_important">Biodiversity is fundamentally important. It is considered by many to have intrinsic value: each species has a value and a right to exist, whether or not it is known to have value to humans.
+
+
+All species, including humans, rely on many other species to live. Many of us were taught about the web of life at school. We need varieties of healthy and well-functioning ecosystems to support the life of all species, including humans.
+
+
+So why do we need to conserve most or every species? We know so little about the interconnectedness and relationships between different species that it is impossible to be sure if there are any redundancies in our natural systems; in other words, we don’t know if we can afford to lose a species without any adverse impact on its ecosystem.</string>
+    <string name="wellbeing2">As well as providing a habitat for wildlife and contributing to a pleasing aesthetic, trees create a microclimate that can significantly reduce the  <b>\"urban heat island effect\"</b>. This provides staff, students and members of the UNSW community with a more comfortable campus environment and the temperature decreases can significantly reduce the amount of energy required to cool (and in some instances to heat) buildings. There is also a growing body of evidence that even an outlook on trees and other greenspace can significantly improve mood and has even been shown to accelerate recovery of people in hospitals! UNSW welcomes visitors to enjoy the benefits of the green spaces on campus all year round, free of charge.</string>
     <string name="wellbeing1">UNSW has more than 120,000 square metres of landscaped gardens and areas and almost three-quarters of this area in sporting fields. We are the proud caretakers of over 1200 trees on the Kensington campus, including several visually stunning 120-year-old Morton Bay and Port Jackson Fig trees. Our trees are managed through a tree database system and an interactive tree plan of the campus.</string>
     <string name="forgot_pw_text">Please enter the email address connected to your account. A link to reset your password will be sent shortly</string>
 </resources>

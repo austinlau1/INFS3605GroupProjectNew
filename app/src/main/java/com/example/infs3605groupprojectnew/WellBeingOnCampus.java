@@ -1,27 +1,30 @@
 package com.example.infs3605groupprojectnew;
 
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class WellBeingOnCampus extends AppCompatActivity {
 
-    Button navigateToWellBSource;
+    ImageView well_being;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wellbeing_on_campus_page);
-        Button navigateToWellBSource = findViewById(R.id.toWellBSourceBtn);
+        well_being = findViewById(R.id.img_wellb);
 
-        navigateToWellBSource.setOnClickListener(new View.OnClickListener() {
+        well_being.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent google_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.wellbeing.unsw.edu.au/healthy-places"));
-                startActivity(google_search);
+                Intent wellb_source = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.wellbeing.unsw.edu.au/healthy-places"));
+                startActivity(wellb_source );
             }
         });
     }
