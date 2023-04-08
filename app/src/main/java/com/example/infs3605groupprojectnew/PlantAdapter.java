@@ -1,5 +1,6 @@
 package com.example.infs3605groupprojectnew;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,9 +30,13 @@ public class PlantAdapter extends RecyclerView.Adapter /*implements Filterable*/
 //    private RecyclerViewClickListener mListener;
 
 
+
     public PlantAdapter(List<Plant> plant) {
         this.plant = plant;
+
     }
+
+
 
     @NonNull
     @Override
@@ -69,6 +74,12 @@ public class PlantAdapter extends RecyclerView.Adapter /*implements Filterable*/
     public int getItemCount() {
         return plant.size();
     }
+    public void searchPlantList(ArrayList<Plant> searchList){
+        plant = searchList;
+        notifyDataSetChanged();
+
+    }
+
 
     public class ViewHolderClass extends RecyclerView.ViewHolder{
 

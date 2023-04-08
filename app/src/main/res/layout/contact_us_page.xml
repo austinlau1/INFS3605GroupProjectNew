@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sendfeedback"
+    tools:context=".ContactUs">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="550dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/green1_box"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_bold"
+                android:text="Contact Us"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30dp">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/inter"
+                android:text="Please describe your issue below and we will respond by the next business day."
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="15dp">
+
+            </TextView>
+
+<!--            <TextView-->
+<!--                android:id="@+id/user_email_enquiry"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:fontFamily="@font/inter_semibold"-->
+<!--                android:text="User Email"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="14sp">-->
+
+<!--            </TextView>-->
+
+            <EditText
+                android:id="@+id/uploadEnquiry_email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/white_box"
+                android:gravity="start|center_vertical"
+                android:hint="Enter your email..."
+                android:paddingLeft="16dp"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+            <EditText
+                android:id="@+id/uploadEnquiry_title"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/white_box"
+                android:gravity="start|center_vertical"
+                android:hint="Enter title..."
+                android:paddingLeft="16dp"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+
+            <EditText
+                android:id="@+id/uploadEnquiry_detail"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/white_box"
+                android:gravity="start|center_vertical"
+                android:hint="Description..."
+                android:paddingLeft="16dp"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/submit_enquiry_Btn"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/green1_box"
+                android:backgroundTint="@color/green2"
+                android:text="Submit your enquiry"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</ScrollView>
+

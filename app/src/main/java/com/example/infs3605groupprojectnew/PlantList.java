@@ -2,6 +2,7 @@ package com.example.infs3605groupprojectnew;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,7 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.SearchView;
+import androidx.appcompat.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,8 +50,17 @@ public class PlantList extends AppCompatActivity {
         setContentView(R.layout.plant_recyclerview);
         recyclerView = findViewById(R.id.rvList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        searchView = findViewById(R.id.search);
+        searchView.clearFocus();
+
+//      served as a part of the search bar in plant fragment
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(PlantList.this, 1);
+        recyclerView.setLayoutManager(gridLayoutManager);
 
         plant = new ArrayList<>();
+
+
+
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Plants Database");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -77,27 +87,26 @@ public class PlantList extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.search_menu, menu);
-        SearchView searchView = (SearchView) menu.findItem(R.id.actionSearch).getActionView();
-        searchView.setQueryHint("Search...");
+
 
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                search(s);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
                 search(s);
-                return false;
+                return true;
             }
         });
-        return true;
+        return false;
 
+//      search function
     }
-    private void search (String str){
+    public void search (String str){
 
         ArrayList<Plant> myList = new ArrayList<>();
         for (Plant object : plant )
@@ -107,8 +116,9 @@ public class PlantList extends AppCompatActivity {
                  myList.add(object);
             }
         }
-        PlantAdapter plantAdapter1 = new PlantAdapter(myList);
-        recyclerView.setAdapter(plantAdapter1);
+//        PlantAdapter plantAdapter1 = new PlantAdapter(myList);
+//        recyclerView.setAdapter(plantAdapter1);
+         plantAdapter.searchPlantList(myList);
 
     }
 }

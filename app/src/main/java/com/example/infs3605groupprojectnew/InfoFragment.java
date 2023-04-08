@@ -50,6 +50,25 @@ public class InfoFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        // Link to FAQ Page
+        Button FrquentAskButton = rootView.findViewById(R.id.FAQBtn);
+        FrquentAskButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getActivity(), FAQ.class);
+                startActivity(intent1);
+            }
+        });
+
+        // Link to Contact Us Page
+        Button FAQBtn = rootView.findViewById(R.id.ContactUsBtn);
+        FAQBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ContactUs.class);
+                startActivity(intent);
+            }
+        });
 
         // Link to Resources button
         Button linkToResourcesBtn = rootView.findViewById(R.id.LinkResourceBtn);

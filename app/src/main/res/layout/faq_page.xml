@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/light_green_background"
+    android:divider="@drawable/baseline_arrow_drop_down_24"
+    android:orientation="vertical"
+    tools:context=".FAQ">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardElevation="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/wellb_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_bold"
+                        android:text="Frequently Asked Questions"
+                        android:textAlignment="center"
+                        android:textColor="@color/green5"
+                        android:textSize="25sp">
+
+                    </TextView>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/faq_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/grey1_box"
+                android:backgroundTint="#9FFFFFFF"
+                android:fontFamily="@font/inter_bold"
+                android:text=" 1. Is the UNSW Bush Tucker Trail App only for UNSW Students and Staff?"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="11sp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/faq_ans1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:autoSizeStepGranularity="2sp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/inter"
+                android:text="No, the UNSW Bush Tucker Trail App is available to anyone who wants to learn about the plants on the UNSW campus. It is free and open to public."
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/faq_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/grey1_box"
+                android:backgroundTint="#9FFFFFFF"
+                android:fontFamily="@font/inter_bold"
+                android:text="2. Can I contribute to the UNSW Bush Tucker Trail App?"
+                android:paddingLeft="5dp"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="11sp">
+
+            </TextView>
+            <TextView
+                android:id="@+id/faq_ans2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:autoSizeStepGranularity="2sp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/inter"
+                android:text="@string/FAQ_2"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp">
+            </TextView>
+            <TextView
+                android:id="@+id/faq_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/grey1_box"
+                android:backgroundTint="#9FFFFFFF"
+                android:fontFamily="@font/inter_bold"
+                android:text="3. Who can I contact if I have any issues with the UNSW Bush Tucker Trail?"
+                android:paddingLeft="5dp"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="11sp">
+
+            </TextView>
+            <TextView
+                android:id="@+id/faq_ans3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:autoSizeStepGranularity="2sp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/inter"
+                android:text="@string/FAQ_3"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp">
+            </TextView>
+            <TextView
+                android:id="@+id/faq_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/grey1_box"
+                android:backgroundTint="#9FFFFFFF"
+                android:fontFamily="@font/inter_bold"
+                android:text="4. What is the main functionality of the UNSW Bush Tucker Trail application?"
+                android:paddingLeft="5dp"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="11sp">
+
+            </TextView>
+            <TextView
+                android:id="@+id/faq_ans4"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:autoSizeStepGranularity="2sp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/inter"
+                android:text="@string/FAQ_4"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp">
+            </TextView>
+            <TextView
+                android:id="@+id/faq_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/grey1_box"
+                android:backgroundTint="#9FFFFFFF"
+                android:fontFamily="@font/inter_bold"
+                android:text="5. Is the Information on the UNSW Bush Tucker Trail reliable?"
+                android:paddingLeft="5dp"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="11sp">
+
+            </TextView>
+            <TextView
+                android:id="@+id/faq_ans5"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:autoSizeStepGranularity="2sp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/inter"
+                android:text="@string/FAQ_5"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp">
+            </TextView>
+            <TextView
+                android:id="@+id/faq_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/grey1_box"
+                android:backgroundTint="#9FFFFFFF"
+                android:fontFamily="@font/inter_bold"
+                android:text="6. I can’t find the specific plant listed on the page."
+                android:paddingLeft="5dp"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="11sp">
+
+            </TextView>
+            <TextView
+                android:id="@+id/faq_ans6"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:autoSizeStepGranularity="2sp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/inter"
+                android:text="@string/FAQ_6"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="10sp">
+            </TextView>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

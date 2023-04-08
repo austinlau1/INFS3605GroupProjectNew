@@ -23,6 +23,13 @@
             android:name=".PrivacyPolicy"
             android:exported="false" />
         <activity
+            android:name=".ContactUs"
+            android:exported="false" />
+        <activity
+            android:name=".FAQ"
+            android:exported="false" />
+
+        <activity
             android:name=".TermsAndConditions"
             android:exported="false" />
         <activity

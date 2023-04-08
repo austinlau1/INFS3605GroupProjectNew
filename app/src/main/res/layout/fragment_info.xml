@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,109 +7,178 @@
     android:background="@color/green1"
     tools:context=".InfoFragment">
 
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+<!--    <ScrollView-->
+<!--        android:id="@+id/scrollView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        tools:ignore="SpeakableTextPresentCheck">-->
+
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@color/green1">-->
+
+    <TextView
+        android:id="@+id/infoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        tools:ignore="SpeakableTextPresentCheck">
+        android:layout_alignParentEnd="true"
+        android:drawableLeft="@drawable/ic_baseline_info_24"
+        android:fontFamily="@font/inter_bold"
+        android:text="General Information"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="33dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.562"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.039" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/green1">
+    <Button
+        android:id="@+id/WellBeingBtn"
+        android:layout_width="167dp"
+        android:layout_height="71dp"
+        android:layout_alignStart="@+id/HistoryLandBtn"
+        android:layout_alignTop="@+id/infoText"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/grey1_box"
+        android:text="Wellbeing on Campus"
+        app:icon="@android:drawable/btn_star_big_on"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LinkResourceBtn" />
 
-            <TextView
-                android:id="@+id/infoText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="62dp"
-                android:layout_marginTop="61dp"
-                android:layout_marginEnd="57dp"
-                android:drawableLeft="@drawable/ic_baseline_info_24"
-                android:fontFamily="@font/inter_bold"
-                android:text="INFORMATION"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="36dp"
-                android:textStyle="bold" />
+    <Button
+        android:id="@+id/HistoryLandBtn"
+        android:layout_width="167dp"
+        android:layout_height="71dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/grey1_box"
+        android:text="History of UNSW land"
+        android:textColor="@color/white"
+        app:icon="@android:drawable/ic_dialog_map"
+        app:layout_constraintEnd_toStartOf="@+id/LinkResourceBtn"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/infoText"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-            <TextView
-                android:id="@+id/FAQText"
-                android:layout_width="128dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="460dp"
-                android:drawableLeft="@drawable/ic_baseline_email_24"
-                android:fontFamily="@font/inter_bold"
-                android:text="FAQs"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="34sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/HistoryLandBtn"
-                android:layout_width="167dp"
-                android:layout_height="71dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="165dp"
-                android:background="@drawable/grey1_box"
-                android:text="History of UNSW land"
-                android:textColor="@color/white"
-                app:icon="@android:drawable/ic_dialog_map"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <Button
-                android:id="@+id/BiodiversityBtn"
-                android:layout_width="167dp"
-                android:layout_height="71dp"
-                android:layout_below="@+id/HistoryLandBtn"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="38dp"
-                android:background="@drawable/grey1_box"
-                android:text="Bio
+    <Button
+        android:id="@+id/BiodiversityBtn"
+        android:layout_width="167dp"
+        android:layout_height="71dp"
+        android:layout_below="@+id/HistoryLandBtn"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/grey1_box"
+        android:text="Bio
                 diversity"
-                app:icon="?android:attr/actionModeFindDrawable" />
+        app:icon="?android:attr/actionModeFindDrawable"
+        app:layout_constraintEnd_toStartOf="@+id/WellBeingBtn"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HistoryLandBtn" />
 
-            <Button
-                android:id="@+id/WellBeingBtn"
-                android:layout_width="167dp"
-                android:layout_height="71dp"
-                android:layout_alignStart="@+id/HistoryLandBtn"
-                android:layout_alignTop="@+id/infoText"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="187dp"
-                android:layout_marginTop="104dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/grey1_box"
-                android:text="Wellbeing on Campus"
-                app:icon="@android:drawable/btn_star_big_on" />
+    <Button
+        android:id="@+id/LinkResourceBtn"
+        android:layout_width="167dp"
+        android:layout_height="71dp"
+        android:layout_below="@+id/WellBeingBtn"
+        android:layout_alignStart="@+id/BiodiversityBtn"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/grey1_box"
+        android:text="Link to Resources"
+        app:icon="@android:drawable/sym_contact_card"
+        app:layout_constraintBottom_toBottomOf="@+id/HistoryLandBtn"
+        app:layout_constraintEnd_toEndOf="@+id/infoText"
+        app:layout_constraintTop_toBottomOf="@+id/infoText"
+        app:layout_constraintVertical_bias="0.967" />
 
-            <Button
-                android:id="@+id/LinkResourceBtn"
-                android:layout_width="167dp"
-                android:layout_height="71dp"
-                android:layout_below="@+id/WellBeingBtn"
-                android:layout_alignStart="@+id/BiodiversityBtn"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="189dp"
-                android:layout_marginTop="39dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/grey1_box"
-                android:text="Link to Resources"
-                app:icon="@android:drawable/sym_contact_card" />
+    <TextView
+        android:id="@+id/FAQText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/infoText"
+        android:layout_alignEnd="@+id/infoText"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="236dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Have More Questions?"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="33sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BiodiversityBtn"
+        app:layout_constraintVertical_bias="0.906" />
 
-        </RelativeLayout>
-    </ScrollView>
+    <Button
+        android:id="@+id/FAQBtn"
+        android:layout_width="220dp"
+        android:layout_height="59dp"
+        android:layout_below="@+id/FAQText"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/green2_box"
+        android:drawableLeft="@drawable/baseline_article_24"
+        android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+        android:fontFamily="sans-serif-medium"
+        android:text="Frequently Asked Questions"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:backgroundTint="@color/green5"
+        app:icon="@drawable/baseline_contact_support_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FAQText"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/ContactUsBtn"
+        android:layout_width="220dp"
+        android:layout_height="59dp"
+        android:layout_alignStart="@+id/FAQBtn"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/green2_box"
+        android:drawableLeft="@drawable/baseline_article_24"
+        android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+        android:fontFamily="sans-serif-medium"
+        android:text="Contact Us"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:backgroundTint="@color/black"
+        app:icon="@drawable/baseline_email_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FAQBtn"
+        app:layout_constraintVertical_bias="0.465"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+
+    <!--        </RelativeLayout>-->
+<!--    </ScrollView>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,18 +8,23 @@ public class User implements Serializable {
     private String email;
     private String firstname;
     private String lastname;
-/*    private String id;*/
+    /*    private String id;*/
 
-    public User() {}
 
-    public User(String username, String password, String email, String firstname, String lastname/*, String id*/) {
+    public User() {
+    }
+
+    public User(String username, String password, String email, String firstname, String lastname/*String id*/) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.firstname = firstname;
         this.lastname = lastname;
-       /* this.id = id;*/
+//        this.enquiryTitle = enquiryTitle;
+//        this.enquiryDesc = enquiryDesc;
+        /* this.id = id;*/
     }
+
     public String getUsername() {
         return username;
     }
@@ -61,10 +66,60 @@ public class User implements Serializable {
         this.lastname = lastname;
     }
 
+
+
+    class Enquiry extends User {
+
+        private String enquiryTitle;
+
+        private String enquiryDesc;
+
+        private String enquiryEmail;
+
+        public Enquiry() {
+
+        }
+
+
+
+        public Enquiry(String enquiryEmail, String enquiryTitle, String enquiryDesc) {
+            this.enquiryTitle = enquiryTitle;
+            this.enquiryDesc = enquiryDesc;
+            this.enquiryEmail = enquiryEmail;
+        }
+
+        public String getEnquiryEmail() {
+            return enquiryEmail;
+        }
+
+        public void setEnquiryEmail(String enquiryEmail) {
+            this.enquiryEmail = enquiryEmail;
+        }
+        public String getEnquiryTitle() {
+            return enquiryTitle;
+        }
+
+        public void setEnquiryTitle(String enquiryTitle) {
+            this.enquiryTitle = enquiryTitle;
+        }
+
+
+        public String getEnquiryDesc() {
+            return enquiryDesc;
+        }
+
+        public void setEnquiryDesc(String enquiryDesc) {
+            this.enquiryDesc = enquiryDesc;
+        }
+
+
+    }
+}
+
     /*public String getId() {return id;}
 
     public void setId(String id) {this.id = id;}*/
 
 
-}
+
 
