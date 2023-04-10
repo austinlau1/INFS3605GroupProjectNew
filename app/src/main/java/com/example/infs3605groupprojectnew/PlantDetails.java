@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -52,6 +53,7 @@ public class PlantDetails extends AppCompatActivity {
         Button learn_more_btn = findViewById(R.id.learn_more_btn);
         Button audio_btn = findViewById(R.id.audio_btn);
         Button audio_end_btn = findViewById(R.id.audioEndBtn);
+        //ToggleButton favouriteButton = findViewById(R.id.favoriteButton);
 
         // Textview Scroll for plant description
         plant_description.setMovementMethod(new ScrollingMovementMethod());
@@ -63,6 +65,10 @@ public class PlantDetails extends AppCompatActivity {
             plant_name.setText(plant.getName());
             geographic_distribution.setText(plant.getGeographicDistribution());
             plant_description.setText(plant.getTraditionalUses());
+            Log.d("PlantDetails", String.valueOf(plant.isFavourite()));
+            //favouriteButton.setChecked(plant.isFavourite());
+            Log.d("PlantDetails", String.valueOf(plant.isFavourite()));
+
 
             // Plant Image
             mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + plant.getScientificName() + ".jpeg");
@@ -226,6 +232,7 @@ public class PlantDetails extends AppCompatActivity {
                             plant_name.setText(mapPlant.getName());
                             geographic_distribution.setText(mapPlant.getGeographicDistribution());
                             plant_description.setText(mapPlant.getTraditionalUses());
+                            //favouriteButton.setChecked(mapPlant.isFavourite());
 
                             // Plant Image
                             mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + mapPlant.getName() + ".jpeg");

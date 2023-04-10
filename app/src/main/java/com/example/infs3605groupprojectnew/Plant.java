@@ -26,16 +26,18 @@ public class Plant implements Serializable {
     private String geographicDistribution;
     private Integer id;
     private String image;
+    private boolean isFavourite;
 
     public Plant() {}
 
-    public Plant(String geographicDistribution, Integer id, String name, String scientificName, String traditionalUses, String image) {
+    public Plant(String geographicDistribution, Integer id, String name, String scientificName, String traditionalUses, String image, Boolean isFavourite) {
         this.name = name;
         this.scientificName = scientificName;
         this.traditionalUses = traditionalUses;
         this.geographicDistribution = geographicDistribution;
         this.id = id;
         this.image = image;
+        this.isFavourite = isFavourite;
     }
 
 
@@ -87,6 +89,14 @@ public class Plant implements Serializable {
         this.image = image;
     }
 
+    public boolean isFavourite() {
+        return isFavourite;
+    }
+
+    public void setFavourite(boolean favourite) {
+        isFavourite = favourite;
+    }
+
 
     public static void getPlants(OnPlantsLoadedListener listener) {
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Plants Database");
@@ -101,8 +111,9 @@ public class Plant implements Serializable {
                     String scientificName = questionSnapshot.child("scientificName").getValue(String.class);
                     String traditionalUses = questionSnapshot.child("traditionalUses").getValue(String.class);
                     String image = questionSnapshot.child("image").getValue(String.class);
+                    Boolean isFavourite = questionSnapshot.child("isFavourite").getValue(Boolean.class);
 
-                    Plant onlyList = new Plant(geographicDistribution, id, name, scientificName, traditionalUses, image);
+                    Plant onlyList = new Plant(geographicDistribution, id, name, scientificName, traditionalUses, image, isFavourite);
                     plantList.add(onlyList);
                 }
                 listener.onPlantsLoaded(plantList);
