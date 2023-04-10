@@ -188,12 +188,12 @@
         android:id="@+id/modifyDetailsBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/green3_box"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/inter_semibold"
         android:text="Modify Details"
         app:layout_constraintEnd_toEndOf="@+id/hiUserName"
-        app:layout_constraintHorizontal_bias="0.968"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/hiUser"
         app:layout_constraintTop_toBottomOf="@+id/hiUserName" />
 

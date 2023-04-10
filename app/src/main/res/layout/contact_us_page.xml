@@ -7,6 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sendfeedback"
+    android:background="@drawable/welcome_page"
     tools:context=".ContactUs">
 
     <androidx.cardview.widget.CardView
@@ -103,8 +104,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/green1_box"
-                android:backgroundTint="@color/green2"
+                android:background="@drawable/green2_box"
+                android:backgroundTint="@color/green5"
                 android:text="Submit your enquiry"
                 android:textSize="15sp" />
 

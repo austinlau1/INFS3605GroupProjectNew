@@ -5,39 +5,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/activitymainbg"
     tools:context=".Quizzes.EasyStart">
 
   <Button
       android:id="@+id/startQuizBtn"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="292dp"
+      android:layout_width="200dp"
+      android:layout_height="48dp"
+      android:layout_marginTop="68dp"
+      android:background="@drawable/green4_box"
+      android:fontFamily="@font/inter_semibold"
       android:text="Start Quiz"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.498"
+      app:layout_constraintHorizontal_bias="0.497"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
   <Button
       android:id="@+id/difficultyBtn"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_width="204dp"
+      android:layout_height="52dp"
       android:layout_marginTop="68dp"
+      android:background="@drawable/green4_box"
+      android:fontFamily="@font/inter_semibold"
       android:text="Change Difficulty"
-      app:layout_constraintEnd_toEndOf="parent"
+
+      app:layout_constraintEnd_toEndOf="@+id/startQuizBtn"
       app:layout_constraintHorizontal_bias="0.498"
-      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/startQuizBtn"
       app:layout_constraintTop_toBottomOf="@+id/startQuizBtn" />
 
   <TextView
       android:id="@+id/textView11"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_width="178dp"
+      android:layout_height="42dp"
       android:layout_marginTop="136dp"
+      android:drawableLeft="@drawable/baseline_wb_sunny_24"
+      android:fontFamily="@font/inter_bold"
       android:text="Easy Quiz"
+      android:textAlignment="center"
+      android:textColor="@color/black"
       android:textSize="28sp"
       android:textStyle="bold"
-      android:textColor="@color/black"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.498"
       app:layout_constraintStart_toStartOf="parent"

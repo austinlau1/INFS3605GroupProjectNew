@@ -4,47 +4,98 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/plantfrgmentphoto3"
     tools:context=".Quizzes.QuizOptions">
 
-    <Button
-        android:id="@+id/easyBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="156dp"
-        android:text="Easy"
+
+    <TextView
+        android:id="@+id/welcome_text_desc"
+        android:layout_width="338dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:fontFamily="@font/inter"
+        android:text="Put your knowledge in test about the UNSW Bush Trail"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/easyBtn"
+        app:layout_constraintEnd_toEndOf="@+id/img_wellb"
+        app:layout_constraintStart_toStartOf="@+id/img_wellb"
+        app:layout_constraintTop_toBottomOf="@+id/img_wellb"
+        app:layout_constraintVertical_bias="0.514" />
+
+    <ImageView
+        android:id="@+id/img_wellb"
+        android:layout_width="204dp"
+        android:layout_height="144dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/plantfrgmentphoto1"
+        app:layout_constraintBottom_toTopOf="@+id/easyBtn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.392">
+
+    </ImageView>
 
     <Button
         android:id="@+id/hardBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="312dp"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/green2_box"
+        android:backgroundTint="#000000"
+        android:backgroundTintMode="src_in"
+        android:fontFamily="@font/inter_semibold"
         android:text="Hard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/easyBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/easyBtn"
+        app:layout_constraintTop_toBottomOf="@+id/easyBtn"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/easyBtn"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="316dp"
+        android:background="@drawable/green3_box"
+        android:fontFamily="@font/inter_semibold"
+        android:text="Easy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/locationBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="220dp"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="120dp"
+        android:background="@drawable/green3_box"
+        android:fontFamily="@font/inter_semibold"
         android:text="Location"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/hardBtn"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="@+id/hardBtn"
+        app:layout_constraintTop_toBottomOf="@+id/hardBtn"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
         android:id="@+id/backBtn"
-        android:layout_width="72dp"
-        android:layout_height="65dp"
+        android:layout_width="55dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/green4_box"
+        android:drawableLeft="@drawable/ic_baseline_arrow_back_24"
         android:src="@drawable/ic_baseline_arrow_back_24"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/green1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
