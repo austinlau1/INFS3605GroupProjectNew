@@ -49,14 +49,6 @@ public class ModifyDetails extends AppCompatActivity {
         TextView existingFirstname = findViewById(R.id.existingFirstname);
         TextView existingLastname = findViewById(R.id.existingLastname);
 
-
-        if (user!= null) {
-            Log.d(TAG, "onCreate: "+ user.getDisplayName());
-            if (user.getDisplayName() != null) {
-                editFirstName.setText(user.getDisplayName());
-            }
-        }
-
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference myRef = databaseRef.child("User/" + user.getUid());
 
@@ -66,9 +58,9 @@ public class ModifyDetails extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     User userProfile = snapshot.getValue(User.class);
                     if (userProfile != null) {
-                        existingUsername.setText(userProfile.getFirstname());
-                        existingFirstname.setText(userProfile.getEmail());
-                        existingLastname.setText(userProfile.getUsername());
+                        existingUsername.setText(userProfile.getUsername());
+                        existingFirstname.setText(userProfile.getFirstname());
+                        existingLastname.setText(userProfile.getLastname());
                     }
 
                 }

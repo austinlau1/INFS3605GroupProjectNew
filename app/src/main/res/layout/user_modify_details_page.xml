@@ -12,6 +12,7 @@
         android:layout_marginStart="112dp"
         android:layout_marginTop="272dp"
         android:text="First Name"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,6 +23,7 @@
         android:layout_marginStart="108dp"
         android:layout_marginTop="168dp"
         android:text="Username"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,6 +34,7 @@
         android:layout_marginStart="112dp"
         android:layout_marginTop="384dp"
         android:text="Last Name"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,8 +45,8 @@
         android:layout_marginStart="112dp"
         android:layout_marginTop="312dp"
         android:ems="10"
+        android:hint="new First Name"
         android:inputType="textPersonName"
-        android:text="First Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,8 +57,8 @@
         android:layout_marginStart="112dp"
         android:layout_marginTop="200dp"
         android:ems="10"
+        android:hint="new Username"
         android:inputType="textPersonName"
-        android:text="Username"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -66,8 +69,8 @@
         android:layout_marginStart="108dp"
         android:layout_marginTop="416dp"
         android:ems="10"
+        android:hint="new Last Name"
         android:inputType="textPersonName"
-        android:text="Last Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
