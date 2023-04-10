@@ -104,6 +104,17 @@ public class ModifyDetails extends AppCompatActivity {
             }
         });
 
+
+        //go back to previous user details page
+        Button GoBackUserPageBtn = findViewById(R.id.BackUserBtn);
+        GoBackUserPageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ModifyDetails.this, UserDetails.class);
+                startActivity(intent);
+            }
+        });
+
     }
     /*public void updateProfile(String newUsername, String newFirstName, String newSecondName) {
         HashMap User = new HashMap();

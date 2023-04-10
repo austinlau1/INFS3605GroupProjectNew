@@ -85,7 +85,7 @@ public class ContactUs extends AppCompatActivity {
             // because we will be updating title as well and it may affect child value.
             String currentDate = " New User Enquiry " + DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 
-            FirebaseDatabase.getInstance().getReference("User").child(currentDate).setValue(enquiryInstance).addOnCompleteListener(new OnCompleteListener<Void>() {
+            FirebaseDatabase.getInstance().getReference("User Enquiry").child(currentDate).setValue(enquiryInstance).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
