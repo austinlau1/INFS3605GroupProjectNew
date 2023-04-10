@@ -3,6 +3,7 @@ package com.example.infs3605groupprojectnew;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -19,9 +20,24 @@ import com.example.infs3605groupprojectnew.Quizzes.QuizOptions;
 //import com.example.infs3605groupprojectnew.Quizzes.Quizzes;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 
 public class HomeFragment extends Fragment {
+    DatabaseReference databaseReference;
+    List<Plant> plant;
+    int One, Two, Three;
+    TextView plantOne, plantTwo, plantThree;
 
 
     @Override
@@ -71,6 +87,47 @@ public class HomeFragment extends Fragment {
             firstNameTextView.setText(email);
         }
 
+
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Plants Database");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<Plant> plant = new ArrayList<>();
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    Plant plantList = ds.getValue(Plant.class);
+                    plant.add(plantList);
+                }
+                Random random = new Random();
+                One = random.nextInt(plant.size());
+                Two = random.nextInt(plant.size());
+                Three = random.nextInt(plant.size());
+
+                // Make sure One, Two, and Three are different numbers
+                while (One == Two || One == Three || Two == Three) {
+                    One = random.nextInt(plant.size());
+                    Two = random.nextInt(plant.size());
+                    Three = random.nextInt(plant.size());
+                }
+
+                String plantName1 = plant.get(One).getName();
+                String plantName2 = plant.get(Two).getName();
+                String plantName3 = plant.get(Three).getName();
+
+                TextView plantOne = getActivity().findViewById(R.id.plantOne);
+                TextView plantTwo = getActivity().findViewById(R.id.plantTwo);
+                TextView plantThree = getActivity().findViewById(R.id.plantThree);
+
+                plantOne.setText(plantName1);
+                plantTwo.setText(plantName2);
+                plantThree.setText(plantName3);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
         // Button to explore plants

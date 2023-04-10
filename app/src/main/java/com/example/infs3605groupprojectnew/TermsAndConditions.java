@@ -10,5 +10,6 @@ public class TermsAndConditions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_terms_conditions);
+        setTitle("Terms and Conditions");
     }
 }

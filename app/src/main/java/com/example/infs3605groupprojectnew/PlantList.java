@@ -48,12 +48,13 @@ public class PlantList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plant_recyclerview);
+        setTitle("Plant List");
         recyclerView = findViewById(R.id.rvList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         searchView = findViewById(R.id.search);
         searchView.clearFocus();
 
-//      served as a part of the search bar in plant fragment
+        //served as a part of the search bar in plant fragment
         GridLayoutManager gridLayoutManager = new GridLayoutManager(PlantList.this, 1);
         recyclerView.setLayoutManager(gridLayoutManager);
 

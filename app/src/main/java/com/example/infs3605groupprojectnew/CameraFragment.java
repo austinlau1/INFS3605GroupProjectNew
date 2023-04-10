@@ -25,6 +25,7 @@ public class CameraFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_camera, container, false);
+        getActivity().setTitle("QR Scanner");
 
         Button scanBtn = rootView.findViewById(R.id.scanBtn);
         scanBtn.setOnClickListener(new View.OnClickListener() {

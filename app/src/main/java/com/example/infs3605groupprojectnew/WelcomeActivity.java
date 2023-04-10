@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class WelcomeActivity extends AppCompatActivity{
@@ -25,6 +26,10 @@ public class WelcomeActivity extends AppCompatActivity{
         setTitle("First Page Display");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_page);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
 
         //Initializing widgets
         signupBtn = findViewById(R.id.signup_button);

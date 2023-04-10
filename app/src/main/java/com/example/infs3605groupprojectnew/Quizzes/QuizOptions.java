@@ -17,6 +17,7 @@ public class QuizOptions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizzes);
+        setTitle("Quiz");
 
         Button easyBtn = (Button) findViewById(R.id.easyBtn);
 

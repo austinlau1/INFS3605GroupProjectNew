@@ -41,6 +41,7 @@ public class ContactUs extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contact_us_page);
+        setTitle("Contact Us");
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

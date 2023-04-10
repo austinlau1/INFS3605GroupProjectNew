@@ -15,6 +15,7 @@ public class LocationStart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_start);
+        setTitle("Quiz");
 
         Button startQuiz = (Button) findViewById(R.id.startQuizBtn);
         startQuiz.setOnClickListener(new View.OnClickListener() {

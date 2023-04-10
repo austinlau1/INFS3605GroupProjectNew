@@ -29,6 +29,7 @@ public class MapFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
+        getActivity().setTitle("Map");
 
         Button toMapBtn = (Button) rootView.findViewById(R.id.toMapBtn);
         mDate = (TextView) rootView.findViewById(R.id.date_display);
@@ -39,7 +40,7 @@ public class MapFragment extends Fragment {
                 startActivity(intent);
             }
         });
-//display current date and time
+        //display current date and time
         mCalendar = Calendar.getInstance();
         mDateFormat = new SimpleDateFormat("EEEE, MMMM-dd");
         date = mDateFormat.format(mCalendar.getTime());

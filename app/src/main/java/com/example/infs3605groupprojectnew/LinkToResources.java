@@ -14,6 +14,7 @@ public class LinkToResources extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.link_to_resources_page);
+        setTitle("Sources");
         Nura_Gili = findViewById(R.id.img_nura);
         IndigiGrow = findViewById(R.id.img_indigi);
         La_Perouse = findViewById(R.id.img_laperouse);

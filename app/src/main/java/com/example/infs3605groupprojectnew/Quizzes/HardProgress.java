@@ -43,6 +43,7 @@ public class HardProgress extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quiz_template);
+        setTitle("Quiz");
 
         // Get the list of questions from Firebase Realtime Database
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Hard Quiz");
