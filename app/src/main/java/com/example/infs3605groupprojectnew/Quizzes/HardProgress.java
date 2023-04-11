@@ -149,6 +149,9 @@ public class HardProgress extends AppCompatActivity {
 
         if (isCorrect) {
             score++;
+            Toast.makeText(HardProgress.this, "Correct", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(HardProgress.this, "Incorrect", Toast.LENGTH_SHORT).show();
         }
 
         currentQuestionIndex++;

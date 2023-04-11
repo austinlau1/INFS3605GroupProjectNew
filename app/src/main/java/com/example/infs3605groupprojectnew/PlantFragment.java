@@ -1,6 +1,8 @@
 package com.example.infs3605groupprojectnew;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,16 +18,28 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 
 public class PlantFragment extends Fragment implements View.OnClickListener {
@@ -34,6 +48,9 @@ public class PlantFragment extends Fragment implements View.OnClickListener {
     // RecyclerView mRecyclerView;
     // private PlantAdapter adapter;
     Button navigateToList;
+    DatabaseReference databaseReference;
+    int One;
+    StorageReference mStorageReference;
 
     @Nullable
     @Override
@@ -41,12 +58,6 @@ public class PlantFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_plant, container, false);
-        // Initialize Firebase
-        // FirebaseApp.initializeApp(getContext());
-        // Get reference to the database
-        // DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-
-        //adapter = new PlantAdapter(new ArrayList<Plant>(), listener);
 
         navigateToList = (Button) rootView.findViewById(R.id.view_plants_btn);
         navigateToList.setOnClickListener(new View.OnClickListener() {
@@ -57,42 +68,63 @@ public class PlantFragment extends Fragment implements View.OnClickListener {
                 startActivity(intent);
             }
         });
-        return rootView;
-    }
 
-    /*PlantAdapter.ClickListener listener = new PlantAdapter.ClickListener() {
-        @Override
-        public void onPlantClick(View view, String plantSymbol) {
-            Intent intent = new Intent(getActivity(), IndividualPlant.class);
-            intent.putExtra(PLANT_SYMBOL_KEY, plantSymbol);
-            startActivity(intent);
-        }
-    };*/
-
-
-
-        /*mRecyclerView = findViewById(R.id.rvList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        mRecyclerView.setLayoutManager(layoutManager);*/
-
-    /*adapter = new PlantAdapter(new ArrayList<Plant>(), listener);*/
-    /*mRecyclerView.setAdapter(adapter);*/
-
-    // Add a ValueEventListener to the reference
-        /*databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference = FirebaseDatabase.getInstance().getReference("Plants Database");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                // Handle data changes
-                // Use getValue() to get the data
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<Plant> plant = new ArrayList<>();
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    Plant plantList = ds.getValue(Plant.class);
+                    plant.add(plantList);
+                }
+                Random random = new Random();
+                One = random.nextInt(plant.size());
+
+                String plantName1 = plant.get(One).getName();
+
+                TextView plantFragmentName = getActivity().findViewById(R.id.plantFragmentName);
+                ImageView plantImage = getActivity().findViewById(R.id.plantImage);
+
+
+                plantFragmentName.setText(plantName1);
+
+
+
+                // Plant Image
+                mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + plant.get(One).getScientificName() + ".jpeg");
+
+                try {
+                    final File localFile = File.createTempFile(""+ plant.get(One).getScientificName() + "","jpeg");
+                    mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                            // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
+                            Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                            plantImage.setImageBitmap(bitmap);
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getContext(), "Error occured", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Handle errors
+
             }
         });
 
-        return rootView;*/
+        return rootView;
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -100,41 +132,5 @@ public class PlantFragment extends Fragment implements View.OnClickListener {
         intent = new Intent(getActivity(), PlantList.class);
         startActivity(intent);
     }
-
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
-        SearchView searchView = (SearchView) menu.findItem(R.id.search_menu).getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                adapter.getFilter().filter(s);
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                adapter.getFilter().filter(s);
-                return false;
-            }
-        });
-
-        return true;
-    }*/
-
-    /*// Sort plants
-    @Override
-    public boolean onOptionsItemSelected (MenuItem menuSelected){
-        if (menuSelected.getItemId() == R.id.name_sort) {
-            adapter.Sort(1);
-        }
-        else if (menuSelected.getItemId() == R.id.value_sort) {
-            adapter.Sort(2);
-        }
-        return true;
-
-    }*/
-
 
 }

@@ -16,6 +16,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.infs3605groupprojectnew.PlantDetails;
 import com.example.infs3605groupprojectnew.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -149,6 +150,9 @@ public class EasyProgress extends AppCompatActivity {
 
         if (isCorrect) {
             score++;
+            Toast.makeText(EasyProgress.this, "Correct", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(EasyProgress.this, "Incorrect", Toast.LENGTH_SHORT).show();
         }
 
         currentQuestionIndex++;

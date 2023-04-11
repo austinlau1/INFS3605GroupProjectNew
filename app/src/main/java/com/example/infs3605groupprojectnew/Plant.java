@@ -89,11 +89,11 @@ public class Plant implements Serializable {
         this.image = image;
     }
 
-    public boolean isFavourite() {
+    public boolean getIsFavourite() {
         return isFavourite;
     }
 
-    public void setFavourite(boolean favourite) {
+    public void setIsFavourite(boolean favourite) {
         isFavourite = favourite;
     }
 

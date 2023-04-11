@@ -149,6 +149,9 @@ public class LocationProgress extends AppCompatActivity {
 
         if (isCorrect) {
             score++;
+            Toast.makeText(LocationProgress.this, "Correct", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(LocationProgress.this, "Incorrect", Toast.LENGTH_SHORT).show();
         }
 
         currentQuestionIndex++;

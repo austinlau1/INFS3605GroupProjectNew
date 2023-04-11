@@ -20,7 +20,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="17dp"
         android:layout_marginBottom="416dp"
-        android:fontFamily="@font/inter_thin"
+        android:fontFamily="@font/inter_bold"
         android:gravity="center"
         android:text="Explore the world of Indigenous plants"
         android:textAlignment="center"
@@ -35,46 +35,29 @@
         app:layout_constraintVertical_bias="0.125" />
 
     <TextView
-        android:id="@+id/plant_location"
-        android:layout_width="298dp"
-        android:layout_height="60dp"
-        android:fontFamily="@font/inter"
-        android:text="All parts of the plant are edible, both raw and cooked"
-        android:textAlignment="center"
-        android:textColor="@color/green4"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/view_plants_btn"
-        app:layout_constraintEnd_toEndOf="@+id/plant_name_pic"
-        app:layout_constraintStart_toStartOf="@+id/plant_name_pic"
-        app:layout_constraintTop_toBottomOf="@+id/plant_name_pic"
-        app:layout_constraintVertical_bias="0.325" />
-
-    <TextView
-        android:id="@+id/plant_name_pic"
+        android:id="@+id/plantFragmentName"
         android:layout_width="370dp"
         android:layout_height="40dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/inter_extrabold"
         android:text="Alpinia Caerulea"
         android:textAlignment="center"
         android:textColor="@color/green4"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/view_plants_btn"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Arrow_back"
-        app:layout_constraintVertical_bias="0.118" />
+        app:layout_constraintTop_toBottomOf="@+id/plantImage" />
 
     <ImageView
-        android:id="@+id/Arrow_back"
+        android:id="@+id/plantImage"
         android:layout_width="413dp"
         android:layout_height="266dp"
+        android:layout_marginTop="28dp"
         android:src="@drawable/plantfrgmentphoto1"
-        app:layout_constraintBottom_toTopOf="@+id/view_plants_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pagedesc_text"
-        app:layout_constraintVertical_bias="0.193" />
+        app:layout_constraintTop_toBottomOf="@+id/pagedesc_text" />
 
     <Button
         android:id="@+id/view_plants_btn"
@@ -92,7 +75,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.894"
+        app:layout_constraintVertical_bias="0.857"
         app:rippleColor="@color/green2"
         app:strokeColor="#FF5E5E"
         tools:ignore="TouchTargetSizeCheck" />

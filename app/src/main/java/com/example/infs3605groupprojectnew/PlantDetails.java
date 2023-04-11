@@ -10,6 +10,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +24,8 @@ import androidx.appcompat.app.AppCompatActivity;
 //import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -53,7 +56,7 @@ public class PlantDetails extends AppCompatActivity {
         Button learn_more_btn = findViewById(R.id.learn_more_btn);
         Button audio_btn = findViewById(R.id.audio_btn);
         Button audio_end_btn = findViewById(R.id.audioEndBtn);
-        //ToggleButton favouriteButton = findViewById(R.id.favoriteButton);
+        ToggleButton favouriteButton = findViewById(R.id.favoriteButton);
 
         // Textview Scroll for plant description
         plant_description.setMovementMethod(new ScrollingMovementMethod());
@@ -65,9 +68,31 @@ public class PlantDetails extends AppCompatActivity {
             plant_name.setText(plant.getName());
             geographic_distribution.setText(plant.getGeographicDistribution());
             plant_description.setText(plant.getTraditionalUses());
-            Log.d("PlantDetails", String.valueOf(plant.isFavourite()));
-            //favouriteButton.setChecked(plant.isFavourite());
-            Log.d("PlantDetails", String.valueOf(plant.isFavourite()));
+            favouriteButton.setChecked(plant.getIsFavourite());
+            Log.d("PlantDetails", plant.getName() + ": " + String.valueOf(plant.getIsFavourite()));
+
+            favouriteButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (!plant.getIsFavourite() && isChecked) {
+                        // If the plant was not marked as favourite and the button is checked,
+                        // set the plant's favourite value to true
+                        plant.setIsFavourite(true);
+                        DatabaseReference favouriteRef = FirebaseDatabase.getInstance().getReference("Plants Database")
+                                .child(plant.getId().toString()).child("isFavourite");
+                        favouriteRef.setValue(true);
+                        Log.d("PlantDetails", plant.getName() + ": " + String.valueOf(plant.getIsFavourite()));
+                    } else if (plant.getIsFavourite() && !isChecked) {
+                        // If the plant was marked as favourite and the button is unchecked,
+                        // set the plant's favourite value to false
+                        plant.setIsFavourite(false);
+                        DatabaseReference favouriteRef = FirebaseDatabase.getInstance().getReference("Plants Database")
+                                .child(plant.getId().toString()).child("isFavourite");
+                        favouriteRef.setValue(false);
+                        Log.d("PlantDetails", plant.getName() + ": " + String.valueOf(plant.getIsFavourite()));
+                    }
+                }
+            });
 
 
             // Plant Image
@@ -235,10 +260,10 @@ public class PlantDetails extends AppCompatActivity {
                             //favouriteButton.setChecked(mapPlant.isFavourite());
 
                             // Plant Image
-                            mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + mapPlant.getName() + ".jpeg");
+                            mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + mapPlant.getScientificName() + ".jpeg");
 
                             try {
-                                final File localFile = File.createTempFile(""+ mapPlant.getName() + "","jpeg");
+                                final File localFile = File.createTempFile(""+ mapPlant.getScientificName() + "","jpeg");
                                 mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                     @Override
                                     public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
@@ -257,17 +282,42 @@ public class PlantDetails extends AppCompatActivity {
                                 e.printStackTrace();
                             }
 
-                            // Plant Map
-                            mStorageReference = FirebaseStorage.getInstance().getReference().child("MiniMap/" + mapPlant.getName() + ".jpeg");
+                            // Plant MiniMap
+                            mStorageReference = FirebaseStorage.getInstance().getReference().child("MiniMap/" + mapPlant.getScientificName() + ".png");
 
                             try {
-                                final File localFile = File.createTempFile(""+ mapPlant.getName() + "","jpeg");
+                                final File localFile = File.createTempFile(""+ mapPlant.getScientificName() + "","png");
                                 mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                     @Override
                                     public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                                         // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
                                         Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
                                         ((ImageView) findViewById(R.id.plant_map)).setImageBitmap(bitmap);
+
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(PlantDetails.this, "Error occured", Toast.LENGTH_SHORT).show();
+
+
+                                    }
+                                });
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            // Plant location
+                            mStorageReference = FirebaseStorage.getInstance().getReference().child("PlantLocation/" + mapPlant.getScientificName() + ".png");
+
+                            try {
+                                final File localFile = File.createTempFile(""+ mapPlant.getScientificName() + "","png");
+                                mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                        // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
+                                        Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                                        ((ImageView) findViewById(R.id.plantLocationMap)).setImageBitmap(bitmap);
 
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {

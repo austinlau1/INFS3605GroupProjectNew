@@ -1,6 +1,8 @@
 package com.example.infs3605groupprojectnew;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,11 +15,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.infs3605groupprojectnew.Quizzes.QuizOptions;
 //import com.example.infs3605groupprojectnew.Quizzes.Quizzes;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,9 +31,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import org.w3c.dom.Text;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -35,9 +46,8 @@ import java.util.Random;
 
 public class HomeFragment extends Fragment {
     DatabaseReference databaseReference;
-    List<Plant> plant;
     int One, Two, Three;
-    TextView plantOne, plantTwo, plantThree;
+    StorageReference mStorageReference;
 
 
     @Override
@@ -117,10 +127,80 @@ public class HomeFragment extends Fragment {
                 TextView plantOne = getActivity().findViewById(R.id.plantOne);
                 TextView plantTwo = getActivity().findViewById(R.id.plantTwo);
                 TextView plantThree = getActivity().findViewById(R.id.plantThree);
+                ImageView plantImageOne = getActivity().findViewById(R.id.plantImageOne);
+                ImageView plantImageTwo = getActivity().findViewById(R.id.plantImageTwo);
+                ImageView plantImageThree = getActivity().findViewById(R.id.plantImageThree);
 
                 plantOne.setText(plantName1);
                 plantTwo.setText(plantName2);
                 plantThree.setText(plantName3);
+
+                // Plant Image
+                mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + plant.get(One).getScientificName() + ".jpeg");
+
+                try {
+                    final File localFile = File.createTempFile(""+ plant.get(One).getScientificName() + "","jpeg");
+                    mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                            // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
+                            Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                            plantImageOne.setImageBitmap(bitmap);
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getContext(), "Error occured", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + plant.get(Two).getScientificName() + ".jpeg");
+
+                try {
+                    final File localFile = File.createTempFile(""+ plant.get(Two).getScientificName() + "","jpeg");
+                    mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                            // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
+                            Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                            plantImageTwo.setImageBitmap(bitmap);
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getContext(), "Error occured", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + plant.get(Three).getScientificName() + ".jpeg");
+
+                try {
+                    final File localFile = File.createTempFile(""+ plant.get(Three).getScientificName() + "","jpeg");
+                    mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                            // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
+                            Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                            plantImageThree.setImageBitmap(bitmap);
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getContext(), "Error occured", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
