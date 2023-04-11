@@ -34,7 +34,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.125" />
 
-<<<<<<< Updated upstream
     <TextView
         android:id="@+id/plant_location"
         android:layout_width="298dp"
@@ -49,12 +48,6 @@
         app:layout_constraintStart_toStartOf="@+id/plant_name_pic"
         app:layout_constraintTop_toBottomOf="@+id/plant_name_pic"
         app:layout_constraintVertical_bias="0.325" />
-=======
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
->>>>>>> Stashed changes
 
     <TextView
         android:id="@+id/plant_name_pic"
