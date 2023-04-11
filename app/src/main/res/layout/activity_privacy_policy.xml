@@ -6,4 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".PrivacyPolicy">
 
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Privacy Policy "
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="22dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="367dp"
+        android:layout_height="123dp"
+        android:text="Your use of the application is subject to UNSW’s Privacy Policy. By using the application, you agree to the collection, use and disclosure of your personal information as described on UNSW Privacy Policy."
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="56dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

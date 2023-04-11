@@ -6,4 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".TermsAndConditions">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Terms and Conditions"
+        tools:layout_editor_absoluteX="27dp"
+        tools:layout_editor_absoluteY="26dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        tools:layout_editor_absoluteX="307dp"
+        tools:layout_editor_absoluteY="667dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="363dp"
+        android:layout_height="108dp"
+        android:text="These Terms and Conditions (hereafter &quot;Terms&quot;) govern the use of the UNSW Mobile Digital Application (hereafter &quot;Application&quot;) provided by the University of New South Wales (hereafter &quot;UNSW&quot;). By downloading and using this Application, you agree to these Terms. If you do not agree to these Terms, you may not use the Application."
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="59dp" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="348dp"
+        android:layout_height="165dp"
+        android:text="User Conduct: You agree to use the Application only for lawful purposes and in accordance with these Terms. You will not use the Application in any way that could damage, disable, overburden, or impair the Application, UNSW servers or networks, or interfere with any other party's use of the Application. You will not attempt to gain unauthorized access to the Application, UNSW servers or networks, or any account, computer system, or network connected to the Application."
+        tools:layout_editor_absoluteX="43dp"
+        tools:layout_editor_absoluteY="199dp" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="347dp"
+        android:layout_height="200dp"
+        android:text="Intellectual Property: The Application and its content, including but not limited to text, graphics, images, logos, and software, are the property of UNSW and are protected by Australian and international copyright and trademark laws. You may not copy, reproduce, distribute, or create derivative works based on the Application or its content without the prior consent of UNSW."
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="364dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
