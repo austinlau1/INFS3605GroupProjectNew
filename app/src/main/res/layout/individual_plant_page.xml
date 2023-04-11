@@ -6,6 +6,12 @@
     android:background="@drawable/plantfrgmentphoto4"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="650dp"
+        android:layout_height="890dp"
+        app:srcCompat="@drawable/light_green_background" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -37,11 +43,18 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
+<<<<<<< Updated upstream
                 android:layout_marginStart="37dp"
                 android:layout_marginTop="542dp"
                 android:layout_marginEnd="225dp"
                 android:fontFamily="@font/inter"
                 android:text="Location" />
+=======
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="550dp"
+                android:layout_marginEnd="31dp"
+                android:contentDescription='Location of Plant' />
+>>>>>>> Stashed changes
 
             <ImageView
                 android:id="@+id/plant_image"
@@ -49,8 +62,13 @@
                 android:layout_height="147dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+<<<<<<< Updated upstream
                 android:layout_marginStart="43dp"
                 android:layout_marginTop="99dp"
+=======
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="64dp"
+>>>>>>> Stashed changes
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
@@ -59,9 +77,15 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+<<<<<<< Updated upstream
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="202dp"
                 android:text="" />
+=======
+                android:layout_marginStart="73dp"
+                android:layout_marginTop="35dp"
+                android:text="Plant Name" />
+>>>>>>> Stashed changes
 
             <TextView
                 android:id="@+id/plant_id"
@@ -69,10 +93,15 @@
                 android:layout_height="31dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+<<<<<<< Updated upstream
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="333dp"
                 android:layout_marginTop="23dp"
                 android:layout_marginEnd="40dp"
+=======
+                android:layout_marginStart="38dp"
+                android:layout_marginTop="35dp"
+>>>>>>> Stashed changes
                 android:text="ID" />
 
             <TextView
@@ -81,6 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/plant_image"
                 android:layout_alignParentStart="true"
+<<<<<<< Updated upstream
                 android:layout_marginStart="47dp"
                 android:layout_marginTop="-181dp"
                 android:fontFamily="@font/inter_semibold"
@@ -131,12 +161,32 @@
                 android:textColor="#000000"
                 app:backgroundTint="@color/green5" />
 
+=======
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="219dp"
+                android:text="Scientific Name" />
+
+            <TextView
+                android:id="@+id/plant_description"
+                android:layout_width="332dp"
+                android:layout_height="153dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="315dp"
+                android:layout_marginEnd="39dp"
+                android:text="Description" />
+
+>>>>>>> Stashed changes
             <TextView
                 android:id="@+id/plantNm2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+<<<<<<< Updated upstream
                 android:layout_marginStart="42dp"
                 android:layout_marginTop="13dp"
                 android:fontFamily="@font/inter_semibold"
@@ -187,6 +237,34 @@
                 android:layout_marginTop="457dp"
                 android:background="@drawable/baseline_pause_circle_filled_24"
                 app:backgroundTint="@color/black" />
+=======
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="524dp"
+                android:text="Location" />
+>>>>>>> Stashed changes
+
+            <Button
+                android:id="@+id/learn_more_but"
+                android:layout_width="136dp"
+                android:layout_height="40"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="475dp"
+                android:layout_marginEnd="38dp"
+                android:layout_marginBottom="9dp"
+                android:background="@drawable/newbuttondesign"
+                android:fontFamily="@font/inter_semibold"
+                android:shadowColor="#6A6A6A"
+                android:text="Learn More"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/plantName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:rippleColor="@color/green3"
+                app:strokeColor="#FF5E5E"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/textView13"
@@ -194,9 +272,15 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+<<<<<<< Updated upstream
                 android:layout_marginStart="223dp"
                 android:layout_marginTop="434dp"
                 android:text="Audio" />
+=======
+                android:layout_marginStart="203dp"
+                android:layout_marginTop="64dp"
+                android:text="Traditional uses" />
+>>>>>>> Stashed changes
 
             <ToggleButton
                 android:id="@+id/favoriteButton"
@@ -204,6 +288,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
+<<<<<<< Updated upstream
                 android:layout_marginStart="9dp"
                 android:layout_marginTop="456dp"
                 android:layout_marginEnd="24dp"
@@ -214,6 +299,26 @@
                 android:textOn=""
                 app:layout_constraintTop_toTopOf="parent" />
 
+=======
+                android:layout_marginStart="213dp"
+                android:layout_marginTop="290dp"
+                android:layout_marginEnd="51dp"
+                android:text="Geographic distribution" />
+
+            <ImageView
+                android:id="@+id/plant_map"
+                android:layout_width="173dp"
+                android:layout_height="146dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="198dp"
+                android:layout_marginTop="137dp"
+                android:layout_marginEnd="39dp"
+                tools:srcCompat="@drawable/grey1_box" />
+
+>>>>>>> Stashed changes
         </RelativeLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
