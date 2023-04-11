@@ -81,16 +81,16 @@
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".HistoryOfUNSWLand"
+            android:name=".InfoPages.HistoryOfUNSWLandPage"
             android:exported="false" />
         <activity
-            android:name=".LinkToResources"
+            android:name=".InfoPages.LinkToResourcesPage"
             android:exported="false" />
         <activity
-            android:name=".Biodiversity"
+            android:name=".InfoPages.BiodiversityPage"
             android:exported="false" />
         <activity
-            android:name=".WellBeingOnCampus"
+            android:name=".InfoPages.WellBeingOnCampusPage"
             android:exported="false" />
         <activity
             android:name=".ModifyDetails"

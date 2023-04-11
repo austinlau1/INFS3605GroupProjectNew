@@ -10,6 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.infs3605groupprojectnew.InfoPages.BiodiversityPage;
+import com.example.infs3605groupprojectnew.InfoPages.HistoryOfUNSWLandPage;
+import com.example.infs3605groupprojectnew.InfoPages.LinkToResourcesPage;
+import com.example.infs3605groupprojectnew.InfoPages.WellBeingOnCampusPage;
+
 
 public class InfoFragment extends Fragment {
 
@@ -26,7 +31,7 @@ public class InfoFragment extends Fragment {
         historyLandBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), HistoryOfUNSWLand.class);
+                Intent intent = new Intent(getActivity(), HistoryOfUNSWLandPage.class);
                 startActivity(intent);
             }
         });
@@ -36,7 +41,7 @@ public class InfoFragment extends Fragment {
         biodiversityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Biodiversity.class);
+                Intent intent = new Intent(getActivity(), BiodiversityPage.class);
                 startActivity(intent);
             }
         });
@@ -46,7 +51,7 @@ public class InfoFragment extends Fragment {
         wellbeingOnCampusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), WellBeingOnCampus.class);
+                Intent intent = new Intent(getActivity(), WellBeingOnCampusPage.class);
                 startActivity(intent);
             }
         });
@@ -75,7 +80,7 @@ public class InfoFragment extends Fragment {
         linkToResourcesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), LinkToResources.class);
+                Intent intent = new Intent(getActivity(), LinkToResourcesPage.class);
                 startActivity(intent);
             }
         });

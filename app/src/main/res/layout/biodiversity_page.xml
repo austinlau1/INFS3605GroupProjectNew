@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:background="@drawable/light_green_background"
-    tools:context=".Biodiversity">
+    tools:context=".InfoPages.BiodiversityPage">
     
     <ScrollView
         android:layout_width="match_parent"
@@ -84,10 +84,9 @@
                 android:text="@string/what_is_biodi"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="18sp">
-            </TextView>
+                android:textSize="18sp"></TextView>
 
-                <TextView
+            <TextView
                     android:id="@+id/content_detail_title2"
                     android:textSize="20sp"
                     android:fontFamily="@font/inter_black"

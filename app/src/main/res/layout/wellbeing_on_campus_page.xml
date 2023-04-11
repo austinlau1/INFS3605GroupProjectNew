@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:background="@drawable/light_green_background"
-    tools:context=".WellBeingOnCampus">
+    tools:context=".InfoPages.WellBeingOnCampusPage">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -61,17 +61,16 @@
             </androidx.cardview.widget.CardView>
 
 
-
             <TextView
                 android:id="@+id/faq_1"
-                android:textSize="20sp"
-                android:fontFamily="@font/inter_black"
-                android:textColor="@color/black"
-                android:text="Green Spaces?"
-                android:textAlignment="center"
-                android:layout_marginTop="8dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter_black"
+                android:text="Green Spaces at UNSW"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp">
 
             </TextView>
 
@@ -87,6 +86,20 @@
                 android:textColor="@color/black"
                 android:textSize="15sp">
             </TextView>
+
+            <TextView
+                android:id="@+id/faq_"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter_black"
+                android:text="Urban Heat Island Effect"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp">
+
+            </TextView>
+
             <TextView
                 android:id="@+id/wellb_detail_3"
                 android:layout_width="match_parent"

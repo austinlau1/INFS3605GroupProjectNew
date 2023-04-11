@@ -49,7 +49,7 @@
         android:layout_alignTop="@+id/infoText"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="36dp"
         android:background="@drawable/grey1_box"
         android:text="Wellbeing on Campus"
         app:icon="@android:drawable/btn_star_big_on"
@@ -62,13 +62,13 @@
         android:layout_height="71dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/grey1_box"
         android:text="History of UNSW land"
         android:textColor="@color/white"
         app:icon="@android:drawable/ic_dialog_map"
         app:layout_constraintEnd_toStartOf="@+id/LinkResourceBtn"
-        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/infoText"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -103,7 +103,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/HistoryLandBtn"
         app:layout_constraintEnd_toEndOf="@+id/infoText"
         app:layout_constraintTop_toBottomOf="@+id/infoText"
-        app:layout_constraintVertical_bias="0.967" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/FAQText"

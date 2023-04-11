@@ -63,7 +63,7 @@
         android:id="@+id/userEmail"
         android:layout_width="255dp"
         android:layout_height="30dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="220dp"
         android:background="@drawable/white_box"
         android:backgroundTint="#7EFFFFFF"
         android:drawableLeft="@drawable/ic_baseline_email_24"
@@ -75,7 +75,7 @@
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/modifyDetailsBtn"
-        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintHorizontal_bias="0.363"
         app:layout_constraintStart_toStartOf="@+id/modifyDetailsBtn"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -188,7 +188,7 @@
         android:id="@+id/modifyDetailsBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="560dp"
         android:background="@drawable/green3_box"
         android:fontFamily="@font/inter_semibold"
         android:text="Modify Details"
@@ -196,5 +196,35 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/hiUser"
         app:layout_constraintTop_toBottomOf="@+id/hiUserName" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profilePicture"
+        android:layout_width="112dp"
+        android:layout_height="115dp"
+        android:layout_marginStart="252dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/changePictureBtn"
+        android:layout_width="194dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="148dp"
+        android:text="Change Picture"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/uploadPictureBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="284dp"
+        android:layout_marginTop="164dp"
+        android:text="Upload"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

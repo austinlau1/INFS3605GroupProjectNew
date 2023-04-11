@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:background="@drawable/light_green_background"
-    tools:context=".LinkToResources">
+    tools:context=".InfoPages.LinkToResourcesPage">
 
     <ScrollView
         android:layout_width="match_parent"

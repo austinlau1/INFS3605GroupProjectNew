@@ -1,14 +1,24 @@
-package com.example.infs3605groupprojectnew;
+package com.example.infs3605groupprojectnew.InfoPages;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LinkToResources extends AppCompatActivity {
+import com.example.infs3605groupprojectnew.InfoPages.LinkToResources;
+import com.example.infs3605groupprojectnew.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+public class LinkToResourcesPage extends AppCompatActivity {
     ImageView Nura_Gili,IndigiGrow,La_Perouse,Gujaga,resource_img;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,5 +71,36 @@ public class LinkToResources extends AppCompatActivity {
             }
 
         });
+
+        // Pull data from firebase
+        DatabaseReference myRef = null;
+        myRef = FirebaseDatabase.getInstance().getReference("Info Page/Link To Resources");
+        TextView resources_detail_1 = findViewById(R.id.resources_detail_1);
+        TextView resources_detail_2 = findViewById(R.id.resources_detail_2);
+        TextView resources_detail_3 = findViewById(R.id.resources_detail_3);
+        TextView resources_detail_4 = findViewById(R.id.resources_detail_4);
+
+
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                LinkToResources linkToResources = snapshot.getValue(LinkToResources.class);
+                resources_detail_1.setText(linkToResources.getGujaga());
+                resources_detail_2.setText(linkToResources.getIndigiGrow());
+                resources_detail_3.setText(linkToResources.getLaPerouse());
+                resources_detail_4.setText(linkToResources.getNuraGiliUnit());
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
+
     }
 }
