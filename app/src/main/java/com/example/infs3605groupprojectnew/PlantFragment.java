@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -70,6 +71,7 @@ public class PlantFragment extends Fragment implements View.OnClickListener {
         });
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Plants Database");
+
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -85,11 +87,12 @@ public class PlantFragment extends Fragment implements View.OnClickListener {
 
                 TextView plantFragmentName = getActivity().findViewById(R.id.plantFragmentName);
                 ImageView plantImage = getActivity().findViewById(R.id.plantImage);
-
+                ProgressBar plantProgress = getActivity().findViewById(R.id.plantFragmentProgress);
 
                 plantFragmentName.setText(plantName1);
 
-
+                // show progress bar
+                plantProgress.setVisibility(View.VISIBLE);
 
                 // Plant Image
                 mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + plant.get(One).getScientificName() + ".jpeg");
@@ -102,16 +105,20 @@ public class PlantFragment extends Fragment implements View.OnClickListener {
                             // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
                             Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
                             plantImage.setImageBitmap(bitmap);
+                            plantProgress.setVisibility(View.GONE); // hide progress bar when image is loaded
 
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(getContext(), "Error occured", Toast.LENGTH_SHORT).show();
+                            plantProgress.setVisibility(View.GONE); // hide progress bar when image loading fails
                         }
                     });
                 } catch (IOException e) {
                     e.printStackTrace();
+                    // hide progress bar when an exception occurs
+                    plantProgress.setVisibility(View.GONE);
                 }
 
             }

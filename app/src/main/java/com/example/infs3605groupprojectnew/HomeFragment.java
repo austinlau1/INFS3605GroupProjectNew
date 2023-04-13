@@ -16,10 +16,14 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.infs3605groupprojectnew.Quizzes.EasyStart;
+import com.example.infs3605groupprojectnew.Quizzes.HardStart;
+import com.example.infs3605groupprojectnew.Quizzes.LocationStart;
 import com.example.infs3605groupprojectnew.Quizzes.QuizOptions;
 //import com.example.infs3605groupprojectnew.Quizzes.Quizzes;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -130,10 +134,45 @@ public class HomeFragment extends Fragment {
                 ImageView plantImageOne = getActivity().findViewById(R.id.plantImageOne);
                 ImageView plantImageTwo = getActivity().findViewById(R.id.plantImageTwo);
                 ImageView plantImageThree = getActivity().findViewById(R.id.plantImageThree);
+                ProgressBar plantOneProgress = getActivity().findViewById(R.id.progressBar2);
+                ProgressBar plantTwoProgress = getActivity().findViewById(R.id.progressBar3);
+                ProgressBar plantThreeProgress = getActivity().findViewById(R.id.progressBar4);
+
+                plantOneProgress.setVisibility(View.VISIBLE);
+                plantTwoProgress.setVisibility(View.VISIBLE);
+                plantThreeProgress.setVisibility(View.VISIBLE);
 
                 plantOne.setText(plantName1);
                 plantTwo.setText(plantName2);
                 plantThree.setText(plantName3);
+
+                ImageView toEasyQuiz = getActivity().findViewById(R.id.toEasyQuiz);
+                ImageView toHardQuiz = getActivity().findViewById(R.id.toHardQuiz);
+                ImageView toLocationQuiz = getActivity().findViewById(R.id.toLocationQuiz);
+
+                toEasyQuiz.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), EasyStart.class);
+                        startActivity(intent);
+                    }
+                });
+
+                toHardQuiz.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), HardStart.class);
+                        startActivity(intent);
+                    }
+                });
+
+                toLocationQuiz.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), LocationStart.class);
+                        startActivity(intent);
+                    }
+                });
 
                 // Plant Image
                 mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + plant.get(One).getScientificName() + ".jpeg");
@@ -146,16 +185,19 @@ public class HomeFragment extends Fragment {
                             // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
                             Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
                             plantImageOne.setImageBitmap(bitmap);
+                            plantOneProgress.setVisibility(View.GONE);
 
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(getContext(), "Error occured", Toast.LENGTH_SHORT).show();
+                            plantOneProgress.setVisibility(View.GONE);
                         }
                     });
                 } catch (IOException e) {
                     e.printStackTrace();
+                    plantOneProgress.setVisibility(View.GONE);
                 }
 
                 plantImageOne.setOnClickListener(new View.OnClickListener() {
@@ -178,16 +220,19 @@ public class HomeFragment extends Fragment {
                             // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
                             Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
                             plantImageTwo.setImageBitmap(bitmap);
+                            plantTwoProgress.setVisibility(View.GONE);
 
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(getContext(), "Error occured", Toast.LENGTH_SHORT).show();
+                            plantTwoProgress.setVisibility(View.GONE);
                         }
                     });
                 } catch (IOException e) {
                     e.printStackTrace();
+                    plantTwoProgress.setVisibility(View.GONE);
                 }
 
                 plantImageTwo.setOnClickListener(new View.OnClickListener() {
@@ -210,16 +255,19 @@ public class HomeFragment extends Fragment {
                             // Toast.makeText(PlantDetails.this, "Picture Loaded", Toast.LENGTH_SHORT).show();
                             Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
                             plantImageThree.setImageBitmap(bitmap);
+                            plantThreeProgress.setVisibility(View.GONE);
 
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(getContext(), "Error occured", Toast.LENGTH_SHORT).show();
+                            plantThreeProgress.setVisibility(View.GONE);
                         }
                     });
                 } catch (IOException e) {
                     e.printStackTrace();
+                    plantThreeProgress.setVisibility(View.GONE);
                 }
 
                 plantImageThree.setOnClickListener(new View.OnClickListener() {
@@ -240,6 +288,7 @@ public class HomeFragment extends Fragment {
 
 
         });
+
 
 
         // Button to explore plants
