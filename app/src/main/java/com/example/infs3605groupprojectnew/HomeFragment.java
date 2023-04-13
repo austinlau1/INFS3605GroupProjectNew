@@ -158,6 +158,16 @@ public class HomeFragment extends Fragment {
                     e.printStackTrace();
                 }
 
+                plantImageOne.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), PlantDetails.class);
+                        intent.putExtra("plant_name", plant.get(One).getName());
+                        Log.e("ViewMap", plant.get(One).getName());
+                        startActivity(intent);
+                    }
+                });
+
                 mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + plant.get(Two).getScientificName() + ".jpeg");
 
                 try {
@@ -180,6 +190,16 @@ public class HomeFragment extends Fragment {
                     e.printStackTrace();
                 }
 
+                plantImageTwo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), PlantDetails.class);
+                        intent.putExtra("plant_name", plant.get(Two).getName());
+                        Log.e("ViewMap", plant.get(Two).getName());
+                        startActivity(intent);
+                    }
+                });
+
                 mStorageReference = FirebaseStorage.getInstance().getReference().child("Picture/" + plant.get(Three).getScientificName() + ".jpeg");
 
                 try {
@@ -201,12 +221,24 @@ public class HomeFragment extends Fragment {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
+                plantImageThree.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), PlantDetails.class);
+                        intent.putExtra("plant_name", plant.get(Three).getName());
+                        Log.e("ViewMap", plant.get(Three).getName());
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+
+
         });
 
 
