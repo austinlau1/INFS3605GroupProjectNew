@@ -55,6 +55,7 @@ public class HomeFragment extends Fragment {
     int One, Two, Three;
     StorageReference mStorageReference;
     private CircleImageView profilePicture;
+    List<User> users;
 
 
     @Override
@@ -88,7 +89,7 @@ public class HomeFragment extends Fragment {
         });
 
         // Display first name
-        TextView firstNameTextView = rootView.findViewById(R.id.name);
+        //TextView firstNameTextView = rootView.findViewById(R.id.name);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         /*if (user != null) {
@@ -98,10 +99,38 @@ public class HomeFragment extends Fragment {
         }*/
 
         // Display user email
-        if (user != null) {
+        /*if (user != null) {
             String email = user.getEmail();
             Log.d("TAG", "User email: " + email);
             firstNameTextView.setText(email);
+        }*/
+
+        DatabaseReference myRef = null;
+        if (user != null) {
+            myRef = FirebaseDatabase.getInstance().getReference("User/" + user.getUid());
+        }
+
+        TextView hiFirstName = rootView.findViewById(R.id.name);
+
+        users = new ArrayList<>();
+
+        //if (users != null) {
+
+        if (myRef != null) {
+            myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    User userProfile = snapshot.getValue(User.class);
+                    if (userProfile != null) {
+                        hiFirstName.setText(userProfile.getFirstname());
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
         }
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
