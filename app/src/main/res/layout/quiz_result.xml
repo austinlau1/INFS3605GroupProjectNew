@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/quizbg"
     android:padding="16dp">
 
 
@@ -38,11 +39,11 @@
 
     <Button
         android:id="@+id/restartButton"
-        android:layout_width="200dp"
+        android:layout_width="199dp"
         android:layout_height="48dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/green3_box"
-        android:backgroundTint="@color/green2"
+        android:background="@drawable/green1_box"
+        android:backgroundTint="@color/black"
         android:fontFamily="@font/inter_semibold"
         android:text="Restart Quiz" />
 

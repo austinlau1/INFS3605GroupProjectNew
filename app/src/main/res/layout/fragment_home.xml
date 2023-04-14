@@ -67,10 +67,10 @@
                 android:layout_alignTop="@+id/imageView"
                 android:layout_alignEnd="@+id/imageView"
                 android:layout_alignBottom="@+id/imageView"
-                android:layout_marginStart="143dp"
-                android:layout_marginTop="9dp"
-                android:layout_marginEnd="95dp"
-                android:layout_marginBottom="148dp"
+                android:layout_marginStart="160dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="77dp"
+                android:layout_marginBottom="137dp"
                 android:text="BUCKER TRAIL APP"
                 android:textColor="@color/green1"
                 android:textSize="16sp"
@@ -83,7 +83,7 @@
                 android:layout_alignTop="@+id/imageView"
                 android:layout_marginStart="22dp"
                 android:layout_marginTop="47dp"
-                android:layout_toEndOf="@+id/imageView2"
+                android:layout_toEndOf="@+id/imageView"
                 android:fontFamily="@font/inter_thin"
                 android:text="Welcome, "
                 android:textColor="@color/white"
@@ -111,9 +111,9 @@
                 android:layout_alignTop="@+id/imageView"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="248dp"
-                android:layout_marginTop="53dp"
-                android:layout_marginEnd="21dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="29dp"
+                android:layout_marginEnd="259dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@drawable/baseline_person_outline_24" />
@@ -147,35 +147,35 @@
 
             <ImageView
                 android:id="@+id/toHardQuiz"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_below="@+id/textView9"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="26dp"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="39dp"
+                android:layout_marginEnd="41dp"
                 android:layout_toStartOf="@+id/toLocationQuiz"
-                android:src="@drawable/hiking"
-                app:tint="#F44336" />
+                android:layout_toEndOf="@+id/toEasyQuiz"
+                android:src="@drawable/hard" />
 
             <ImageView
                 android:id="@+id/toEasyQuiz"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_below="@+id/textView9"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="44dp"
                 android:layout_marginTop="40dp"
-                android:src="@drawable/lightweight"
-                app:tint="#4CAF50" />
+                android:src="@drawable/easyquiz" />
 
             <ImageView
                 android:id="@+id/toLocationQuiz"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_below="@+id/textView9"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="44dp"
-                android:src="@drawable/location" />
+                android:src="@drawable/locationquiz" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -268,7 +268,7 @@
                 android:layout_below="@+id/imageView"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="35dp"
                 android:text="EXPLORE PLANTS"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -280,8 +280,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/plantImageOne"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="48dp"
                 android:text="PRACTICE QUIZZES"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -307,7 +307,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/plantImageOne"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="36dp"
                 android:layout_marginEnd="22dp"
                 android:background="@drawable/green1_box"
                 android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
@@ -323,7 +323,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="714dp"
                 android:layout_marginEnd="221dp"
-                android:text="Scroll View Test" />
+                android:text="" />
 
             <Button
                 android:id="@+id/logout_but"
@@ -331,20 +331,20 @@
                 android:layout_height="36dp"
                 android:layout_alignTop="@+id/imageView"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="352dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginStart="345dp"
+                android:layout_marginTop="146dp"
                 android:background="@drawable/baseline_logout_24"
                 app:backgroundTint="@color/white" />
 
             <Button
                 android:id="@+id/editProfileBtn"
                 android:layout_width="wrap_content"
-                android:layout_height="37dp"
-                android:layout_alignTop="@+id/imageView"
+                android:layout_height="45dp"
+                android:layout_alignBottom="@+id/imageView"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="17dp"
-                android:layout_marginTop="139dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginStart="169dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="80dp"
                 android:background="@drawable/green1_box"
                 android:text="edit user"
                 app:rippleColor="@color/green5" />
