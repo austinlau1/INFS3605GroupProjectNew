@@ -70,9 +70,9 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="333dp"
-                android:layout_marginTop="23dp"
-                android:layout_marginEnd="40dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="358dp"
                 android:text="ID" />
 
             <TextView
@@ -124,8 +124,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="216dp"
-                android:layout_marginTop="458dp"
+                android:layout_marginStart="213dp"
+                android:layout_marginTop="452dp"
                 android:background="@drawable/baseline_play_circle_filled_24"
                 android:fontFamily="@font/inter_semibold"
                 android:textColor="#000000"
@@ -183,8 +183,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="280dp"
-                android:layout_marginTop="457dp"
+                android:layout_marginStart="272dp"
+                android:layout_marginTop="450dp"
                 android:background="@drawable/baseline_pause_circle_filled_24"
                 app:backgroundTint="@color/black" />
 
@@ -204,9 +204,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="456dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="451dp"
+                android:layout_marginEnd="13dp"
                 android:layout_toEndOf="@+id/audioEndBtn"
                 android:background="@drawable/toggle_favourite"
                 android:text="ToggleButton"

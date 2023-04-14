@@ -83,7 +83,7 @@
         android:id="@+id/userFirstName"
         android:layout_width="255dp"
         android:layout_height="35dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/white_box"
         android:backgroundTint="#7EFFFFFF"
         android:drawableLeft="@drawable/baseline_contacts_24"
@@ -96,7 +96,7 @@
         android:textSize="20sp"
         app:drawableTint="#000000"
         app:layout_constraintEnd_toEndOf="@+id/userUsername"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/userUsername"
         app:layout_constraintTop_toBottomOf="@+id/userUsername" />
 
@@ -104,7 +104,7 @@
         android:id="@+id/userLastName"
         android:layout_width="255dp"
         android:layout_height="30dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/white_box"
         android:backgroundTint="#7EFFFFFF"
         android:drawableLeft="@drawable/baseline_contacts_24"
@@ -167,7 +167,7 @@
         android:layout_width="255dp"
         android:layout_height="30dp"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/white_box"
         android:backgroundTint="#7EFFFFFF"
         android:drawableLeft="@drawable/baseline_badge_24"
@@ -188,7 +188,7 @@
         android:id="@+id/modifyDetailsBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="560dp"
+        android:layout_marginTop="492dp"
         android:background="@drawable/green3_box"
         android:fontFamily="@font/inter_semibold"
         android:text="Modify Details"
@@ -201,29 +201,19 @@
         android:id="@+id/profilePicture"
         android:layout_width="112dp"
         android:layout_height="115dp"
-        android:layout_marginStart="252dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginStart="264dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/baseline_person_outline_24" />
 
     <Button
         android:id="@+id/changePictureBtn"
-        android:layout_width="194dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="148dp"
+        android:layout_width="177dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="140dp"
         android:text="Change Picture"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/uploadPictureBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="284dp"
-        android:layout_marginTop="164dp"
-        android:text="Upload"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

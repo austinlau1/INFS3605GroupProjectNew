@@ -47,11 +47,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class HomeFragment extends Fragment {
     DatabaseReference databaseReference;
     int One, Two, Three;
     StorageReference mStorageReference;
+    private CircleImageView profilePicture;
 
 
     @Override
@@ -99,6 +102,24 @@ public class HomeFragment extends Fragment {
             String email = user.getEmail();
             Log.d("TAG", "User email: " + email);
             firstNameTextView.setText(email);
+        }
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference profilePicRef = storage.getReference().child("ProfilePicture/" + user.getUid() + ".jpeg");
+
+        profilePicture = rootView.findViewById(R.id.profilePicture);
+
+        try {
+            final File file = File.createTempFile("image", "jpeg");
+            profilePicRef.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                    Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                    profilePicture.setImageBitmap(bitmap);
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
 
@@ -324,6 +345,7 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
 
 
         return rootView;

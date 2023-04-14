@@ -51,8 +51,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ModifyDetails extends AppCompatActivity {
     private static final String TAG = "ModifyDetails";
-    private CircleImageView profilePicture;
-    Uri imageUri;
+    /*private CircleImageView profilePicture;
+    Uri imageUri;*/
     
 
     @Override
@@ -93,8 +93,8 @@ public class ModifyDetails extends AppCompatActivity {
 
 
         // Profile Picture
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference();
-        StorageReference profilePicRef = storageRef.child("ProfilePicture/" + user.getUid() + ".jpg");
+        /*StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+        StorageReference profilePicRef = storageRef.child("ProfilePicture/" + user.getUid() + ".jpg");*/
 
         /*ActivityResultLauncher<Intent> galleryLauncher;
 
@@ -116,7 +116,7 @@ public class ModifyDetails extends AppCompatActivity {
                     }
                 });*/
 
-        ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
+        /*ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
             public void onActivityResult(Uri result) {
                 if (result != null) {
@@ -134,8 +134,8 @@ public class ModifyDetails extends AppCompatActivity {
         changePictureBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                galleryLauncher.launch(intent);*/
+                *//*Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                galleryLauncher.launch(intent);*//*
                 mGetContent.launch("image/*");
 
             }
@@ -145,7 +145,7 @@ public class ModifyDetails extends AppCompatActivity {
         uploadPictureBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                uploadImage();
+                uploadImage();*/
 
                 /*// Get the selected image from the ImageView
                 Bitmap selectedImage = ((BitmapDrawable) profilePicture.getDrawable()).getBitmap();
@@ -178,7 +178,7 @@ public class ModifyDetails extends AppCompatActivity {
                         // Handle unsuccessful upload
                     }
                 });*/
-            }
+            /*}
 
             private void uploadImage() {
                 StorageReference profilePicRef = storageRef.child("ProfilePicture/" + user.getUid() + ".jpg");
@@ -195,7 +195,7 @@ public class ModifyDetails extends AppCompatActivity {
                 });
 
             }
-        });
+        });*/
 
 
         Button ModifyUserDetailsBtn = findViewById(R.id.ModifyUserDetailsBtn);
