@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -80,6 +81,23 @@ public class PlantList extends AppCompatActivity {
 
             }
         });
+        // Enable the back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    // Handle the back button press
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(PlantList.this, MenuPage.class);
+                intent.putExtra("ToNavigation", "PlantFragment");
+                startActivity(intent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(menuItem);
+        }
     }
 
     // Search Menu NOT WORKING YET

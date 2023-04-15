@@ -48,7 +48,7 @@
         android:background="@drawable/newbuttondesign"
         android:fontFamily="@font/inter_semibold"
         android:shadowColor="#6A6A6A"
-        android:text="VIEW LOCATION"
+        android:text="VIEW LOCATIONS"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         app:backgroundTint="@color/green5"

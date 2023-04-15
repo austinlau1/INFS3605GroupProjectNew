@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,6 +43,9 @@ public class ContactUs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contact_us_page);
         setTitle("Contact Us");
+        // Enable the back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -69,51 +73,51 @@ public class ContactUs extends AppCompatActivity {
         });
     }
 
-        public void feedbacksent (View view){
+    // Handle the back button press
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(ContactUs.this, MenuPage.class);
+                intent.putExtra("ToNavigation", "InfoFragment");
+                startActivity(intent);
+                return true;
 
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-//
-            String titleinput = uploadEnquiryTitle.getText().toString();
-            String emailinput = uploadEnquiryEmail.getText().toString();
-            String descinput = uploadEnquiry.getText().toString();
-
-           User userInstance = new User();
-           User.Enquiry enquiryInstance = userInstance.new Enquiry(emailinput,titleinput,descinput);
-
-            //We are changing the child from title to currentDate,
-            // because we will be updating title as well and it may affect child value.
-            String currentDate = " New User Enquiry " + DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
-
-            FirebaseDatabase.getInstance().getReference("User Enquiry").child(currentDate).setValue(enquiryInstance).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(ContactUs.this, "Enquiry has been sent successfully", Toast.LENGTH_LONG).show();
-                        finish();
-                    }
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(ContactUs.this, "Enquiry has not sent, please try again", Toast.LENGTH_LONG).show();
-                }
-            });
-
-
-//            ref[0].child("Enquiry_title").setValue(titleinput);
-//            ref[0].child("Enquiry_desc").setValue(descinput);
-
-
-//        String titleinput = uploadEnquiryTitle.getText().toString();
-//        String descinput = uploadEnquiry.getText().toString();
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        DatabaseReference Reftitle = FirebaseDatabase.getInstance().getReference("User/Enquiry_title"  +user.getUid());
-//        Reftitle.setValue(titleinput);
-//
-//        DatabaseReference Refdesc = FirebaseDatabase.getInstance().getReference("User/Enquiry_desc" + user.getUid());
-//        Refdesc.setValue(descinput);
-
-
+            default:
+                return super.onOptionsItemSelected(menuItem);
         }
+    }
+
+    public void feedbacksent (View view){
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+
+        String titleinput = uploadEnquiryTitle.getText().toString();
+        String emailinput = uploadEnquiryEmail.getText().toString();
+        String descinput = uploadEnquiry.getText().toString();
+
+        User userInstance = new User();
+        User.Enquiry enquiryInstance = userInstance.new Enquiry(emailinput,titleinput,descinput);
+
+        //We are changing the child from title to currentDate,
+        // because we will be updating title as well and it may affect child value.
+        String currentDate = " New User Enquiry " + DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+
+        FirebaseDatabase.getInstance().getReference("User Enquiry").child(currentDate).setValue(enquiryInstance).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(ContactUs.this, "Enquiry has been sent successfully", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(ContactUs.this, "Enquiry has not sent, please try again", Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
 }

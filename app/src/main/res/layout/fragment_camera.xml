@@ -45,7 +45,7 @@
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81" />
+        app:layout_constraintVertical_bias="0.726" />
 
     <Button
         android:id="@+id/scanBtn"
@@ -55,7 +55,7 @@
         android:layout_alignEnd="@+id/welcome_text"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="383dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/newbuttondesign"
         android:fontFamily="@font/inter_semibold"
         android:shadowColor="#6A6A6A"
@@ -63,12 +63,10 @@
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         app:backgroundTint="@color/green5"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/welcome_text"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="@+id/welcome_text"
         app:layout_constraintTop_toBottomOf="@+id/welcome_text"
-        app:layout_constraintVertical_bias="0.91"
         app:rippleColor="@color/green2"
         app:strokeColor="#FF5E5E"
         tools:ignore="TouchTargetSizeCheck" />

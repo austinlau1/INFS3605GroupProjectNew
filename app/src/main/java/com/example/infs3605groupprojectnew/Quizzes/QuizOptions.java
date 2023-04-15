@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.example.infs3605groupprojectnew.InfoPages.BiodiversityPage;
 import com.example.infs3605groupprojectnew.MenuPage;
 import com.example.infs3605groupprojectnew.R;
 
@@ -49,16 +51,22 @@ public class QuizOptions extends AppCompatActivity {
             }
         });
 
-        ImageButton backBtn = (ImageButton) findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        // Enable the back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    // Handle the back button press
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case android.R.id.home:
                 Intent intent = new Intent(QuizOptions.this, MenuPage.class);
                 intent.putExtra("ToNavigation", "HomeFragment");
-                //intent.putExtra("ProfileInfo", username);
                 startActivity(intent);
+                return true;
 
-            }
-        });
+            default:
+                return super.onOptionsItemSelected(menuItem);
+        }
     }
 }

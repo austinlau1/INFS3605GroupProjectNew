@@ -190,6 +190,7 @@
         android:layout_height="110dp"
         android:layout_marginStart="76dp"
         android:layout_marginTop="112dp"
+        android:src="@drawable/userpic"
         app:layout_constraintEnd_toStartOf="@+id/hiUserName"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/welcome_text2"

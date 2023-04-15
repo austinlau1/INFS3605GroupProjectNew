@@ -70,16 +70,6 @@ public class WelcomeActivity extends AppCompatActivity{
             }
         });
 
-        // Admin button
-        Button adminBtn = findViewById(R.id.adminBtn);
-        adminBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(WelcomeActivity.this, AdminLogin.class);
-                startActivity(intent);
-            }
-        });
-
 
     }
 

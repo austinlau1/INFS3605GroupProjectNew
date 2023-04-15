@@ -3,6 +3,7 @@ package com.example.infs3605groupprojectnew.InfoPages;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,7 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.infs3605groupprojectnew.FAQ;
 import com.example.infs3605groupprojectnew.InfoPages.LinkToResources;
+import com.example.infs3605groupprojectnew.MenuPage;
 import com.example.infs3605groupprojectnew.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -101,6 +104,22 @@ public class LinkToResourcesPage extends AppCompatActivity {
 
 
 
+        // Enable the back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
 
+    // Handle the back button press
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(LinkToResourcesPage.this, MenuPage.class);
+                intent.putExtra("ToNavigation", "InfoFragment");
+                startActivity(intent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(menuItem);
+        }
     }
 }

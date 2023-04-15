@@ -51,4 +51,17 @@ So why do we need to conserve most or every species? We know so little about the
     <string name="wellbeing2">As well as providing a habitat for wildlife and contributing to a pleasing aesthetic, trees create a microclimate that can significantly reduce the  <b>\"urban heat island effect\"</b>. This provides staff, students and members of the UNSW community with a more comfortable campus environment and the temperature decreases can significantly reduce the amount of energy required to cool (and in some instances to heat) buildings. There is also a growing body of evidence that even an outlook on trees and other greenspace can significantly improve mood and has even been shown to accelerate recovery of people in hospitals! UNSW welcomes visitors to enjoy the benefits of the green spaces on campus all year round, free of charge.</string>
     <string name="wellbeing1">UNSW has more than 120,000 square metres of landscaped gardens and areas and almost three-quarters of this area in sporting fields. We are the proud caretakers of over 1200 trees on the Kensington campus, including several visually stunning 120-year-old Morton Bay and Port Jackson Fig trees. Our trees are managed through a tree database system and an interactive tree plan of the campus.</string>
     <string name="forgot_pw_text">Please enter the email address connected to your account. A link to reset your password will be sent shortly</string>
+
+
+    <string-array name="route_options">
+        <item>All Markers</item>
+        <item>Route One</item>
+        <item>Route Two</item>
+        <item>Route Three</item>
+        <item>Route Four</item>
+        <item>Route Five</item>
+        <item>Route Six</item>
+        <item>Route Seven</item>
+        <item>Whole Route</item>
+    </string-array>
 </resources>

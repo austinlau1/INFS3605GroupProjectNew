@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class PrivacyPolicy extends AppCompatActivity {
-    Button mContactDirect;
+    Button mContactDirect, mhomeBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,16 @@ public class PrivacyPolicy extends AppCompatActivity {
             public void onClick(View view) {
                 Intent direct_contact = new Intent(PrivacyPolicy.this, ContactUs.class);
                 startActivity(direct_contact);
+            }
+        });
+
+        mhomeBack = findViewById(R.id.backButton);
+
+        mhomeBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent direct_home = new Intent(PrivacyPolicy.this, UserDetails.class);
+                startActivity(direct_home);
             }
         });
     }

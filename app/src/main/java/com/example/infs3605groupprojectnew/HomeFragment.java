@@ -70,7 +70,6 @@ public class HomeFragment extends Fragment {
         ImageButton bannerClose = rootView.findViewById(R.id.banner_close);
 
         bannerLayout.setVisibility(View.VISIBLE);
-        bannerText.setText("This is the acknowledgement of country.");
         bannerClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,18 +92,6 @@ public class HomeFragment extends Fragment {
         //TextView firstNameTextView = rootView.findViewById(R.id.name);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        /*if (user != null) {
-            String firstName = user.getDisplayName();
-            Log.d("TAG", "User first name: " + firstName);
-            firstNameTextView.setText(firstName);
-        }*/
-
-        // Display user email
-        /*if (user != null) {
-            String email = user.getEmail();
-            Log.d("TAG", "User email: " + email);
-            firstNameTextView.setText(email);
-        }*/
 
         DatabaseReference myRef = null;
         if (user != null) {
@@ -115,7 +102,6 @@ public class HomeFragment extends Fragment {
 
         users = new ArrayList<>();
 
-        //if (users != null) {
 
         if (myRef != null) {
             myRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -123,7 +109,7 @@ public class HomeFragment extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     User userProfile = snapshot.getValue(User.class);
                     if (userProfile != null) {
-                        hiFirstName.setText(userProfile.getFirstname());
+                        hiFirstName.setText("Welcome " + userProfile.getFirstname());
                     }
                 }
 
