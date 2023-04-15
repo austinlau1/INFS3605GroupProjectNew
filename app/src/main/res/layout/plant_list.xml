@@ -12,11 +12,10 @@
         android:id="@+id/plantPicture"
         android:layout_width="106dp"
         android:layout_height="94dp"
-        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.428"
+        tools:layout_editor_absoluteX="56dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -38,11 +37,10 @@
         android:layout_width="19dp"
         android:layout_height="21dp"
         android:layout_marginTop="24dp"
-        android:text="ID"
         android:gravity="center"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="ID"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="19dp" />
 
     <TextView
         android:id="@+id/plantScientific"
@@ -55,15 +53,5 @@
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/plantPicture"
         app:layout_constraintTop_toBottomOf="@+id/plantNm" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/favorite_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
