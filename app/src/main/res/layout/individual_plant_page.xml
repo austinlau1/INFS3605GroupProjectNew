@@ -185,7 +185,7 @@
                 android:layout_marginStart="17dp"
                 android:layout_marginTop="0dp"
                 android:layout_toEndOf="@+id/audio_btn"
-                android:background="@drawable/baseline_pause_circle_filled_24"
+                android:background="@drawable/ic_baseline_stop_circle_24"
                 app:backgroundTint="@color/black" />
 
             <TextView

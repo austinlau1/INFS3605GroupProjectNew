@@ -56,7 +56,6 @@ public class PlantDetails extends AppCompatActivity {
         Button learn_more_btn = findViewById(R.id.learn_more_btn);
         Button audio_btn = findViewById(R.id.audio_btn);
         Button audio_end_btn = findViewById(R.id.audioEndBtn);
-        ToggleButton favouriteButton = findViewById(R.id.favoriteButton);
 
         // Textview Scroll for plant description
         plant_description.setMovementMethod(new ScrollingMovementMethod());
@@ -68,31 +67,8 @@ public class PlantDetails extends AppCompatActivity {
             plant_name.setText(plant.getName());
             geographic_distribution.setText(plant.getGeographicDistribution());
             plant_description.setText(plant.getTraditionalUses());
-            favouriteButton.setChecked(plant.getIsFavourite());
             Log.d("PlantDetails", plant.getName() + ": " + String.valueOf(plant.getIsFavourite()));
 
-            favouriteButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (!plant.getIsFavourite() && isChecked) {
-                        // If the plant was not marked as favourite and the button is checked,
-                        // set the plant's favourite value to true
-                        plant.setIsFavourite(true);
-                        DatabaseReference favouriteRef = FirebaseDatabase.getInstance().getReference("Plants Database")
-                                .child(plant.getId().toString()).child("isFavourite");
-                        favouriteRef.setValue(true);
-                        Log.d("PlantDetails", plant.getName() + ": " + String.valueOf(plant.getIsFavourite()));
-                    } else if (plant.getIsFavourite() && !isChecked) {
-                        // If the plant was marked as favourite and the button is unchecked,
-                        // set the plant's favourite value to false
-                        plant.setIsFavourite(false);
-                        DatabaseReference favouriteRef = FirebaseDatabase.getInstance().getReference("Plants Database")
-                                .child(plant.getId().toString()).child("isFavourite");
-                        favouriteRef.setValue(false);
-                        Log.d("PlantDetails", plant.getName() + ": " + String.valueOf(plant.getIsFavourite()));
-                    }
-                }
-            });
 
 
             // Plant Image
@@ -343,12 +319,49 @@ public class PlantDetails extends AppCompatActivity {
                                 }
                             });
 
-                            // Audio button with youtube search
+
                             audio_btn.setOnClickListener(new View.OnClickListener() {
                                 @Override
-                                public void onClick(View view) {
-                                    Intent youtube_search = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/results?search_query=" + finalMatchingPlant.getName()));
-                                    startActivity(youtube_search);
+                                public void onClick(View v) {
+                                    mStorageReference = FirebaseStorage.getInstance().getReference().child("Audio/" + mapPlant.getScientificName() + ".mp3");
+
+                                    File localFile;
+                                    try {
+                                        localFile = File.createTempFile("audio", "mp3");
+                                    } catch (IOException e) {
+                                        //Log.e(TAG, "Error creating temp file", e);
+                                        return;
+                                    }
+
+                                    mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                                        @Override
+                                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                            // Play the audio file using MediaPlayer
+                                            MediaPlayer mediaPlayer = new MediaPlayer();
+                                            try {
+                                                mediaPlayer.setDataSource(localFile.getAbsolutePath());
+                                                mediaPlayer.prepare();
+                                                mediaPlayer.start();
+                                            } catch (IOException e) {
+                                                //Log.e(TAG, "Error playing audio file", e);
+                                            }
+
+                                            // Stop audio button
+                                            Button endButton = findViewById(R.id.audioEndBtn);
+                                            endButton.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View view) {
+                                                    mediaPlayer.stop();
+                                                    mediaPlayer.release();
+                                                }
+                                            });
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception exception) {
+                                            //Log.e(TAG, "Error downloading audio file", exception);
+                                        }
+                                    });
                                 }
                             });
                             break;
