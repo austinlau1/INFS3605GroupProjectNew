@@ -4,21 +4,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/quizbg"
     tools:context=".PrivacyPolicy">
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_bold"
         android:text="Privacy Policy "
-        tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="22dp" />
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.568" />
 
     <TextView
         android:id="@+id/textView12"
-        android:layout_width="367dp"
+        android:layout_width="369dp"
         android:layout_height="123dp"
+        android:layout_marginBottom="488dp"
+        android:fontFamily="@font/inter"
+        android:text="We at [Bush Trail] are committed to protecting the privacy and security of our users  when you use our App. This Privacy Policy outlines how we collect, use, disclose, and protect your personal information when you use our App"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="369dp"
+        android:layout_height="123dp"
+        android:layout_marginBottom="388dp"
+        android:fontFamily="@font/inter"
         android:text="Your use of the application is subject to UNSW’s Privacy Policy. By using the application, you agree to the collection, use and disclosure of your personal information as described on UNSW Privacy Policy."
-        tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="56dp" />
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="368dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="388dp"
+        android:fontFamily="@font/inter"
+        android:text="For enquiry, please direct back to our 'Contact Us' page "
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.619"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/DirectContact"
+        android:layout_width="215dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="256dp"
+        android:background="@drawable/green4_box"
+        android:backgroundTint="#000000"
+        android:backgroundTintMode="add"
+        android:fontFamily="@font/inter_semibold"
+        android:text="Contact Us"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

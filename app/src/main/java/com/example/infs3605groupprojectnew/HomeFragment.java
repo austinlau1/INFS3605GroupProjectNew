@@ -80,6 +80,7 @@ public class HomeFragment extends Fragment {
 
         // Edit profile button
         Button editProfileBtn = rootView.findViewById(R.id.editProfileBtn);
+        editProfileBtn.setBackgroundResource(R.drawable.green7_box);
         editProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
