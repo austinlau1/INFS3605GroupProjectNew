@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,13 +25,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Locale;
 
 public class HardProgress extends AppCompatActivity {
 
     private ArrayList<QuizQuestion> quizQuestions;
     private int currentQuestionIndex = 0;
-    private int score = 0;
+    private int correct = 0;
+    private int wrong = 0;
     private CountDownTimer timer;
     private AlertDialog dialog;
     RadioGroup optionsRadioGroup;
@@ -38,6 +41,7 @@ public class HardProgress extends AppCompatActivity {
     RadioButton option2RadioButton;
     RadioButton option3RadioButton;
     RadioButton option4RadioButton;
+    TextView questionNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +95,13 @@ public class HardProgress extends AppCompatActivity {
     }
 
     private void startTimer() {
+        // Shuffle the quiz questions
+        Collections.shuffle(quizQuestions);
+
+        // Select 10 random questions
+        quizQuestions = new ArrayList<>(quizQuestions.subList(0, 10));
+
+
         timer = new CountDownTimer(60000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -112,6 +123,11 @@ public class HardProgress extends AppCompatActivity {
     }
 
     private void displayQuestion() {
+        questionNumber = findViewById(R.id.question_number);
+        int currentQuestionNumber = currentQuestionIndex + 1;
+        int totalQuestions = quizQuestions.size();
+        String questionNumberText = "Question " + currentQuestionNumber + "/" + totalQuestions;
+        questionNumber.setText(questionNumberText);
         QuizQuestion currentQuestion = quizQuestions.get(currentQuestionIndex);
 
         TextView questionTextView = findViewById(R.id.question_text_view);
@@ -148,7 +164,7 @@ public class HardProgress extends AppCompatActivity {
         boolean isCorrect = checkAnswer();
 
         if (isCorrect) {
-            score++;
+            correct++;
             Toast.makeText(HardProgress.this, "Correct", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(HardProgress.this, "Incorrect", Toast.LENGTH_SHORT).show();
@@ -177,7 +193,7 @@ public class HardProgress extends AppCompatActivity {
         View resultView = getLayoutInflater().inflate(R.layout.quiz_result, null);
 
         // Find the FrameLayout view in the layout
-        FrameLayout trophyFrameLayout = resultView.findViewById(R.id.trophyFrameLayout);
+        RelativeLayout trophyFrameLayout = resultView.findViewById(R.id.trophyFrameLayout);
 
         // Create an AlertDialog with the custom layout
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -185,18 +201,12 @@ public class HardProgress extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
 
-        // Create an ImageView and add it to the FrameLayout
-        ImageView trophyImageView = new ImageView(this);
-        trophyImageView.setImageResource(R.drawable.gold_trophy);
-        trophyFrameLayout.addView(trophyImageView);
-
-        // Create a ConfettiView and add it to the FrameLayout
-        //ConfettiView confettiView = new ConfettiView(this, null);
-        //trophyFrameLayout.addView(confettiView);
-
         // Find any relevant views in the layout and update their values or add listeners
-        TextView scoreTextView = resultView.findViewById(R.id.scoreTextView);
-        scoreTextView.setText("You scored " + score + " out of " + quizQuestions.size() + "!");
+        TextView correctCount = resultView.findViewById(R.id.correctCount);
+        correctCount.setText(String.valueOf(correct));
+        wrong = 10 - correct;
+        TextView incorrectCount = resultView.findViewById(R.id.incorrectCount);
+        incorrectCount.setText(String.valueOf(wrong));
 
         Button restartButton = resultView.findViewById(R.id.restartButton);
         restartButton.setOnClickListener(new View.OnClickListener() {
@@ -216,10 +226,8 @@ public class HardProgress extends AppCompatActivity {
         });
 
 
-        double calc = 0.6* quizQuestions.size();
-
         // If the user scored 100%, show the trophy and confetti animation
-        if (score >= calc) {
+        if (correct >= 6) {
             // Set the visibility of the trophy FrameLayout to visible
             trophyFrameLayout.setVisibility(View.VISIBLE);
 
@@ -229,7 +237,8 @@ public class HardProgress extends AppCompatActivity {
 
 
     private void restartQuiz() {
-        score = 0;
+        correct = 0;
+        wrong = 0;
         currentQuestionIndex = 0;
         startTimer();
     }

@@ -45,9 +45,6 @@
             android:name=".ViewMap"
             android:exported="false" />
         <activity
-            android:name=".Quizzes.TestQuiz"
-            android:exported="false" />
-        <activity
             android:name=".Quizzes.HardStart"
             android:exported="false" />
         <activity

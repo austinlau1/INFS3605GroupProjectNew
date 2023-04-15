@@ -1,60 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/quizbg"
-    android:padding="16dp">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
 
-
-    <FrameLayout
-        android:id="@+id/trophyFrameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_marginTop="32dp"
-        android:visibility="gone">
-
-        <ImageView
-            android:id="@+id/trophyImageView"
-            android:layout_width="70dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:src="@drawable/gold_trophy" />
-
-        <!--<com.github.jinatonic.confetti.ConfettiView
-            android:id="@+id/confettiView"
-            android:layout_width="80dp"
-            android:layout_height="110dp"
-            android:layout_gravity="center" />-->
-
-    </FrameLayout>
-
-    <TextView
-        android:id="@+id/scoreTextView"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:id="@+id/inner_relative_layout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/ic_wave"
+        android:padding="24dp">
 
-    <Button
-        android:id="@+id/restartButton"
-        android:layout_width="199dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/green1_box"
-        android:backgroundTint="@color/black"
-        android:fontFamily="@font/inter_semibold"
-        android:text="Restart Quiz" />
+        <RelativeLayout
+            android:id="@+id/trophyFrameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:visibility="gone">
 
-    <Button
-        android:id="@+id/exitButton"
-        android:layout_width="198dp"
-        android:layout_height="48dp"
-        android:background="@drawable/green4_box"
-        android:backgroundTint="@color/green2"
-        android:fontFamily="@font/inter_semibold"
-        android:text="Exit Quiz" />
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:text="Congratulations!!"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/trophyImageView"
+                android:layout_width="140dp"
+                android:layout_height="200dp"
+                android:layout_below="@id/textView15"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/gold_trophy" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/yourScore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/trophyFrameLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="19dp"
+            android:layout_marginBottom="16dp"
+            android:text="Your Score"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/textLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/yourScore"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:gravity="start|center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp">
+
+            <TextView
+                android:id="@+id/correctText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Correct"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/incorrectText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Incorrect"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/countLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textLayout"
+            android:layout_marginTop="10dp"
+            android:gravity="start|center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="60dp"
+            android:paddingEnd="60dp">
+
+            <TextView
+                android:id="@+id/correctCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/incorrectCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
 
-</LinearLayout>
+        <Button
+            android:id="@+id/restartButton"
+            android:layout_width="199dp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/countLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/green1_box"
+            android:backgroundTint="@color/black"
+            android:fontFamily="@font/inter_semibold"
+            android:text="Restart Quiz" />
+
+        <Button
+            android:id="@+id/exitButton"
+            android:layout_width="198dp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/restartButton"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="27dp"
+            android:background="@drawable/green4_box"
+            android:backgroundTint="@color/green2"
+            android:fontFamily="@font/inter_semibold"
+            android:text="Exit Quiz" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
