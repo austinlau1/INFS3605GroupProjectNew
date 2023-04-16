@@ -329,7 +329,7 @@ public class PlantDetails extends AppCompatActivity {
                                     try {
                                         localFile = File.createTempFile("audio", "mp3");
                                     } catch (IOException e) {
-                                        //Log.e(TAG, "Error creating temp file", e);
+                                        //Toast.makeText(PlantDetails.this, "Feature Coming Soon!", Toast.LENGTH_SHORT).show();
                                         return;
                                     }
 

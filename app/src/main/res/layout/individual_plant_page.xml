@@ -40,7 +40,7 @@
                 android:layout_marginStart="37dp"
                 android:layout_marginTop="542dp"
                 android:layout_marginEnd="225dp"
-                android:fontFamily="@font/inter"
+                android:fontFamily="@font/inter_semibold"
                 android:text="Location" />
 
             <ImageView
@@ -49,7 +49,7 @@
                 android:layout_height="147dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="43dp"
+                android:layout_marginStart="41dp"
                 android:layout_marginTop="99dp"
                 tools:srcCompat="@tools:sample/avatars" />
 
@@ -70,9 +70,9 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="18dp"
-                android:layout_marginEnd="358dp"
+                android:layout_marginEnd="363dp"
                 android:text="ID" />
 
             <TextView
@@ -81,8 +81,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/plant_image"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="47dp"
-                android:layout_marginTop="-181dp"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="-198dp"
                 android:fontFamily="@font/inter_semibold"
                 android:text="Scientific Name"
                 android:textSize="16sp" />
@@ -94,9 +94,9 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="263dp"
-                android:layout_marginEnd="39dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="261dp"
+                android:layout_marginEnd="38dp"
                 android:fontFamily="@font/inter"
                 android:scrollbarAlwaysDrawVerticalTrack="true"
                 android:scrollbars="vertical"
@@ -120,7 +120,7 @@
 
             <Button
                 android:id="@+id/audio_btn"
-                android:layout_width="55dp"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView13"
                 android:layout_alignParentStart="true"
@@ -137,20 +137,22 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="42dp"
-                android:layout_marginTop="13dp"
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/inter_semibold"
                 android:text="Plant Name"
                 android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/geographic_distribution"
-                android:layout_width="wrap_content"
-                android:layout_height="33dp"
+                android:layout_width="209dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/plant_map"
                 android:layout_alignEnd="@+id/plant_map"
-                android:layout_marginTop="-179dp"
-                android:layout_marginEnd="1dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="-174dp"
+                android:layout_marginEnd="118dp"
                 android:fontFamily="@font/inter_light"
                 android:text="Geographic distribution"
                 android:textSize="16sp" />
@@ -161,8 +163,10 @@
                 android:layout_height="147dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
                 android:layout_marginStart="218dp"
                 android:layout_marginTop="99dp"
+                android:layout_marginEnd="42dp"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <Button
@@ -179,7 +183,7 @@
 
             <Button
                 android:id="@+id/audioEndBtn"
-                android:layout_width="55dp"
+                android:layout_width="46dp"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/audio_btn"
                 android:layout_marginStart="17dp"
@@ -194,8 +198,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/plant_description"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="260dp"
+                android:layout_marginStart="250dp"
                 android:layout_marginTop="5dp"
+                android:fontFamily="@font/inter_semibold"
                 android:text="Audio" />
 
         </RelativeLayout>
