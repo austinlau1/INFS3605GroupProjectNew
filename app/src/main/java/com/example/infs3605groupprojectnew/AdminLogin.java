@@ -72,7 +72,7 @@ public class AdminLogin extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()) {
                         // mLoadingProgressBar.dismiss();
-                        Intent intent = new Intent(AdminLogin.this, MainActivity.class); //maybe to go another activity, admin one
+                        Intent intent = new Intent(AdminLogin.this, MenuPage.class); //maybe to go another activity, admin one
                         Toast.makeText(AdminLogin.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.putExtra("email",inputEmail);

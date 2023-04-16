@@ -90,6 +90,16 @@ public class LoginActivity extends AppCompatActivity{
             }
         });
 
+        // Enable the back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+        finish();
+        return true;
     }
 
     private void loginWithEmailAndPassword(String inputEmail, String inputPassword) {
@@ -109,7 +119,7 @@ public class LoginActivity extends AppCompatActivity{
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()) {
                         mLoadingProgressBar.dismiss();
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, MenuPage.class);
                         Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.putExtra("email",inputEmail);

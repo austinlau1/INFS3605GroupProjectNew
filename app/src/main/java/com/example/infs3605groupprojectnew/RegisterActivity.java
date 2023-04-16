@@ -135,9 +135,20 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     });
         }));
+
+        // Enable the back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-//method to validate user's input
+    @Override
+    public boolean onSupportNavigateUp() {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+        finish();
+        return true;
+    }
+
+    //method to validate user's input
     private Boolean validateUsername(){
         String val = Inuser_name.getText().toString();
         String noWhiteSpace = "\\A\\w{4,20}\\z";
