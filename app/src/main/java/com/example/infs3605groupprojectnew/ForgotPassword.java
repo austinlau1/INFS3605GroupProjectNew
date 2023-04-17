@@ -38,12 +38,6 @@ public class ForgotPassword extends AppCompatActivity{
         resetPW = findViewById(R.id.reset_button);
         mAuth = FirebaseAuth.getInstance();
 
-
-
-        //mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-
-        // mAuth = FirebaseAuth.getInstance();
-
         resetPW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,62 +73,9 @@ public class ForgotPassword extends AppCompatActivity{
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ForgotPassword.this, WelcomeActivity.class);
+                Intent intent = new Intent(ForgotPassword.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
     }
-    }
-
-
-
-
-    /*// From ChatGPT
-    private void sendPasswordResetEmail() {
-        String email = emailEditText.getText().toString().trim();
-        mAuth.sendPasswordResetEmail(email)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Log.d(TAG, "Password reset email sent.");
-                        }
-                    }
-                });*/
-
-
-
-    /*private void resetPassword() {
-
-        String email = emailEditText.getText().toString().trim();
-
-        if(email.isEmpty()){
-            emailEditText.setError("Email is required!");
-            emailEditText.requestFocus();
-            return;
-        }
-//        if(Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-//            emailEditText.setError("Please provide valid email");
-//            emailEditText.requestFocus();
-//            return;
-
-        mProgressBar.setVisibility(View.VISIBLE);
-        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-
-                if(task.isSuccessful()){
-                    Toast.makeText(ForgotPassword.this, "Check your email to reset your password", Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(ForgotPassword.this, "Try again! Something wrong happened!", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-    }*/
-
-    
-
-
-
-
-
+}

@@ -88,8 +88,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        // Display first name
-        //TextView firstNameTextView = rootView.findViewById(R.id.name);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
 
