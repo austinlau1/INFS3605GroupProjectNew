@@ -20,6 +20,8 @@ import com.journeyapps.barcodescanner.ScanOptions;
 
 public class CameraFragment extends Fragment {
 
+    private ActivityResultLauncher<ScanOptions> barLauncher;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -35,6 +37,28 @@ public class CameraFragment extends Fragment {
             }
         });
 
+        barLauncher = registerForActivityResult(new ScanContract(), result -> {
+            if(result.getContents() !=null) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Plant Audio");
+                builder.setMessage("Click 'Listen' to hear about the Plant");
+                builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setPositiveButton("Listen", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        String url = result.getContents();
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(browserIntent);
+                    }
+                }).show();
+            }
+        });
+
         return rootView;
     }
 
@@ -47,27 +71,5 @@ public class CameraFragment extends Fragment {
 
         barLauncher.launch(options);
     }
-
-    ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result -> {
-        if(result.getContents() !=null) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle("Plant Audio");
-            builder.setMessage("Click 'Listen' to hear about the Plant");
-            builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int which) {
-                    dialogInterface.dismiss();
-                }
-            });
-            builder.setPositiveButton("Listen", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int which) {
-                    String url = result.getContents();
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    startActivity(browserIntent);
-                }
-            }).show();
-        }
-    });
 
 }
