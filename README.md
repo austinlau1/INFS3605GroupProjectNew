@@ -2,11 +2,12 @@ Welcome to our UNSW Bush Tucker Trail App
 
 The application includes numerous features with more in the works for the future
 Some of our main features include:
-Customised Trail Routes
-Learning Quizzes
-QR Code Scanner
-Campus Shade Mapping
-Central Information Hub
+
+- Customised Trail Routes
+- Learning Quizzes
+- QR Code Scanner
+- Campus Shade Mapping
+- Central Information Hub
 
 
 
