@@ -1,13 +1,13 @@
 Welcome to our UNSW Bush Tucker Trail App
 
-The application includes numerous features with more in the works for the future
-Some of our main features include:
+UNSW Bushtucker Trail is an all-in-one application that allows students and staff to explore the native biodiversity situated at UNSW through an interactive map and learning platform.
+Key Features:
 
-- Customised Trail Routes
-- Learning Quizzes
-- QR Code Scanner
-- Campus Shade Mapping
-- Central Information Hub
+- Customised Trail Routes - Users can use the map feature to identify the plants closest to them - they can see the recommended routes, combining plants located close to one another. 
+- Learning Quizzes - Users of the application can use the quiz feature to repeatedly test their knowledge on the native plants on campus.
+- QR Code Scanner - Enables users to scan the code during their trail walk to find audio information on a particular plant - increase the interactivity of the application 
+- Campus Shade Mapping - Users of the application can use the map feature to identify shady places to sit - increase the convenience of navigating around the UNSW campus, whilst appreciating the native plants.
+- Central Information Hub - Users can find most of the information they need around the history of UNSW’s land, biodiversity, wellbeing on campus, and link to indigenous resources. 
 
 
 
